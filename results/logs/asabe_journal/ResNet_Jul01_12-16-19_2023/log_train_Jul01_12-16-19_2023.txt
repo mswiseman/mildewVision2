@@ -1,0 +1,55 @@
+[2023-07-01 12:16:19,501] - [root] - [INFO] - model_type       : ResNet
+[2023-07-01 12:16:19,502] - [root] - [INFO] - pretrained       : True
+[2023-07-01 12:16:19,502] - [root] - [INFO] - feature_extract  : False
+[2023-07-01 12:16:19,502] - [root] - [INFO] - resume           : False
+[2023-07-01 12:16:19,502] - [root] - [INFO] - resume_timestamp : None
+[2023-07-01 12:16:19,502] - [root] - [INFO] - loading_epoch    : 0
+[2023-07-01 12:16:19,502] - [root] - [INFO] - total_epochs     : 1
+[2023-07-01 12:16:19,503] - [root] - [INFO] - outdim           : 2
+[2023-07-01 12:16:19,503] - [root] - [INFO] - save_model       : True
+[2023-07-01 12:16:19,503] - [root] - [INFO] - cuda             : True
+[2023-07-01 12:16:19,503] - [root] - [INFO] - mps              : False
+[2023-07-01 12:16:19,503] - [root] - [INFO] - optim_type       : Adam
+[2023-07-01 12:16:19,503] - [root] - [INFO] - lr               : 0.0001
+[2023-07-01 12:16:19,503] - [root] - [INFO] - weight_decay     : 0.0002
+[2023-07-01 12:16:19,503] - [root] - [INFO] - weighted_loss    : True
+[2023-07-01 12:16:19,503] - [root] - [INFO] - scheduler        : True
+[2023-07-01 12:16:19,503] - [root] - [INFO] - step_size        : 60
+[2023-07-01 12:16:19,503] - [root] - [INFO] - gamma            : 0.5
+[2023-07-01 12:16:19,503] - [root] - [INFO] - bsize            : 16
+[2023-07-01 12:16:19,504] - [root] - [INFO] - nworker          : 2
+[2023-07-01 12:16:19,504] - [root] - [INFO] - manual_seed      : 1701
+[2023-07-01 12:16:19,504] - [root] - [INFO] - cuda_device      : 0
+[2023-07-01 12:16:19,504] - [root] - [INFO] - root_path        : C:/Users/Intel User/Desktop/blackbird_scripts
+[2023-07-01 12:16:19,504] - [root] - [INFO] - test_date        : None
+[2023-07-01 12:16:19,504] - [root] - [INFO] - qtl_partition_idx : None
+[2023-07-01 12:16:19,505] - [root] - [INFO] - seg_idx          : None
+[2023-07-01 12:16:19,505] - [root] - [INFO] - demo_dataset     : False
+[2023-07-01 12:16:19,505] - [root] - [INFO] - seg_dataset      : False
+[2023-07-01 12:16:19,505] - [root] - [INFO] - aug_dataset      : False
+[2023-07-01 12:16:19,505] - [root] - [INFO] - cross_validation : False
+[2023-07-01 12:16:19,505] - [root] - [INFO] - n_trials         : 0
+[2023-07-01 12:16:19,505] - [root] - [INFO] - study_name       : Study4
+[2023-07-01 12:16:19,505] - [root] - [INFO] - batch_size       : 16
+[2023-07-01 12:16:19,506] - [root] - [INFO] - Compose(
+    ToPILImage()
+    RandomHorizontalFlip(p=0.5)
+    RandomVerticalFlip(p=0.5)
+    RandomAffine(degrees=[0.0, 180.0], translate=(0.05, 0.05), scale=(0.9, 1.1))
+    ToTensor()
+    Normalize(mean=[0.4823529411764706, 0.5882352941176471, 0.33725490196078434], std=[0.13333333333333333, 0.13333333333333333, 0.17647058823529413])
+)
+[2023-07-01 12:16:20,844] - [root] - [INFO] - USING GPU
+[2023-07-01 12:16:20,844] - [root] - [INFO] - --------------------------------------------
+[2023-07-01 12:16:21,638] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-07-01 12:16:35,932] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.0001	Loss: 0.664341	Time Usage:0m 14s
+[2023-07-01 12:16:38,056] - [root] - [INFO] - Train Epoch: 1 [800/18834 (4%)]	Learning Rate: 0.0001	Loss: 0.708053	Time Usage:0m 16s
+[2023-07-01 12:16:40,164] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.0001	Loss: 0.497810	Time Usage:0m 18s
+[2023-07-01 12:16:42,276] - [root] - [INFO] - Train Epoch: 1 [2400/18834 (13%)]	Learning Rate: 0.0001	Loss: 0.282310	Time Usage:0m 20s
+[2023-07-01 12:16:44,391] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.0001	Loss: 0.401854	Time Usage:0m 22s
+[2023-07-01 12:16:46,510] - [root] - [INFO] - Train Epoch: 1 [4000/18834 (21%)]	Learning Rate: 0.0001	Loss: 0.121564	Time Usage:0m 24s
+[2023-07-01 12:16:48,626] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.0001	Loss: 0.099036	Time Usage:0m 26s
+[2023-07-01 12:16:50,742] - [root] - [INFO] - Train Epoch: 1 [5600/18834 (30%)]	Learning Rate: 0.0001	Loss: 0.359743	Time Usage:0m 29s
+[2023-07-01 12:16:52,874] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.0001	Loss: 0.147982	Time Usage:0m 31s
+[2023-07-01 12:16:54,998] - [root] - [INFO] - Train Epoch: 1 [7200/18834 (38%)]	Learning Rate: 0.0001	Loss: 0.149428	Time Usage:0m 33s
+[2023-07-01 12:16:57,135] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.0001	Loss: 0.030085	Time Usage:0m 35s

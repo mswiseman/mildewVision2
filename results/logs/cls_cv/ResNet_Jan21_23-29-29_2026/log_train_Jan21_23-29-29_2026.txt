@@ -1,0 +1,836 @@
+[2026-01-21 23:29:29,681] - [root] - [INFO] - model_type       : ResNet
+[2026-01-21 23:29:29,681] - [root] - [INFO] - pretrained       : True
+[2026-01-21 23:29:29,682] - [root] - [INFO] - feature_extract  : False
+[2026-01-21 23:29:29,682] - [root] - [INFO] - resume           : False
+[2026-01-21 23:29:29,682] - [root] - [INFO] - resume_timestamp : None
+[2026-01-21 23:29:29,682] - [root] - [INFO] - loading_epoch    : 0
+[2026-01-21 23:29:29,682] - [root] - [INFO] - total_epochs     : 100
+[2026-01-21 23:29:29,682] - [root] - [INFO] - outdim           : 2
+[2026-01-21 23:29:29,682] - [root] - [INFO] - save_model       : True
+[2026-01-21 23:29:29,682] - [root] - [INFO] - cuda             : True
+[2026-01-21 23:29:29,682] - [root] - [INFO] - mps              : False
+[2026-01-21 23:29:29,683] - [root] - [INFO] - means            : [0.571, 0.664, 0.4581]
+[2026-01-21 23:29:29,683] - [root] - [INFO] - stds             : [0.1808, 0.1659, 0.2444]
+[2026-01-21 23:29:29,683] - [root] - [INFO] - patience         : 25
+[2026-01-21 23:29:29,683] - [root] - [INFO] - optim_type       : AdamW
+[2026-01-21 23:29:29,683] - [root] - [INFO] - lr               : 0.0001
+[2026-01-21 23:29:29,683] - [root] - [INFO] - weight_decay     : 0.0001
+[2026-01-21 23:29:29,683] - [root] - [INFO] - weighted_loss    : True
+[2026-01-21 23:29:29,683] - [root] - [INFO] - max_grad_norm    : None
+[2026-01-21 23:29:29,683] - [root] - [INFO] - label_smoothing  : 0.0
+[2026-01-21 23:29:29,683] - [root] - [INFO] - scheduler        : True
+[2026-01-21 23:29:29,684] - [root] - [INFO] - step_size        : 60
+[2026-01-21 23:29:29,684] - [root] - [INFO] - gamma            : 0.5
+[2026-01-21 23:29:29,684] - [root] - [INFO] - bsize            : 128
+[2026-01-21 23:29:29,684] - [root] - [INFO] - nworker          : 1
+[2026-01-21 23:29:29,684] - [root] - [INFO] - manual_seed      : 1701
+[2026-01-21 23:29:29,684] - [root] - [INFO] - cuda_device      : 0
+[2026-01-21 23:29:29,684] - [root] - [INFO] - root_path        : ../..
+[2026-01-21 23:29:29,684] - [root] - [INFO] - test_date        : Jan_21_2026
+[2026-01-21 23:29:29,684] - [root] - [INFO] - test_hdf5        : val_0.hdf5
+[2026-01-21 23:29:29,684] - [root] - [INFO] - train_hdf5       : train_0.hdf5
+[2026-01-21 23:29:29,684] - [root] - [INFO] - qtl_partition_idx : None
+[2026-01-21 23:29:29,685] - [root] - [INFO] - seg_idx          : None
+[2026-01-21 23:29:29,685] - [root] - [INFO] - demo_dataset     : False
+[2026-01-21 23:29:29,685] - [root] - [INFO] - seg_dataset      : False
+[2026-01-21 23:29:29,685] - [root] - [INFO] - aug_dataset      : False
+[2026-01-21 23:29:29,685] - [root] - [INFO] - cross_validation : True
+[2026-01-21 23:29:29,685] - [root] - [INFO] - n_trials         : 0
+[2026-01-21 23:29:29,685] - [root] - [INFO] - study_name       : downy_trial_11_24_24
+[2026-01-21 23:29:29,685] - [root] - [INFO] - cv_folds         : 5
+[2026-01-21 23:29:29,685] - [root] - [INFO] - cv_group_col     : None
+[2026-01-21 23:29:29,685] - [root] - [INFO] - batch_size       : 128
+[2026-01-21 23:29:29,686] - [root] - [INFO] - train augmentations:
+Compose(
+    ToPILImage()
+    RandomHorizontalFlip(p=0.5)
+    RandomVerticalFlip(p=0.5)
+    RandomAffine(degrees=[0.0, 180.0], translate=(0.05, 0.05), scale=(0.9, 1.1))
+    ColorJitter(brightness=(1.0, 1.3), contrast=(1.0, 1.3), saturation=None, hue=None)
+    ToTensor()
+    Normalize(mean=[0.571, 0.664, 0.4581], std=[0.1808, 0.1659, 0.2444])
+)
+[2026-01-21 23:29:33,333] - [root] - [INFO] - USING GPU
+[2026-01-21 23:29:33,334] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:29:33,335] - [root] - [INFO] - Using pos_weight=[0.49997684359550476, 2.0000925064086914] for BCE heads
+[2026-01-21 23:29:33,335] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:29:48,788] - [root] - [INFO] - Train Epoch: 1 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.686312	Time Usage:0m 15s
+[2026-01-21 23:30:02,198] - [root] - [INFO] - Train Epoch: 1 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.125045	Time Usage:0m 28s
+[2026-01-21 23:30:15,673] - [root] - [INFO] - Train Epoch: 1 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.139141	Time Usage:0m 42s
+[2026-01-21 23:30:29,363] - [root] - [INFO] - Train Epoch: 1 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.082272	Time Usage:0m 56s
+[2026-01-21 23:30:43,184] - [root] - [INFO] - Train Epoch: 1 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.101077	Time Usage:1m 9s
+[2026-01-21 23:30:56,102] - [root] - [INFO] - Train Epoch: 1 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.073726	Time Usage:1m 22s
+[2026-01-21 23:30:56,597] - [root] - [INFO] - Loss on 32384 train images: 0.141830
+[2026-01-21 23:30:56,597] - [root] - [INFO] - Train F1(macro): 93.443% | Infected F1: 91.633% (P 95.98%, R 87.66%) | Spor F1: 95.253% (P 96.94%, R 93.62%)
+[2026-01-21 23:31:14,705] - [root] - [INFO] - Val loss: 0.096035 | Val F1(macro): 96.642% | Val Recall(macro): 96.361% | Val Precision(macro): 96.925% | Infected F1: 95.955% | Spor F1: 97.329%
+[2026-01-21 23:31:14,985] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:31:14,985] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:31:15,253] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep001
+[2026-01-21 23:31:15,253] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:31:15,684] - [root] - [INFO] - Train Epoch: 2 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.070519	Time Usage:1m 42s
+[2026-01-21 23:31:28,012] - [root] - [INFO] - Train Epoch: 2 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.068192	Time Usage:1m 54s
+[2026-01-21 23:31:40,757] - [root] - [INFO] - Train Epoch: 2 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.090195	Time Usage:2m 7s
+[2026-01-21 23:31:53,029] - [root] - [INFO] - Train Epoch: 2 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.091081	Time Usage:2m 19s
+[2026-01-21 23:32:05,836] - [root] - [INFO] - Train Epoch: 2 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.115161	Time Usage:2m 32s
+[2026-01-21 23:32:18,973] - [root] - [INFO] - Train Epoch: 2 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.075970	Time Usage:2m 45s
+[2026-01-21 23:32:19,483] - [root] - [INFO] - Loss on 32384 train images: 0.094203
+[2026-01-21 23:32:19,484] - [root] - [INFO] - Train F1(macro): 96.005% | Infected F1: 95.421% (P 98.02%, R 92.96%) | Spor F1: 96.590% (P 97.41%, R 95.78%)
+[2026-01-21 23:32:25,823] - [root] - [INFO] - Val loss: 0.073251 | Val F1(macro): 96.709% | Val Recall(macro): 94.676% | Val Precision(macro): 98.845% | Infected F1: 96.156% | Spor F1: 97.261%
+[2026-01-21 23:32:26,105] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:32:26,106] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:32:26,364] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep002
+[2026-01-21 23:32:26,364] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:32:26,788] - [root] - [INFO] - Train Epoch: 3 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.079220	Time Usage:2m 53s
+[2026-01-21 23:32:39,822] - [root] - [INFO] - Train Epoch: 3 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.051439	Time Usage:3m 6s
+[2026-01-21 23:32:52,572] - [root] - [INFO] - Train Epoch: 3 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.066124	Time Usage:3m 19s
+[2026-01-21 23:33:05,764] - [root] - [INFO] - Train Epoch: 3 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.095154	Time Usage:3m 32s
+[2026-01-21 23:33:18,710] - [root] - [INFO] - Train Epoch: 3 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.065948	Time Usage:3m 45s
+[2026-01-21 23:33:31,228] - [root] - [INFO] - Train Epoch: 3 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.117134	Time Usage:3m 57s
+[2026-01-21 23:33:31,741] - [root] - [INFO] - Loss on 32384 train images: 0.081577
+[2026-01-21 23:33:31,741] - [root] - [INFO] - Train F1(macro): 96.500% | Infected F1: 96.153% (P 98.37%, R 94.03%) | Spor F1: 96.847% (P 97.65%, R 96.06%)
+[2026-01-21 23:33:38,117] - [root] - [INFO] - Val loss: 0.070096 | Val F1(macro): 97.073% | Val Recall(macro): 95.259% | Val Precision(macro): 98.962% | Infected F1: 96.642% | Spor F1: 97.503%
+[2026-01-21 23:33:38,407] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:33:38,407] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:33:38,661] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep003
+[2026-01-21 23:33:38,661] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:33:39,078] - [root] - [INFO] - Train Epoch: 4 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.144108	Time Usage:4m 5s
+[2026-01-21 23:33:51,689] - [root] - [INFO] - Train Epoch: 4 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.102691	Time Usage:4m 18s
+[2026-01-21 23:34:05,048] - [root] - [INFO] - Train Epoch: 4 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.066476	Time Usage:4m 31s
+[2026-01-21 23:34:18,218] - [root] - [INFO] - Train Epoch: 4 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.104026	Time Usage:4m 44s
+[2026-01-21 23:34:31,198] - [root] - [INFO] - Train Epoch: 4 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.127527	Time Usage:4m 57s
+[2026-01-21 23:34:44,511] - [root] - [INFO] - Train Epoch: 4 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.169452	Time Usage:5m 11s
+[2026-01-21 23:34:44,996] - [root] - [INFO] - Loss on 32384 train images: 0.076684
+[2026-01-21 23:34:44,996] - [root] - [INFO] - Train F1(macro): 96.803% | Infected F1: 96.583% (P 98.54%, R 94.71%) | Spor F1: 97.023% (P 97.73%, R 96.32%)
+[2026-01-21 23:34:51,541] - [root] - [INFO] - Val loss: 0.068749 | Val F1(macro): 96.945% | Val Recall(macro): 95.185% | Val Precision(macro): 98.788% | Infected F1: 96.489% | Spor F1: 97.401%
+[2026-01-21 23:34:51,852] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:34:51,852] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:34:52,260] - [root] - [INFO] - Train Epoch: 5 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.093301	Time Usage:5m 18s
+[2026-01-21 23:35:05,103] - [root] - [INFO] - Train Epoch: 5 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.089900	Time Usage:5m 31s
+[2026-01-21 23:35:17,851] - [root] - [INFO] - Train Epoch: 5 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.052451	Time Usage:5m 44s
+[2026-01-21 23:35:32,105] - [root] - [INFO] - Train Epoch: 5 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.103034	Time Usage:5m 58s
+[2026-01-21 23:35:43,480] - [root] - [INFO] - Train Epoch: 5 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.055788	Time Usage:6m 10s
+[2026-01-21 23:35:55,083] - [root] - [INFO] - Train Epoch: 5 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.162192	Time Usage:6m 21s
+[2026-01-21 23:35:55,553] - [root] - [INFO] - Loss on 32384 train images: 0.072910
+[2026-01-21 23:35:55,553] - [root] - [INFO] - Train F1(macro): 96.964% | Infected F1: 96.823% (P 98.74%, R 94.98%) | Spor F1: 97.105% (P 97.74%, R 96.48%)
+[2026-01-21 23:36:01,469] - [root] - [INFO] - Val loss: 0.074010 | Val F1(macro): 97.362% | Val Recall(macro): 97.444% | Val Precision(macro): 97.296% | Infected F1: 97.237% | Spor F1: 97.488%
+[2026-01-21 23:36:01,732] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:36:01,732] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:36:02,045] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep005
+[2026-01-21 23:36:02,045] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:36:02,442] - [root] - [INFO] - Train Epoch: 6 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.073374	Time Usage:6m 29s
+[2026-01-21 23:36:14,070] - [root] - [INFO] - Train Epoch: 6 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.060976	Time Usage:6m 40s
+[2026-01-21 23:36:25,416] - [root] - [INFO] - Train Epoch: 6 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.103131	Time Usage:6m 52s
+[2026-01-21 23:36:37,316] - [root] - [INFO] - Train Epoch: 6 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.053918	Time Usage:7m 3s
+[2026-01-21 23:36:50,890] - [root] - [INFO] - Train Epoch: 6 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.073420	Time Usage:7m 17s
+[2026-01-21 23:37:04,443] - [root] - [INFO] - Train Epoch: 6 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.069855	Time Usage:7m 31s
+[2026-01-21 23:37:05,010] - [root] - [INFO] - Loss on 32384 train images: 0.070864
+[2026-01-21 23:37:05,010] - [root] - [INFO] - Train F1(macro): 97.024% | Infected F1: 96.874% (P 98.71%, R 95.11%) | Spor F1: 97.173% (P 97.85%, R 96.51%)
+[2026-01-21 23:37:11,853] - [root] - [INFO] - Val loss: 0.070764 | Val F1(macro): 96.848% | Val Recall(macro): 95.296% | Val Precision(macro): 98.510% | Infected F1: 96.046% | Spor F1: 97.649%
+[2026-01-21 23:37:12,131] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:37:12,131] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:37:12,562] - [root] - [INFO] - Train Epoch: 7 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.067505	Time Usage:7m 39s
+[2026-01-21 23:37:25,676] - [root] - [INFO] - Train Epoch: 7 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.052615	Time Usage:7m 52s
+[2026-01-21 23:37:38,491] - [root] - [INFO] - Train Epoch: 7 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.087525	Time Usage:8m 5s
+[2026-01-21 23:37:51,045] - [root] - [INFO] - Train Epoch: 7 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.044266	Time Usage:8m 17s
+[2026-01-21 23:38:03,784] - [root] - [INFO] - Train Epoch: 7 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.065049	Time Usage:8m 30s
+[2026-01-21 23:38:15,962] - [root] - [INFO] - Train Epoch: 7 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.049940	Time Usage:8m 42s
+[2026-01-21 23:38:16,394] - [root] - [INFO] - Loss on 32384 train images: 0.068095
+[2026-01-21 23:38:16,394] - [root] - [INFO] - Train F1(macro): 97.223% | Infected F1: 97.004% (P 98.70%, R 95.36%) | Spor F1: 97.443% (P 97.99%, R 96.91%)
+[2026-01-21 23:38:22,423] - [root] - [INFO] - Val loss: 0.070625 | Val F1(macro): 97.315% | Val Recall(macro): 97.028% | Val Precision(macro): 97.607% | Infected F1: 96.941% | Spor F1: 97.688%
+[2026-01-21 23:38:22,689] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:38:22,690] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:38:23,109] - [root] - [INFO] - Train Epoch: 8 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.072185	Time Usage:8m 49s
+[2026-01-21 23:38:34,515] - [root] - [INFO] - Train Epoch: 8 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.043607	Time Usage:9m 1s
+[2026-01-21 23:38:47,292] - [root] - [INFO] - Train Epoch: 8 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.056172	Time Usage:9m 13s
+[2026-01-21 23:39:02,872] - [root] - [INFO] - Train Epoch: 8 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.052558	Time Usage:9m 29s
+[2026-01-21 23:39:18,338] - [root] - [INFO] - Train Epoch: 8 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.101036	Time Usage:9m 45s
+[2026-01-21 23:39:32,203] - [root] - [INFO] - Train Epoch: 8 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.058623	Time Usage:9m 58s
+[2026-01-21 23:39:32,809] - [root] - [INFO] - Loss on 32384 train images: 0.065788
+[2026-01-21 23:39:32,809] - [root] - [INFO] - Train F1(macro): 97.281% | Infected F1: 97.094% (P 98.76%, R 95.48%) | Spor F1: 97.468% (P 97.95%, R 96.99%)
+[2026-01-21 23:39:39,870] - [root] - [INFO] - Val loss: 0.061831 | Val F1(macro): 97.579% | Val Recall(macro): 96.546% | Val Precision(macro): 98.642% | Infected F1: 97.335% | Spor F1: 97.823%
+[2026-01-21 23:39:40,158] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:39:40,158] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:39:40,433] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep008
+[2026-01-21 23:39:40,433] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:39:40,879] - [root] - [INFO] - Train Epoch: 9 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.063230	Time Usage:10m 7s
+[2026-01-21 23:39:54,132] - [root] - [INFO] - Train Epoch: 9 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.042139	Time Usage:10m 20s
+[2026-01-21 23:40:07,890] - [root] - [INFO] - Train Epoch: 9 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.073995	Time Usage:10m 34s
+[2026-01-21 23:40:21,893] - [root] - [INFO] - Train Epoch: 9 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.073135	Time Usage:10m 48s
+[2026-01-21 23:40:36,099] - [root] - [INFO] - Train Epoch: 9 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.058131	Time Usage:11m 2s
+[2026-01-21 23:40:49,874] - [root] - [INFO] - Train Epoch: 9 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.037900	Time Usage:11m 16s
+[2026-01-21 23:40:50,365] - [root] - [INFO] - Loss on 32384 train images: 0.066130
+[2026-01-21 23:40:50,365] - [root] - [INFO] - Train F1(macro): 97.217% | Infected F1: 97.125% (P 98.79%, R 95.51%) | Spor F1: 97.309% (P 97.79%, R 96.83%)
+[2026-01-21 23:40:58,212] - [root] - [INFO] - Val loss: 0.067336 | Val F1(macro): 97.281% | Val Recall(macro): 96.093% | Val Precision(macro): 98.535% | Infected F1: 96.874% | Spor F1: 97.687%
+[2026-01-21 23:40:58,514] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:40:58,518] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:40:58,959] - [root] - [INFO] - Train Epoch: 10 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.054573	Time Usage:11m 25s
+[2026-01-21 23:41:13,488] - [root] - [INFO] - Train Epoch: 10 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.040853	Time Usage:11m 40s
+[2026-01-21 23:41:26,884] - [root] - [INFO] - Train Epoch: 10 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.049139	Time Usage:11m 53s
+[2026-01-21 23:41:41,325] - [root] - [INFO] - Train Epoch: 10 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.050441	Time Usage:12m 7s
+[2026-01-21 23:41:55,078] - [root] - [INFO] - Train Epoch: 10 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.075782	Time Usage:12m 21s
+[2026-01-21 23:42:09,895] - [root] - [INFO] - Train Epoch: 10 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.137118	Time Usage:12m 36s
+[2026-01-21 23:42:10,607] - [root] - [INFO] - Loss on 32384 train images: 0.064263
+[2026-01-21 23:42:10,608] - [root] - [INFO] - Train F1(macro): 97.373% | Infected F1: 97.178% (P 98.88%, R 95.54%) | Spor F1: 97.567% (P 97.99%, R 97.15%)
+[2026-01-21 23:42:17,626] - [root] - [INFO] - Val loss: 0.066240 | Val F1(macro): 97.145% | Val Recall(macro): 95.343% | Val Precision(macro): 99.027% | Infected F1: 96.989% | Spor F1: 97.301%
+[2026-01-21 23:42:17,945] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:42:17,945] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:42:18,385] - [root] - [INFO] - Train Epoch: 11 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.036105	Time Usage:12m 45s
+[2026-01-21 23:42:32,155] - [root] - [INFO] - Train Epoch: 11 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.040550	Time Usage:12m 58s
+[2026-01-21 23:42:46,653] - [root] - [INFO] - Train Epoch: 11 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.067643	Time Usage:13m 13s
+[2026-01-21 23:43:01,001] - [root] - [INFO] - Train Epoch: 11 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.076762	Time Usage:13m 27s
+[2026-01-21 23:43:13,994] - [root] - [INFO] - Train Epoch: 11 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.049419	Time Usage:13m 40s
+[2026-01-21 23:43:26,233] - [root] - [INFO] - Train Epoch: 11 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.111063	Time Usage:13m 52s
+[2026-01-21 23:43:26,749] - [root] - [INFO] - Loss on 32384 train images: 0.059620
+[2026-01-21 23:43:26,749] - [root] - [INFO] - Train F1(macro): 97.501% | Infected F1: 97.386% (P 98.96%, R 95.86%) | Spor F1: 97.616% (P 98.09%, R 97.15%)
+[2026-01-21 23:43:32,999] - [root] - [INFO] - Val loss: 0.068596 | Val F1(macro): 97.126% | Val Recall(macro): 96.657% | Val Precision(macro): 97.649% | Infected F1: 96.908% | Spor F1: 97.344%
+[2026-01-21 23:43:33,297] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:43:33,297] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:43:33,717] - [root] - [INFO] - Train Epoch: 12 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.044749	Time Usage:14m 0s
+[2026-01-21 23:43:45,928] - [root] - [INFO] - Train Epoch: 12 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.027455	Time Usage:14m 12s
+[2026-01-21 23:44:00,698] - [root] - [INFO] - Train Epoch: 12 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.082342	Time Usage:14m 27s
+[2026-01-21 23:44:13,545] - [root] - [INFO] - Train Epoch: 12 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.157889	Time Usage:14m 40s
+[2026-01-21 23:44:26,988] - [root] - [INFO] - Train Epoch: 12 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.035202	Time Usage:14m 53s
+[2026-01-21 23:44:41,207] - [root] - [INFO] - Train Epoch: 12 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.039647	Time Usage:15m 7s
+[2026-01-21 23:44:41,745] - [root] - [INFO] - Loss on 32384 train images: 0.059896
+[2026-01-21 23:44:41,745] - [root] - [INFO] - Train F1(macro): 97.595% | Infected F1: 97.385% (P 98.91%, R 95.91%) | Spor F1: 97.804% (P 98.24%, R 97.37%)
+[2026-01-21 23:44:48,817] - [root] - [INFO] - Val loss: 0.067096 | Val F1(macro): 97.201% | Val Recall(macro): 95.204% | Val Precision(macro): 99.286% | Infected F1: 97.024% | Spor F1: 97.379%
+[2026-01-21 23:44:49,147] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:44:49,147] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:44:49,607] - [root] - [INFO] - Train Epoch: 13 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.030271	Time Usage:15m 16s
+[2026-01-21 23:45:02,878] - [root] - [INFO] - Train Epoch: 13 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.055001	Time Usage:15m 29s
+[2026-01-21 23:45:17,952] - [root] - [INFO] - Train Epoch: 13 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.129673	Time Usage:15m 44s
+[2026-01-21 23:45:32,386] - [root] - [INFO] - Train Epoch: 13 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.103910	Time Usage:15m 59s
+[2026-01-21 23:45:49,363] - [root] - [INFO] - Train Epoch: 13 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.047120	Time Usage:16m 16s
+[2026-01-21 23:46:02,248] - [root] - [INFO] - Train Epoch: 13 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.059096	Time Usage:16m 28s
+[2026-01-21 23:46:02,892] - [root] - [INFO] - Loss on 32384 train images: 0.059203
+[2026-01-21 23:46:02,893] - [root] - [INFO] - Train F1(macro): 97.586% | Infected F1: 97.410% (P 98.97%, R 95.90%) | Spor F1: 97.762% (P 98.20%, R 97.33%)
+[2026-01-21 23:46:10,451] - [root] - [INFO] - Val loss: 0.061590 | Val F1(macro): 97.546% | Val Recall(macro): 96.407% | Val Precision(macro): 98.712% | Infected F1: 97.597% | Spor F1: 97.494%
+[2026-01-21 23:46:10,799] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:46:10,799] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:46:11,268] - [root] - [INFO] - Train Epoch: 14 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.040776	Time Usage:16m 37s
+[2026-01-21 23:46:23,662] - [root] - [INFO] - Train Epoch: 14 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.079668	Time Usage:16m 50s
+[2026-01-21 23:46:38,196] - [root] - [INFO] - Train Epoch: 14 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.034842	Time Usage:17m 4s
+[2026-01-21 23:46:53,719] - [root] - [INFO] - Train Epoch: 14 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.038342	Time Usage:17m 20s
+[2026-01-21 23:47:07,403] - [root] - [INFO] - Train Epoch: 14 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.037987	Time Usage:17m 34s
+[2026-01-21 23:47:24,254] - [root] - [INFO] - Train Epoch: 14 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.063266	Time Usage:17m 50s
+[2026-01-21 23:47:24,707] - [root] - [INFO] - Loss on 32384 train images: 0.059090
+[2026-01-21 23:47:24,708] - [root] - [INFO] - Train F1(macro): 97.553% | Infected F1: 97.492% (P 98.98%, R 96.04%) | Spor F1: 97.615% (P 97.97%, R 97.27%)
+[2026-01-21 23:47:30,918] - [root] - [INFO] - Val loss: 0.062389 | Val F1(macro): 97.598% | Val Recall(macro): 97.056% | Val Precision(macro): 98.150% | Infected F1: 97.644% | Spor F1: 97.552%
+[2026-01-21 23:47:31,248] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:47:31,248] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:47:31,510] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep014
+[2026-01-21 23:47:31,510] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:47:31,934] - [root] - [INFO] - Train Epoch: 15 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.086313	Time Usage:17m 58s
+[2026-01-21 23:47:44,296] - [root] - [INFO] - Train Epoch: 15 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.052032	Time Usage:18m 10s
+[2026-01-21 23:47:56,770] - [root] - [INFO] - Train Epoch: 15 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.072716	Time Usage:18m 23s
+[2026-01-21 23:48:09,326] - [root] - [INFO] - Train Epoch: 15 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.093871	Time Usage:18m 35s
+[2026-01-21 23:48:21,938] - [root] - [INFO] - Train Epoch: 15 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.056448	Time Usage:18m 48s
+[2026-01-21 23:48:34,839] - [root] - [INFO] - Train Epoch: 15 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.058014	Time Usage:19m 1s
+[2026-01-21 23:48:35,462] - [root] - [INFO] - Loss on 32384 train images: 0.055752
+[2026-01-21 23:48:35,462] - [root] - [INFO] - Train F1(macro): 97.627% | Infected F1: 97.562% (P 99.06%, R 96.11%) | Spor F1: 97.691% (P 98.00%, R 97.39%)
+[2026-01-21 23:48:43,491] - [root] - [INFO] - Val loss: 0.059032 | Val F1(macro): 97.711% | Val Recall(macro): 97.065% | Val Precision(macro): 98.371% | Infected F1: 97.517% | Spor F1: 97.905%
+[2026-01-21 23:48:43,863] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:48:43,863] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:48:44,175] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep015
+[2026-01-21 23:48:44,175] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:48:44,726] - [root] - [INFO] - Train Epoch: 16 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.076852	Time Usage:19m 11s
+[2026-01-21 23:49:02,241] - [root] - [INFO] - Train Epoch: 16 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.087937	Time Usage:19m 28s
+[2026-01-21 23:49:20,549] - [root] - [INFO] - Train Epoch: 16 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.048635	Time Usage:19m 47s
+[2026-01-21 23:49:39,436] - [root] - [INFO] - Train Epoch: 16 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.023331	Time Usage:20m 6s
+[2026-01-21 23:49:59,101] - [root] - [INFO] - Train Epoch: 16 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.045744	Time Usage:20m 25s
+[2026-01-21 23:50:18,007] - [root] - [INFO] - Train Epoch: 16 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.055665	Time Usage:20m 44s
+[2026-01-21 23:50:18,752] - [root] - [INFO] - Loss on 32384 train images: 0.055596
+[2026-01-21 23:50:18,752] - [root] - [INFO] - Train F1(macro): 97.677% | Infected F1: 97.583% (P 99.00%, R 96.21%) | Spor F1: 97.772% (P 98.17%, R 97.38%)
+[2026-01-21 23:50:27,397] - [root] - [INFO] - Val loss: 0.058210 | Val F1(macro): 97.646% | Val Recall(macro): 97.009% | Val Precision(macro): 98.315% | Infected F1: 97.540% | Spor F1: 97.751%
+[2026-01-21 23:50:27,758] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:50:27,758] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:50:28,291] - [root] - [INFO] - Train Epoch: 17 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.060081	Time Usage:20m 54s
+[2026-01-21 23:50:46,216] - [root] - [INFO] - Train Epoch: 17 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.048923	Time Usage:21m 12s
+[2026-01-21 23:51:04,127] - [root] - [INFO] - Train Epoch: 17 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.061832	Time Usage:21m 30s
+[2026-01-21 23:51:26,922] - [root] - [INFO] - Train Epoch: 17 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.040551	Time Usage:21m 53s
+[2026-01-21 23:51:47,873] - [root] - [INFO] - Train Epoch: 17 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.055682	Time Usage:22m 14s
+[2026-01-21 23:52:06,701] - [root] - [INFO] - Train Epoch: 17 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.082217	Time Usage:22m 33s
+[2026-01-21 23:52:07,458] - [root] - [INFO] - Loss on 32384 train images: 0.054017
+[2026-01-21 23:52:07,458] - [root] - [INFO] - Train F1(macro): 97.700% | Infected F1: 97.651% (P 99.07%, R 96.28%) | Spor F1: 97.750% (P 98.13%, R 97.37%)
+[2026-01-21 23:52:15,817] - [root] - [INFO] - Val loss: 0.067762 | Val F1(macro): 97.106% | Val Recall(macro): 96.157% | Val Precision(macro): 98.119% | Infected F1: 96.810% | Spor F1: 97.402%
+[2026-01-21 23:52:16,147] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:52:16,147] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:52:16,807] - [root] - [INFO] - Train Epoch: 18 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.044098	Time Usage:22m 43s
+[2026-01-21 23:52:34,444] - [root] - [INFO] - Train Epoch: 18 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.063846	Time Usage:23m 1s
+[2026-01-21 23:52:57,234] - [root] - [INFO] - Train Epoch: 18 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.019667	Time Usage:23m 23s
+[2026-01-21 23:53:20,218] - [root] - [INFO] - Train Epoch: 18 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.065942	Time Usage:23m 46s
+[2026-01-21 23:53:41,215] - [root] - [INFO] - Train Epoch: 18 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.081749	Time Usage:24m 7s
+[2026-01-21 23:54:00,797] - [root] - [INFO] - Train Epoch: 18 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.105558	Time Usage:24m 27s
+[2026-01-21 23:54:01,714] - [root] - [INFO] - Loss on 32384 train images: 0.052728
+[2026-01-21 23:54:01,714] - [root] - [INFO] - Train F1(macro): 97.836% | Infected F1: 97.810% (P 99.16%, R 96.50%) | Spor F1: 97.863% (P 98.19%, R 97.54%)
+[2026-01-21 23:54:12,153] - [root] - [INFO] - Val loss: 0.058766 | Val F1(macro): 97.680% | Val Recall(macro): 96.880% | Val Precision(macro): 98.497% | Infected F1: 97.571% | Spor F1: 97.789%
+[2026-01-21 23:54:12,548] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:54:12,548] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:54:13,209] - [root] - [INFO] - Train Epoch: 19 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.037031	Time Usage:24m 39s
+[2026-01-21 23:54:32,836] - [root] - [INFO] - Train Epoch: 19 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.037879	Time Usage:24m 59s
+[2026-01-21 23:54:50,986] - [root] - [INFO] - Train Epoch: 19 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.041085	Time Usage:25m 17s
+[2026-01-21 23:55:08,515] - [root] - [INFO] - Train Epoch: 19 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.037703	Time Usage:25m 35s
+[2026-01-21 23:55:29,078] - [root] - [INFO] - Train Epoch: 19 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.071261	Time Usage:25m 55s
+[2026-01-21 23:55:52,562] - [root] - [INFO] - Train Epoch: 19 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.086433	Time Usage:26m 19s
+[2026-01-21 23:55:53,431] - [root] - [INFO] - Loss on 32384 train images: 0.052992
+[2026-01-21 23:55:53,433] - [root] - [INFO] - Train F1(macro): 97.813% | Infected F1: 97.764% (P 99.07%, R 96.49%) | Spor F1: 97.861% (P 98.24%, R 97.48%)
+[2026-01-21 23:56:01,327] - [root] - [INFO] - Val loss: 0.071819 | Val F1(macro): 97.301% | Val Recall(macro): 97.324% | Val Precision(macro): 97.327% | Infected F1: 97.516% | Spor F1: 97.085%
+[2026-01-21 23:56:01,640] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:56:01,640] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:56:02,153] - [root] - [INFO] - Train Epoch: 20 [0/32404 (0%)]	Learning Rate: 0.0001	Loss: 0.058072	Time Usage:26m 28s
+[2026-01-21 23:56:18,102] - [root] - [INFO] - Train Epoch: 20 [6400/32404 (20%)]	Learning Rate: 0.0001	Loss: 0.037582	Time Usage:26m 44s
+[2026-01-21 23:56:38,210] - [root] - [INFO] - Train Epoch: 20 [12800/32404 (40%)]	Learning Rate: 0.0001	Loss: 0.032266	Time Usage:27m 4s
+[2026-01-21 23:57:01,273] - [root] - [INFO] - Train Epoch: 20 [19200/32404 (59%)]	Learning Rate: 0.0001	Loss: 0.039693	Time Usage:27m 27s
+[2026-01-21 23:57:20,690] - [root] - [INFO] - Train Epoch: 20 [25600/32404 (79%)]	Learning Rate: 0.0001	Loss: 0.038835	Time Usage:27m 47s
+[2026-01-21 23:57:39,018] - [root] - [INFO] - Train Epoch: 20 [32000/32404 (99%)]	Learning Rate: 0.0001	Loss: 0.076636	Time Usage:28m 5s
+[2026-01-21 23:57:39,698] - [root] - [INFO] - Loss on 32384 train images: 0.051058
+[2026-01-21 23:57:39,698] - [root] - [INFO] - Train F1(macro): 97.856% | Infected F1: 97.744% (P 99.08%, R 96.44%) | Spor F1: 97.968% (P 98.36%, R 97.58%)
+[2026-01-21 23:57:46,970] - [root] - [INFO] - Val loss: 0.065605 | Val F1(macro): 97.616% | Val Recall(macro): 97.028% | Val Precision(macro): 98.226% | Infected F1: 97.689% | Spor F1: 97.543%
+[2026-01-21 23:57:47,284] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:57:47,284] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:57:47,744] - [root] - [INFO] - Train Epoch: 21 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.053011	Time Usage:28m 14s
+[2026-01-21 23:58:01,171] - [root] - [INFO] - Train Epoch: 21 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.026267	Time Usage:28m 27s
+[2026-01-21 23:58:15,582] - [root] - [INFO] - Train Epoch: 21 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.040670	Time Usage:28m 42s
+[2026-01-21 23:58:29,963] - [root] - [INFO] - Train Epoch: 21 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.052815	Time Usage:28m 56s
+[2026-01-21 23:58:44,704] - [root] - [INFO] - Train Epoch: 21 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.018539	Time Usage:29m 11s
+[2026-01-21 23:58:59,129] - [root] - [INFO] - Train Epoch: 21 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.016039	Time Usage:29m 25s
+[2026-01-21 23:58:59,694] - [root] - [INFO] - Loss on 32384 train images: 0.044813
+[2026-01-21 23:58:59,694] - [root] - [INFO] - Train F1(macro): 98.141% | Infected F1: 98.102% (P 99.24%, R 96.99%) | Spor F1: 98.179% (P 98.43%, R 97.93%)
+[2026-01-21 23:59:06,919] - [root] - [INFO] - Val loss: 0.060362 | Val F1(macro): 97.723% | Val Recall(macro): 97.120% | Val Precision(macro): 98.348% | Infected F1: 97.772% | Spor F1: 97.673%
+[2026-01-21 23:59:07,269] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-21 23:59:07,269] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:59:07,568] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep021
+[2026-01-21 23:59:07,569] - [root] - [INFO] - --------------------------------------------
+[2026-01-21 23:59:08,084] - [root] - [INFO] - Train Epoch: 22 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.067200	Time Usage:29m 34s
+[2026-01-21 23:59:25,292] - [root] - [INFO] - Train Epoch: 22 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.056345	Time Usage:29m 51s
+[2026-01-21 23:59:44,879] - [root] - [INFO] - Train Epoch: 22 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.023266	Time Usage:30m 11s
+[2026-01-22 00:00:00,645] - [root] - [INFO] - Train Epoch: 22 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.029851	Time Usage:30m 27s
+[2026-01-22 00:00:15,320] - [root] - [INFO] - Train Epoch: 22 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.033523	Time Usage:30m 41s
+[2026-01-22 00:00:31,154] - [root] - [INFO] - Train Epoch: 22 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.032083	Time Usage:30m 57s
+[2026-01-22 00:00:31,716] - [root] - [INFO] - Loss on 32384 train images: 0.041433
+[2026-01-22 00:00:31,716] - [root] - [INFO] - Train F1(macro): 98.279% | Infected F1: 98.201% (P 99.35%, R 97.08%) | Spor F1: 98.357% (P 98.53%, R 98.18%)
+[2026-01-22 00:00:38,860] - [root] - [INFO] - Val loss: 0.058135 | Val F1(macro): 97.806% | Val Recall(macro): 97.009% | Val Precision(macro): 98.623% | Infected F1: 97.822% | Spor F1: 97.791%
+[2026-01-22 00:00:39,212] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:00:39,213] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:00:39,473] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep022
+[2026-01-22 00:00:39,473] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:00:39,910] - [root] - [INFO] - Train Epoch: 23 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.058790	Time Usage:31m 6s
+[2026-01-22 00:00:54,071] - [root] - [INFO] - Train Epoch: 23 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.032634	Time Usage:31m 20s
+[2026-01-22 00:01:08,976] - [root] - [INFO] - Train Epoch: 23 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.056272	Time Usage:31m 35s
+[2026-01-22 00:01:23,674] - [root] - [INFO] - Train Epoch: 23 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.044345	Time Usage:31m 50s
+[2026-01-22 00:01:39,348] - [root] - [INFO] - Train Epoch: 23 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.050753	Time Usage:32m 6s
+[2026-01-22 00:01:52,744] - [root] - [INFO] - Train Epoch: 23 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.022668	Time Usage:32m 19s
+[2026-01-22 00:01:53,282] - [root] - [INFO] - Loss on 32384 train images: 0.041160
+[2026-01-22 00:01:53,282] - [root] - [INFO] - Train F1(macro): 98.307% | Infected F1: 98.300% (P 99.38%, R 97.24%) | Spor F1: 98.315% (P 98.51%, R 98.12%)
+[2026-01-22 00:01:59,972] - [root] - [INFO] - Val loss: 0.061865 | Val F1(macro): 97.763% | Val Recall(macro): 97.111% | Val Precision(macro): 98.427% | Infected F1: 97.772% | Spor F1: 97.754%
+[2026-01-22 00:02:00,252] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:02:00,252] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:02:00,668] - [root] - [INFO] - Train Epoch: 24 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.017526	Time Usage:32m 27s
+[2026-01-22 00:02:14,162] - [root] - [INFO] - Train Epoch: 24 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.046181	Time Usage:32m 40s
+[2026-01-22 00:02:29,967] - [root] - [INFO] - Train Epoch: 24 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.039890	Time Usage:32m 56s
+[2026-01-22 00:02:45,629] - [root] - [INFO] - Train Epoch: 24 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.034551	Time Usage:33m 12s
+[2026-01-22 00:03:01,311] - [root] - [INFO] - Train Epoch: 24 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.039452	Time Usage:33m 27s
+[2026-01-22 00:03:17,893] - [root] - [INFO] - Train Epoch: 24 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.041656	Time Usage:33m 44s
+[2026-01-22 00:03:18,553] - [root] - [INFO] - Loss on 32384 train images: 0.038423
+[2026-01-22 00:03:18,553] - [root] - [INFO] - Train F1(macro): 98.359% | Infected F1: 98.286% (P 99.40%, R 97.20%) | Spor F1: 98.432% (P 98.61%, R 98.26%)
+[2026-01-22 00:03:25,455] - [root] - [INFO] - Val loss: 0.061857 | Val F1(macro): 97.567% | Val Recall(macro): 96.843% | Val Precision(macro): 98.310% | Infected F1: 97.784% | Spor F1: 97.349%
+[2026-01-22 00:03:25,761] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:03:25,761] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:03:26,193] - [root] - [INFO] - Train Epoch: 25 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.026697	Time Usage:33m 52s
+[2026-01-22 00:03:39,109] - [root] - [INFO] - Train Epoch: 25 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.052537	Time Usage:34m 5s
+[2026-01-22 00:03:53,090] - [root] - [INFO] - Train Epoch: 25 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.023233	Time Usage:34m 19s
+[2026-01-22 00:04:07,815] - [root] - [INFO] - Train Epoch: 25 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.039870	Time Usage:34m 34s
+[2026-01-22 00:04:21,316] - [root] - [INFO] - Train Epoch: 25 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.055959	Time Usage:34m 47s
+[2026-01-22 00:04:36,074] - [root] - [INFO] - Train Epoch: 25 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.025406	Time Usage:35m 2s
+[2026-01-22 00:04:36,707] - [root] - [INFO] - Loss on 32384 train images: 0.038941
+[2026-01-22 00:04:36,708] - [root] - [INFO] - Train F1(macro): 98.392% | Infected F1: 98.329% (P 99.37%, R 97.31%) | Spor F1: 98.455% (P 98.66%, R 98.25%)
+[2026-01-22 00:04:43,865] - [root] - [INFO] - Val loss: 0.063615 | Val F1(macro): 97.844% | Val Recall(macro): 97.491% | Val Precision(macro): 98.200% | Infected F1: 97.972% | Spor F1: 97.716%
+[2026-01-22 00:04:44,170] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:04:44,170] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:04:44,528] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep025
+[2026-01-22 00:04:44,528] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:04:44,984] - [root] - [INFO] - Train Epoch: 26 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.038984	Time Usage:35m 11s
+[2026-01-22 00:04:59,410] - [root] - [INFO] - Train Epoch: 26 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.008169	Time Usage:35m 26s
+[2026-01-22 00:05:15,384] - [root] - [INFO] - Train Epoch: 26 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.042514	Time Usage:35m 42s
+[2026-01-22 00:05:29,873] - [root] - [INFO] - Train Epoch: 26 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.069837	Time Usage:35m 56s
+[2026-01-22 00:05:44,056] - [root] - [INFO] - Train Epoch: 26 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.033847	Time Usage:36m 10s
+[2026-01-22 00:06:01,834] - [root] - [INFO] - Train Epoch: 26 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.079171	Time Usage:36m 28s
+[2026-01-22 00:06:02,572] - [root] - [INFO] - Loss on 32384 train images: 0.037856
+[2026-01-22 00:06:02,572] - [root] - [INFO] - Train F1(macro): 98.428% | Infected F1: 98.369% (P 99.39%, R 97.37%) | Spor F1: 98.488% (P 98.63%, R 98.34%)
+[2026-01-22 00:06:11,360] - [root] - [INFO] - Val loss: 0.072163 | Val F1(macro): 97.246% | Val Recall(macro): 95.630% | Val Precision(macro): 98.921% | Infected F1: 97.401% | Spor F1: 97.091%
+[2026-01-22 00:06:12,454] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:06:12,455] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:06:13,052] - [root] - [INFO] - Train Epoch: 27 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.046517	Time Usage:36m 39s
+[2026-01-22 00:06:29,856] - [root] - [INFO] - Train Epoch: 27 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.016452	Time Usage:36m 56s
+[2026-01-22 00:06:48,409] - [root] - [INFO] - Train Epoch: 27 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.061703	Time Usage:37m 15s
+[2026-01-22 00:07:03,527] - [root] - [INFO] - Train Epoch: 27 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.034961	Time Usage:37m 30s
+[2026-01-22 00:07:20,428] - [root] - [INFO] - Train Epoch: 27 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.027687	Time Usage:37m 47s
+[2026-01-22 00:07:38,117] - [root] - [INFO] - Train Epoch: 27 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.025168	Time Usage:38m 4s
+[2026-01-22 00:07:38,856] - [root] - [INFO] - Loss on 32384 train images: 0.035161
+[2026-01-22 00:07:38,857] - [root] - [INFO] - Train F1(macro): 98.573% | Infected F1: 98.561% (P 99.43%, R 97.71%) | Spor F1: 98.585% (P 98.73%, R 98.44%)
+[2026-01-22 00:07:49,195] - [root] - [INFO] - Val loss: 0.059381 | Val F1(macro): 97.942% | Val Recall(macro): 97.398% | Val Precision(macro): 98.495% | Infected F1: 98.001% | Spor F1: 97.883%
+[2026-01-22 00:07:49,580] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:07:49,581] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:07:49,942] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep027
+[2026-01-22 00:07:49,942] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:07:50,508] - [root] - [INFO] - Train Epoch: 28 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.037977	Time Usage:38m 17s
+[2026-01-22 00:08:09,367] - [root] - [INFO] - Train Epoch: 28 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.020937	Time Usage:38m 36s
+[2026-01-22 00:08:31,225] - [root] - [INFO] - Train Epoch: 28 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.032535	Time Usage:38m 57s
+[2026-01-22 00:08:51,688] - [root] - [INFO] - Train Epoch: 28 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.021389	Time Usage:39m 18s
+[2026-01-22 00:09:12,830] - [root] - [INFO] - Train Epoch: 28 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.042136	Time Usage:39m 39s
+[2026-01-22 00:09:38,340] - [root] - [INFO] - Train Epoch: 28 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.044244	Time Usage:40m 5s
+[2026-01-22 00:09:39,288] - [root] - [INFO] - Loss on 32384 train images: 0.035815
+[2026-01-22 00:09:39,288] - [root] - [INFO] - Train F1(macro): 98.470% | Infected F1: 98.509% (P 99.42%, R 97.62%) | Spor F1: 98.430% (P 98.66%, R 98.20%)
+[2026-01-22 00:09:51,277] - [root] - [INFO] - Val loss: 0.064182 | Val F1(macro): 97.677% | Val Recall(macro): 96.528% | Val Precision(macro): 98.858% | Infected F1: 97.817% | Spor F1: 97.537%
+[2026-01-22 00:09:51,598] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:09:51,598] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:09:52,240] - [root] - [INFO] - Train Epoch: 29 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.035362	Time Usage:40m 18s
+[2026-01-22 00:10:10,250] - [root] - [INFO] - Train Epoch: 29 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.044484	Time Usage:40m 36s
+[2026-01-22 00:10:25,635] - [root] - [INFO] - Train Epoch: 29 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.027177	Time Usage:40m 52s
+[2026-01-22 00:10:42,321] - [root] - [INFO] - Train Epoch: 29 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.042294	Time Usage:41m 8s
+[2026-01-22 00:11:01,367] - [root] - [INFO] - Train Epoch: 29 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.041535	Time Usage:41m 28s
+[2026-01-22 00:11:22,616] - [root] - [INFO] - Train Epoch: 29 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.054975	Time Usage:41m 49s
+[2026-01-22 00:11:23,345] - [root] - [INFO] - Loss on 32384 train images: 0.035077
+[2026-01-22 00:11:23,345] - [root] - [INFO] - Train F1(macro): 98.491% | Infected F1: 98.405% (P 99.35%, R 97.48%) | Spor F1: 98.576% (P 98.73%, R 98.43%)
+[2026-01-22 00:11:31,095] - [root] - [INFO] - Val loss: 0.063308 | Val F1(macro): 97.883% | Val Recall(macro): 97.130% | Val Precision(macro): 98.650% | Infected F1: 98.071% | Spor F1: 97.694%
+[2026-01-22 00:11:31,482] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:11:31,482] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:11:32,164] - [root] - [INFO] - Train Epoch: 30 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.054627	Time Usage:41m 58s
+[2026-01-22 00:11:50,819] - [root] - [INFO] - Train Epoch: 30 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.052659	Time Usage:42m 17s
+[2026-01-22 00:12:10,711] - [root] - [INFO] - Train Epoch: 30 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.024865	Time Usage:42m 37s
+[2026-01-22 00:12:29,957] - [root] - [INFO] - Train Epoch: 30 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.028210	Time Usage:42m 56s
+[2026-01-22 00:12:48,241] - [root] - [INFO] - Train Epoch: 30 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.031874	Time Usage:43m 14s
+[2026-01-22 00:13:09,850] - [root] - [INFO] - Train Epoch: 30 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.037414	Time Usage:43m 36s
+[2026-01-22 00:13:10,848] - [root] - [INFO] - Loss on 32384 train images: 0.034946
+[2026-01-22 00:13:10,852] - [root] - [INFO] - Train F1(macro): 98.488% | Infected F1: 98.471% (P 99.43%, R 97.53%) | Spor F1: 98.506% (P 98.68%, R 98.33%)
+[2026-01-22 00:13:20,132] - [root] - [INFO] - Val loss: 0.062128 | Val F1(macro): 97.819% | Val Recall(macro): 97.565% | Val Precision(macro): 98.078% | Infected F1: 98.118% | Spor F1: 97.520%
+[2026-01-22 00:13:20,426] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:13:20,426] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:13:21,241] - [root] - [INFO] - Train Epoch: 31 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.028824	Time Usage:43m 47s
+[2026-01-22 00:13:38,306] - [root] - [INFO] - Train Epoch: 31 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.038675	Time Usage:44m 4s
+[2026-01-22 00:13:53,099] - [root] - [INFO] - Train Epoch: 31 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.020488	Time Usage:44m 19s
+[2026-01-22 00:14:10,366] - [root] - [INFO] - Train Epoch: 31 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.060938	Time Usage:44m 37s
+[2026-01-22 00:14:25,294] - [root] - [INFO] - Train Epoch: 31 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.032186	Time Usage:44m 51s
+[2026-01-22 00:14:41,985] - [root] - [INFO] - Train Epoch: 31 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.019750	Time Usage:45m 8s
+[2026-01-22 00:14:42,584] - [root] - [INFO] - Loss on 32384 train images: 0.032448
+[2026-01-22 00:14:42,584] - [root] - [INFO] - Train F1(macro): 98.634% | Infected F1: 98.598% (P 99.45%, R 97.76%) | Spor F1: 98.669% (P 98.80%, R 98.54%)
+[2026-01-22 00:14:50,447] - [root] - [INFO] - Val loss: 0.063927 | Val F1(macro): 97.950% | Val Recall(macro): 97.500% | Val Precision(macro): 98.410% | Infected F1: 98.063% | Spor F1: 97.836%
+[2026-01-22 00:14:50,887] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:14:50,887] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:14:51,234] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep031
+[2026-01-22 00:14:51,235] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:14:51,847] - [root] - [INFO] - Train Epoch: 32 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.027106	Time Usage:45m 18s
+[2026-01-22 00:15:07,775] - [root] - [INFO] - Train Epoch: 32 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.038625	Time Usage:45m 34s
+[2026-01-22 00:15:21,005] - [root] - [INFO] - Train Epoch: 32 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.034128	Time Usage:45m 47s
+[2026-01-22 00:15:34,390] - [root] - [INFO] - Train Epoch: 32 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.028892	Time Usage:46m 1s
+[2026-01-22 00:15:47,424] - [root] - [INFO] - Train Epoch: 32 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.043731	Time Usage:46m 14s
+[2026-01-22 00:16:00,311] - [root] - [INFO] - Train Epoch: 32 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.028540	Time Usage:46m 26s
+[2026-01-22 00:16:00,790] - [root] - [INFO] - Loss on 32384 train images: 0.033118
+[2026-01-22 00:16:00,790] - [root] - [INFO] - Train F1(macro): 98.615% | Infected F1: 98.565% (P 99.47%, R 97.68%) | Spor F1: 98.664% (P 98.77%, R 98.55%)
+[2026-01-22 00:16:07,220] - [root] - [INFO] - Val loss: 0.064395 | Val F1(macro): 97.654% | Val Recall(macro): 97.259% | Val Precision(macro): 98.074% | Infected F1: 97.811% | Spor F1: 97.497%
+[2026-01-22 00:16:07,563] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:16:07,563] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:16:08,005] - [root] - [INFO] - Train Epoch: 33 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.038615	Time Usage:46m 34s
+[2026-01-22 00:16:20,984] - [root] - [INFO] - Train Epoch: 33 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.017744	Time Usage:46m 47s
+[2026-01-22 00:16:34,465] - [root] - [INFO] - Train Epoch: 33 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.058280	Time Usage:47m 1s
+[2026-01-22 00:16:49,231] - [root] - [INFO] - Train Epoch: 33 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.028801	Time Usage:47m 15s
+[2026-01-22 00:17:04,704] - [root] - [INFO] - Train Epoch: 33 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.086405	Time Usage:47m 31s
+[2026-01-22 00:17:21,893] - [root] - [INFO] - Train Epoch: 33 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.019078	Time Usage:47m 48s
+[2026-01-22 00:17:22,519] - [root] - [INFO] - Loss on 32384 train images: 0.031107
+[2026-01-22 00:17:22,519] - [root] - [INFO] - Train F1(macro): 98.672% | Infected F1: 98.620% (P 99.43%, R 97.82%) | Spor F1: 98.724% (P 98.88%, R 98.56%)
+[2026-01-22 00:17:30,970] - [root] - [INFO] - Val loss: 0.066034 | Val F1(macro): 97.843% | Val Recall(macro): 97.435% | Val Precision(macro): 98.260% | Infected F1: 97.944% | Spor F1: 97.742%
+[2026-01-22 00:17:31,333] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:17:31,333] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:17:31,863] - [root] - [INFO] - Train Epoch: 34 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.013233	Time Usage:47m 58s
+[2026-01-22 00:17:48,427] - [root] - [INFO] - Train Epoch: 34 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.015311	Time Usage:48m 15s
+[2026-01-22 00:18:04,874] - [root] - [INFO] - Train Epoch: 34 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.041965	Time Usage:48m 31s
+[2026-01-22 00:18:21,106] - [root] - [INFO] - Train Epoch: 34 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.011547	Time Usage:48m 47s
+[2026-01-22 00:18:38,791] - [root] - [INFO] - Train Epoch: 34 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.029005	Time Usage:49m 5s
+[2026-01-22 00:18:58,112] - [root] - [INFO] - Train Epoch: 34 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.028727	Time Usage:49m 24s
+[2026-01-22 00:18:58,858] - [root] - [INFO] - Loss on 32384 train images: 0.030800
+[2026-01-22 00:18:58,859] - [root] - [INFO] - Train F1(macro): 98.686% | Infected F1: 98.626% (P 99.47%, R 97.79%) | Spor F1: 98.747% (P 98.97%, R 98.53%)
+[2026-01-22 00:19:06,856] - [root] - [INFO] - Val loss: 0.068053 | Val F1(macro): 97.739% | Val Recall(macro): 97.056% | Val Precision(macro): 98.432% | Infected F1: 98.089% | Spor F1: 97.388%
+[2026-01-22 00:19:07,181] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:19:07,181] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:19:07,704] - [root] - [INFO] - Train Epoch: 35 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.024751	Time Usage:49m 34s
+[2026-01-22 00:19:23,963] - [root] - [INFO] - Train Epoch: 35 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.025231	Time Usage:49m 50s
+[2026-01-22 00:19:39,078] - [root] - [INFO] - Train Epoch: 35 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.034042	Time Usage:50m 5s
+[2026-01-22 00:19:56,496] - [root] - [INFO] - Train Epoch: 35 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.016776	Time Usage:50m 23s
+[2026-01-22 00:20:14,132] - [root] - [INFO] - Train Epoch: 35 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.019265	Time Usage:50m 40s
+[2026-01-22 00:20:30,732] - [root] - [INFO] - Train Epoch: 35 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.028175	Time Usage:50m 57s
+[2026-01-22 00:20:31,434] - [root] - [INFO] - Loss on 32384 train images: 0.029808
+[2026-01-22 00:20:31,434] - [root] - [INFO] - Train F1(macro): 98.739% | Infected F1: 98.667% (P 99.48%, R 97.86%) | Spor F1: 98.812% (P 98.95%, R 98.67%)
+[2026-01-22 00:20:39,541] - [root] - [INFO] - Val loss: 0.069612 | Val F1(macro): 97.570% | Val Recall(macro): 97.509% | Val Precision(macro): 97.643% | Infected F1: 97.786% | Spor F1: 97.353%
+[2026-01-22 00:20:39,878] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:20:39,878] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:20:40,407] - [root] - [INFO] - Train Epoch: 36 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.014340	Time Usage:51m 7s
+[2026-01-22 00:20:56,508] - [root] - [INFO] - Train Epoch: 36 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.011531	Time Usage:51m 23s
+[2026-01-22 00:21:13,520] - [root] - [INFO] - Train Epoch: 36 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.044540	Time Usage:51m 40s
+[2026-01-22 00:21:33,834] - [root] - [INFO] - Train Epoch: 36 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.010324	Time Usage:52m 0s
+[2026-01-22 00:21:52,865] - [root] - [INFO] - Train Epoch: 36 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.044785	Time Usage:52m 19s
+[2026-01-22 00:22:11,148] - [root] - [INFO] - Train Epoch: 36 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.034124	Time Usage:52m 37s
+[2026-01-22 00:22:11,867] - [root] - [INFO] - Loss on 32384 train images: 0.029570
+[2026-01-22 00:22:11,867] - [root] - [INFO] - Train F1(macro): 98.769% | Infected F1: 98.698% (P 99.47%, R 97.94%) | Spor F1: 98.839% (P 99.07%, R 98.61%)
+[2026-01-22 00:22:20,316] - [root] - [INFO] - Val loss: 0.065387 | Val F1(macro): 97.679% | Val Recall(macro): 97.231% | Val Precision(macro): 98.132% | Infected F1: 97.998% | Spor F1: 97.361%
+[2026-01-22 00:22:20,713] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:22:20,713] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:22:21,170] - [root] - [INFO] - Train Epoch: 37 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.019082	Time Usage:52m 47s
+[2026-01-22 00:22:39,188] - [root] - [INFO] - Train Epoch: 37 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.026473	Time Usage:53m 5s
+[2026-01-22 00:23:01,812] - [root] - [INFO] - Train Epoch: 37 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.077673	Time Usage:53m 28s
+[2026-01-22 00:23:21,230] - [root] - [INFO] - Train Epoch: 37 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.041669	Time Usage:53m 47s
+[2026-01-22 00:23:40,789] - [root] - [INFO] - Train Epoch: 37 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.013334	Time Usage:54m 7s
+[2026-01-22 00:24:05,271] - [root] - [INFO] - Train Epoch: 37 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.031862	Time Usage:54m 31s
+[2026-01-22 00:24:06,270] - [root] - [INFO] - Loss on 32384 train images: 0.028739
+[2026-01-22 00:24:06,270] - [root] - [INFO] - Train F1(macro): 98.812% | Infected F1: 98.747% (P 99.49%, R 98.02%) | Spor F1: 98.877% (P 99.07%, R 98.68%)
+[2026-01-22 00:24:23,178] - [root] - [INFO] - Val loss: 0.074125 | Val F1(macro): 97.618% | Val Recall(macro): 96.546% | Val Precision(macro): 98.716% | Infected F1: 97.907% | Spor F1: 97.330%
+[2026-01-22 00:24:23,715] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:24:23,715] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:24:24,309] - [root] - [INFO] - Train Epoch: 38 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.031017	Time Usage:54m 50s
+[2026-01-22 00:24:42,214] - [root] - [INFO] - Train Epoch: 38 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.013494	Time Usage:55m 8s
+[2026-01-22 00:24:59,309] - [root] - [INFO] - Train Epoch: 38 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.015474	Time Usage:55m 25s
+[2026-01-22 00:25:15,035] - [root] - [INFO] - Train Epoch: 38 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.013654	Time Usage:55m 41s
+[2026-01-22 00:25:32,334] - [root] - [INFO] - Train Epoch: 38 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.096379	Time Usage:55m 58s
+[2026-01-22 00:25:49,802] - [root] - [INFO] - Train Epoch: 38 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.025784	Time Usage:56m 16s
+[2026-01-22 00:25:50,561] - [root] - [INFO] - Loss on 32384 train images: 0.027726
+[2026-01-22 00:25:50,562] - [root] - [INFO] - Train F1(macro): 98.816% | Infected F1: 98.693% (P 99.50%, R 97.90%) | Spor F1: 98.939% (P 99.01%, R 98.87%)
+[2026-01-22 00:25:58,268] - [root] - [INFO] - Val loss: 0.070825 | Val F1(macro): 97.756% | Val Recall(macro): 96.787% | Val Precision(macro): 98.745% | Infected F1: 98.052% | Spor F1: 97.460%
+[2026-01-22 00:25:58,617] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:25:58,617] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:25:59,051] - [root] - [INFO] - Train Epoch: 39 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.019535	Time Usage:56m 25s
+[2026-01-22 00:26:12,605] - [root] - [INFO] - Train Epoch: 39 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.017684	Time Usage:56m 39s
+[2026-01-22 00:26:27,994] - [root] - [INFO] - Train Epoch: 39 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.042766	Time Usage:56m 54s
+[2026-01-22 00:26:46,422] - [root] - [INFO] - Train Epoch: 39 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.019380	Time Usage:57m 13s
+[2026-01-22 00:27:03,763] - [root] - [INFO] - Train Epoch: 39 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.008324	Time Usage:57m 30s
+[2026-01-22 00:27:20,379] - [root] - [INFO] - Train Epoch: 39 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.039699	Time Usage:57m 47s
+[2026-01-22 00:27:21,099] - [root] - [INFO] - Loss on 32384 train images: 0.027239
+[2026-01-22 00:27:21,099] - [root] - [INFO] - Train F1(macro): 98.818% | Infected F1: 98.754% (P 99.51%, R 98.01%) | Spor F1: 98.883% (P 98.99%, R 98.78%)
+[2026-01-22 00:27:29,288] - [root] - [INFO] - Val loss: 0.071084 | Val F1(macro): 97.814% | Val Recall(macro): 97.509% | Val Precision(macro): 98.125% | Infected F1: 98.011% | Spor F1: 97.616%
+[2026-01-22 00:27:29,607] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:27:29,607] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:27:30,227] - [root] - [INFO] - Train Epoch: 40 [0/32404 (0%)]	Learning Rate: 5e-05	Loss: 0.007919	Time Usage:57m 56s
+[2026-01-22 00:27:46,724] - [root] - [INFO] - Train Epoch: 40 [6400/32404 (20%)]	Learning Rate: 5e-05	Loss: 0.029419	Time Usage:58m 13s
+[2026-01-22 00:28:04,658] - [root] - [INFO] - Train Epoch: 40 [12800/32404 (40%)]	Learning Rate: 5e-05	Loss: 0.017338	Time Usage:58m 31s
+[2026-01-22 00:28:23,604] - [root] - [INFO] - Train Epoch: 40 [19200/32404 (59%)]	Learning Rate: 5e-05	Loss: 0.058252	Time Usage:58m 50s
+[2026-01-22 00:28:42,588] - [root] - [INFO] - Train Epoch: 40 [25600/32404 (79%)]	Learning Rate: 5e-05	Loss: 0.046361	Time Usage:59m 9s
+[2026-01-22 00:29:00,383] - [root] - [INFO] - Train Epoch: 40 [32000/32404 (99%)]	Learning Rate: 5e-05	Loss: 0.034891	Time Usage:59m 27s
+[2026-01-22 00:29:01,095] - [root] - [INFO] - Loss on 32384 train images: 0.026406
+[2026-01-22 00:29:01,095] - [root] - [INFO] - Train F1(macro): 98.870% | Infected F1: 98.752% (P 99.49%, R 98.02%) | Spor F1: 98.988% (P 99.18%, R 98.80%)
+[2026-01-22 00:29:09,292] - [root] - [INFO] - Val loss: 0.070639 | Val F1(macro): 97.858% | Val Recall(macro): 97.481% | Val Precision(macro): 98.243% | Infected F1: 98.048% | Spor F1: 97.669%
+[2026-01-22 00:29:09,677] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:29:09,678] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:29:10,338] - [root] - [INFO] - Train Epoch: 41 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.013870	Time Usage:59m 37s
+[2026-01-22 00:29:27,764] - [root] - [INFO] - Train Epoch: 41 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.009355	Time Usage:59m 54s
+[2026-01-22 00:29:44,926] - [root] - [INFO] - Train Epoch: 41 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.022060	Time Usage:60m 11s
+[2026-01-22 00:30:02,381] - [root] - [INFO] - Train Epoch: 41 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.028024	Time Usage:60m 29s
+[2026-01-22 00:30:19,854] - [root] - [INFO] - Train Epoch: 41 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.023725	Time Usage:60m 46s
+[2026-01-22 00:30:36,629] - [root] - [INFO] - Train Epoch: 41 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.020954	Time Usage:61m 3s
+[2026-01-22 00:30:37,309] - [root] - [INFO] - Loss on 32384 train images: 0.021329
+[2026-01-22 00:30:37,309] - [root] - [INFO] - Train F1(macro): 99.122% | Infected F1: 98.981% (P 99.63%, R 98.34%) | Spor F1: 99.262% (P 99.40%, R 99.13%)
+[2026-01-22 00:30:45,446] - [root] - [INFO] - Val loss: 0.073508 | Val F1(macro): 97.939% | Val Recall(macro): 97.463% | Val Precision(macro): 98.420% | Infected F1: 98.092% | Spor F1: 97.786%
+[2026-01-22 00:30:45,805] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:30:45,806] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:30:46,394] - [root] - [INFO] - Train Epoch: 42 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.025624	Time Usage:61m 13s
+[2026-01-22 00:31:08,404] - [root] - [INFO] - Train Epoch: 42 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.022125	Time Usage:61m 35s
+[2026-01-22 00:31:27,563] - [root] - [INFO] - Train Epoch: 42 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.034121	Time Usage:61m 54s
+[2026-01-22 00:31:45,839] - [root] - [INFO] - Train Epoch: 42 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.018310	Time Usage:62m 12s
+[2026-01-22 00:32:07,605] - [root] - [INFO] - Train Epoch: 42 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.020346	Time Usage:62m 34s
+[2026-01-22 00:32:29,945] - [root] - [INFO] - Train Epoch: 42 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.037879	Time Usage:62m 56s
+[2026-01-22 00:32:30,595] - [root] - [INFO] - Loss on 32384 train images: 0.019604
+[2026-01-22 00:32:30,595] - [root] - [INFO] - Train F1(macro): 99.189% | Infected F1: 99.068% (P 99.66%, R 98.48%) | Spor F1: 99.309% (P 99.43%, R 99.18%)
+[2026-01-22 00:32:44,213] - [root] - [INFO] - Val loss: 0.074472 | Val F1(macro): 97.975% | Val Recall(macro): 97.426% | Val Precision(macro): 98.530% | Infected F1: 98.165% | Spor F1: 97.785%
+[2026-01-22 00:32:44,632] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:32:44,633] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:32:45,019] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep042
+[2026-01-22 00:32:45,019] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:32:45,749] - [root] - [INFO] - Train Epoch: 43 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.037762	Time Usage:63m 12s
+[2026-01-22 00:33:01,345] - [root] - [INFO] - Train Epoch: 43 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.016148	Time Usage:63m 28s
+[2026-01-22 00:33:22,102] - [root] - [INFO] - Train Epoch: 43 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.016385	Time Usage:63m 48s
+[2026-01-22 00:33:46,433] - [root] - [INFO] - Train Epoch: 43 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.007875	Time Usage:64m 13s
+[2026-01-22 00:34:07,392] - [root] - [INFO] - Train Epoch: 43 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.016319	Time Usage:64m 34s
+[2026-01-22 00:34:27,608] - [root] - [INFO] - Train Epoch: 43 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.003307	Time Usage:64m 54s
+[2026-01-22 00:34:28,357] - [root] - [INFO] - Loss on 32384 train images: 0.018298
+[2026-01-22 00:34:28,357] - [root] - [INFO] - Train F1(macro): 99.207% | Infected F1: 99.069% (P 99.62%, R 98.52%) | Spor F1: 99.346% (P 99.47%, R 99.22%)
+[2026-01-22 00:34:36,240] - [root] - [INFO] - Val loss: 0.074446 | Val F1(macro): 98.000% | Val Recall(macro): 97.722% | Val Precision(macro): 98.281% | Infected F1: 98.220% | Spor F1: 97.779%
+[2026-01-22 00:34:36,518] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:34:36,518] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:34:36,796] - [root] - [INFO] - SAVED BEST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\ResNet_model_ep043
+[2026-01-22 00:34:36,796] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:34:37,270] - [root] - [INFO] - Train Epoch: 44 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.013007	Time Usage:65m 3s
+[2026-01-22 00:34:51,773] - [root] - [INFO] - Train Epoch: 44 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.046746	Time Usage:65m 18s
+[2026-01-22 00:35:05,317] - [root] - [INFO] - Train Epoch: 44 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.026882	Time Usage:65m 31s
+[2026-01-22 00:35:18,217] - [root] - [INFO] - Train Epoch: 44 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.010803	Time Usage:65m 44s
+[2026-01-22 00:35:33,168] - [root] - [INFO] - Train Epoch: 44 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.019865	Time Usage:65m 59s
+[2026-01-22 00:35:46,028] - [root] - [INFO] - Train Epoch: 44 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.028769	Time Usage:66m 12s
+[2026-01-22 00:35:46,528] - [root] - [INFO] - Loss on 32384 train images: 0.017847
+[2026-01-22 00:35:46,528] - [root] - [INFO] - Train F1(macro): 99.252% | Infected F1: 99.110% (P 99.65%, R 98.57%) | Spor F1: 99.393% (P 99.44%, R 99.34%)
+[2026-01-22 00:35:53,562] - [root] - [INFO] - Val loss: 0.075061 | Val F1(macro): 97.886% | Val Recall(macro): 97.704% | Val Precision(macro): 98.072% | Infected F1: 98.250% | Spor F1: 97.523%
+[2026-01-22 00:35:53,877] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:35:53,877] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:35:54,316] - [root] - [INFO] - Train Epoch: 45 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.019311	Time Usage:66m 20s
+[2026-01-22 00:36:07,188] - [root] - [INFO] - Train Epoch: 45 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.018256	Time Usage:66m 33s
+[2026-01-22 00:36:20,696] - [root] - [INFO] - Train Epoch: 45 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.009926	Time Usage:66m 47s
+[2026-01-22 00:36:33,556] - [root] - [INFO] - Train Epoch: 45 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.014762	Time Usage:67m 0s
+[2026-01-22 00:36:46,731] - [root] - [INFO] - Train Epoch: 45 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.007751	Time Usage:67m 13s
+[2026-01-22 00:37:01,073] - [root] - [INFO] - Train Epoch: 45 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.005781	Time Usage:67m 27s
+[2026-01-22 00:37:01,555] - [root] - [INFO] - Loss on 32384 train images: 0.017351
+[2026-01-22 00:37:01,556] - [root] - [INFO] - Train F1(macro): 99.270% | Infected F1: 99.152% (P 99.70%, R 98.61%) | Spor F1: 99.388% (P 99.46%, R 99.31%)
+[2026-01-22 00:37:08,257] - [root] - [INFO] - Val loss: 0.074535 | Val F1(macro): 97.943% | Val Recall(macro): 97.648% | Val Precision(macro): 98.241% | Infected F1: 98.167% | Spor F1: 97.720%
+[2026-01-22 00:37:08,541] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:37:08,541] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:37:09,067] - [root] - [INFO] - Train Epoch: 46 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.012549	Time Usage:67m 35s
+[2026-01-22 00:37:22,185] - [root] - [INFO] - Train Epoch: 46 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.023676	Time Usage:67m 48s
+[2026-01-22 00:37:36,455] - [root] - [INFO] - Train Epoch: 46 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.025496	Time Usage:68m 3s
+[2026-01-22 00:37:51,075] - [root] - [INFO] - Train Epoch: 46 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.016609	Time Usage:68m 17s
+[2026-01-22 00:38:05,904] - [root] - [INFO] - Train Epoch: 46 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.006517	Time Usage:68m 32s
+[2026-01-22 00:38:20,775] - [root] - [INFO] - Train Epoch: 46 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.028480	Time Usage:68m 47s
+[2026-01-22 00:38:21,337] - [root] - [INFO] - Loss on 32384 train images: 0.016911
+[2026-01-22 00:38:21,337] - [root] - [INFO] - Train F1(macro): 99.275% | Infected F1: 99.116% (P 99.62%, R 98.62%) | Spor F1: 99.434% (P 99.54%, R 99.33%)
+[2026-01-22 00:38:28,531] - [root] - [INFO] - Val loss: 0.080762 | Val F1(macro): 97.867% | Val Recall(macro): 97.287% | Val Precision(macro): 98.454% | Infected F1: 98.156% | Spor F1: 97.578%
+[2026-01-22 00:38:28,831] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:38:28,831] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:38:29,487] - [root] - [INFO] - Train Epoch: 47 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.014843	Time Usage:68m 56s
+[2026-01-22 00:38:43,924] - [root] - [INFO] - Train Epoch: 47 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.009568	Time Usage:69m 10s
+[2026-01-22 00:38:57,035] - [root] - [INFO] - Train Epoch: 47 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.033193	Time Usage:69m 23s
+[2026-01-22 00:39:09,895] - [root] - [INFO] - Train Epoch: 47 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.005851	Time Usage:69m 36s
+[2026-01-22 00:39:23,240] - [root] - [INFO] - Train Epoch: 47 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.012154	Time Usage:69m 49s
+[2026-01-22 00:39:36,386] - [root] - [INFO] - Train Epoch: 47 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.007601	Time Usage:70m 3s
+[2026-01-22 00:39:36,846] - [root] - [INFO] - Loss on 32384 train images: 0.016198
+[2026-01-22 00:39:36,847] - [root] - [INFO] - Train F1(macro): 99.332% | Infected F1: 99.178% (P 99.68%, R 98.68%) | Spor F1: 99.485% (P 99.54%, R 99.43%)
+[2026-01-22 00:39:43,361] - [root] - [INFO] - Val loss: 0.087388 | Val F1(macro): 97.999% | Val Recall(macro): 97.472% | Val Precision(macro): 98.531% | Infected F1: 98.212% | Spor F1: 97.785%
+[2026-01-22 00:39:43,664] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:39:43,664] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:39:44,085] - [root] - [INFO] - Train Epoch: 48 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.019661	Time Usage:70m 10s
+[2026-01-22 00:39:57,700] - [root] - [INFO] - Train Epoch: 48 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.003056	Time Usage:70m 24s
+[2026-01-22 00:40:12,486] - [root] - [INFO] - Train Epoch: 48 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.004239	Time Usage:70m 39s
+[2026-01-22 00:40:27,690] - [root] - [INFO] - Train Epoch: 48 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.008685	Time Usage:70m 54s
+[2026-01-22 00:40:42,663] - [root] - [INFO] - Train Epoch: 48 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.030750	Time Usage:71m 9s
+[2026-01-22 00:40:58,250] - [root] - [INFO] - Train Epoch: 48 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.011174	Time Usage:71m 24s
+[2026-01-22 00:40:58,809] - [root] - [INFO] - Loss on 32384 train images: 0.015911
+[2026-01-22 00:40:58,809] - [root] - [INFO] - Train F1(macro): 99.330% | Infected F1: 99.262% (P 99.74%, R 98.79%) | Spor F1: 99.397% (P 99.48%, R 99.31%)
+[2026-01-22 00:41:06,149] - [root] - [INFO] - Val loss: 0.082061 | Val F1(macro): 97.853% | Val Recall(macro): 97.417% | Val Precision(macro): 98.296% | Infected F1: 98.114% | Spor F1: 97.592%
+[2026-01-22 00:41:06,462] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:41:06,462] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:41:07,088] - [root] - [INFO] - Train Epoch: 49 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.005567	Time Usage:71m 33s
+[2026-01-22 00:41:21,636] - [root] - [INFO] - Train Epoch: 49 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.019383	Time Usage:71m 48s
+[2026-01-22 00:41:36,371] - [root] - [INFO] - Train Epoch: 49 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.004521	Time Usage:72m 3s
+[2026-01-22 00:41:51,237] - [root] - [INFO] - Train Epoch: 49 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.021914	Time Usage:72m 17s
+[2026-01-22 00:42:06,972] - [root] - [INFO] - Train Epoch: 49 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.004874	Time Usage:72m 33s
+[2026-01-22 00:42:22,229] - [root] - [INFO] - Train Epoch: 49 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.006473	Time Usage:72m 48s
+[2026-01-22 00:42:22,847] - [root] - [INFO] - Loss on 32384 train images: 0.015679
+[2026-01-22 00:42:22,848] - [root] - [INFO] - Train F1(macro): 99.361% | Infected F1: 99.205% (P 99.64%, R 98.77%) | Spor F1: 99.518% (P 99.58%, R 99.45%)
+[2026-01-22 00:42:30,344] - [root] - [INFO] - Val loss: 0.084856 | Val F1(macro): 97.876% | Val Recall(macro): 97.278% | Val Precision(macro): 98.482% | Infected F1: 98.099% | Spor F1: 97.653%
+[2026-01-22 00:42:30,700] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:42:30,700] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:42:31,437] - [root] - [INFO] - Train Epoch: 50 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.025899	Time Usage:72m 58s
+[2026-01-22 00:42:46,466] - [root] - [INFO] - Train Epoch: 50 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.005964	Time Usage:73m 13s
+[2026-01-22 00:43:01,124] - [root] - [INFO] - Train Epoch: 50 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.018889	Time Usage:73m 27s
+[2026-01-22 00:43:15,684] - [root] - [INFO] - Train Epoch: 50 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.023098	Time Usage:73m 42s
+[2026-01-22 00:43:30,319] - [root] - [INFO] - Train Epoch: 50 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.008135	Time Usage:73m 56s
+[2026-01-22 00:43:43,641] - [root] - [INFO] - Train Epoch: 50 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.026299	Time Usage:74m 10s
+[2026-01-22 00:43:44,549] - [root] - [INFO] - Loss on 32384 train images: 0.014747
+[2026-01-22 00:43:44,549] - [root] - [INFO] - Train F1(macro): 99.380% | Infected F1: 99.162% (P 99.63%, R 98.70%) | Spor F1: 99.597% (P 99.71%, R 99.48%)
+[2026-01-22 00:43:51,275] - [root] - [INFO] - Val loss: 0.089353 | Val F1(macro): 97.843% | Val Recall(macro): 97.426% | Val Precision(macro): 98.265% | Infected F1: 98.062% | Spor F1: 97.624%
+[2026-01-22 00:43:51,559] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:43:51,560] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:43:51,982] - [root] - [INFO] - Train Epoch: 51 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.004140	Time Usage:74m 18s
+[2026-01-22 00:44:05,113] - [root] - [INFO] - Train Epoch: 51 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.046025	Time Usage:74m 31s
+[2026-01-22 00:44:21,245] - [root] - [INFO] - Train Epoch: 51 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.015000	Time Usage:74m 47s
+[2026-01-22 00:44:36,322] - [root] - [INFO] - Train Epoch: 51 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.024433	Time Usage:75m 2s
+[2026-01-22 00:44:50,869] - [root] - [INFO] - Train Epoch: 51 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.017241	Time Usage:75m 17s
+[2026-01-22 00:45:06,091] - [root] - [INFO] - Train Epoch: 51 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.008723	Time Usage:75m 32s
+[2026-01-22 00:45:06,734] - [root] - [INFO] - Loss on 32384 train images: 0.014717
+[2026-01-22 00:45:06,734] - [root] - [INFO] - Train F1(macro): 99.386% | Infected F1: 99.305% (P 99.73%, R 98.88%) | Spor F1: 99.467% (P 99.51%, R 99.43%)
+[2026-01-22 00:45:13,872] - [root] - [INFO] - Val loss: 0.090316 | Val F1(macro): 97.686% | Val Recall(macro): 97.194% | Val Precision(macro): 98.185% | Infected F1: 98.097% | Spor F1: 97.275%
+[2026-01-22 00:45:14,177] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:45:14,177] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:45:14,854] - [root] - [INFO] - Train Epoch: 52 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.012179	Time Usage:75m 41s
+[2026-01-22 00:45:30,651] - [root] - [INFO] - Train Epoch: 52 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.005481	Time Usage:75m 57s
+[2026-01-22 00:45:45,543] - [root] - [INFO] - Train Epoch: 52 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.002660	Time Usage:76m 12s
+[2026-01-22 00:46:00,219] - [root] - [INFO] - Train Epoch: 52 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.032102	Time Usage:76m 26s
+[2026-01-22 00:46:14,692] - [root] - [INFO] - Train Epoch: 52 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.030129	Time Usage:76m 41s
+[2026-01-22 00:46:29,308] - [root] - [INFO] - Train Epoch: 52 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.017932	Time Usage:76m 55s
+[2026-01-22 00:46:29,942] - [root] - [INFO] - Loss on 32384 train images: 0.014762
+[2026-01-22 00:46:29,943] - [root] - [INFO] - Train F1(macro): 99.374% | Infected F1: 99.295% (P 99.69%, R 98.90%) | Spor F1: 99.453% (P 99.50%, R 99.41%)
+[2026-01-22 00:46:37,018] - [root] - [INFO] - Val loss: 0.088252 | Val F1(macro): 97.756% | Val Recall(macro): 97.370% | Val Precision(macro): 98.149% | Infected F1: 98.011% | Spor F1: 97.501%
+[2026-01-22 00:46:37,308] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:46:37,309] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:46:37,758] - [root] - [INFO] - Train Epoch: 53 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.016538	Time Usage:77m 4s
+[2026-01-22 00:46:52,309] - [root] - [INFO] - Train Epoch: 53 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.005446	Time Usage:77m 18s
+[2026-01-22 00:47:06,339] - [root] - [INFO] - Train Epoch: 53 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.019976	Time Usage:77m 33s
+[2026-01-22 00:47:20,859] - [root] - [INFO] - Train Epoch: 53 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.012907	Time Usage:77m 47s
+[2026-01-22 00:47:34,817] - [root] - [INFO] - Train Epoch: 53 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.008552	Time Usage:78m 1s
+[2026-01-22 00:47:49,173] - [root] - [INFO] - Train Epoch: 53 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.012372	Time Usage:78m 15s
+[2026-01-22 00:47:49,843] - [root] - [INFO] - Loss on 32384 train images: 0.014374
+[2026-01-22 00:47:49,844] - [root] - [INFO] - Train F1(macro): 99.404% | Infected F1: 99.262% (P 99.71%, R 98.81%) | Spor F1: 99.546% (P 99.59%, R 99.50%)
+[2026-01-22 00:47:57,017] - [root] - [INFO] - Val loss: 0.093316 | Val F1(macro): 97.870% | Val Recall(macro): 97.426% | Val Precision(macro): 98.319% | Infected F1: 98.045% | Spor F1: 97.695%
+[2026-01-22 00:47:57,316] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:47:57,316] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:47:57,760] - [root] - [INFO] - Train Epoch: 54 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.009632	Time Usage:78m 24s
+[2026-01-22 00:48:12,733] - [root] - [INFO] - Train Epoch: 54 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.020677	Time Usage:78m 39s
+[2026-01-22 00:48:27,504] - [root] - [INFO] - Train Epoch: 54 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.009844	Time Usage:78m 54s
+[2026-01-22 00:48:42,306] - [root] - [INFO] - Train Epoch: 54 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.008806	Time Usage:79m 8s
+[2026-01-22 00:48:57,063] - [root] - [INFO] - Train Epoch: 54 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.004320	Time Usage:79m 23s
+[2026-01-22 00:49:11,758] - [root] - [INFO] - Train Epoch: 54 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.007205	Time Usage:79m 38s
+[2026-01-22 00:49:12,320] - [root] - [INFO] - Loss on 32384 train images: 0.013684
+[2026-01-22 00:49:12,320] - [root] - [INFO] - Train F1(macro): 99.457% | Infected F1: 99.340% (P 99.71%, R 98.97%) | Spor F1: 99.574% (P 99.58%, R 99.56%)
+[2026-01-22 00:49:19,774] - [root] - [INFO] - Val loss: 0.096732 | Val F1(macro): 97.896% | Val Recall(macro): 97.389% | Val Precision(macro): 98.409% | Infected F1: 98.141% | Spor F1: 97.651%
+[2026-01-22 00:49:20,070] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:49:20,070] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:49:20,499] - [root] - [INFO] - Train Epoch: 55 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.007927	Time Usage:79m 47s
+[2026-01-22 00:49:35,242] - [root] - [INFO] - Train Epoch: 55 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.008097	Time Usage:80m 1s
+[2026-01-22 00:49:48,053] - [root] - [INFO] - Train Epoch: 55 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.009252	Time Usage:80m 14s
+[2026-01-22 00:50:00,933] - [root] - [INFO] - Train Epoch: 55 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.014179	Time Usage:80m 27s
+[2026-01-22 00:50:14,488] - [root] - [INFO] - Train Epoch: 55 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.012902	Time Usage:80m 41s
+[2026-01-22 00:50:28,684] - [root] - [INFO] - Train Epoch: 55 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.006404	Time Usage:80m 55s
+[2026-01-22 00:50:29,340] - [root] - [INFO] - Loss on 32384 train images: 0.013214
+[2026-01-22 00:50:29,340] - [root] - [INFO] - Train F1(macro): 99.431% | Infected F1: 99.321% (P 99.69%, R 98.95%) | Spor F1: 99.541% (P 99.61%, R 99.47%)
+[2026-01-22 00:50:36,951] - [root] - [INFO] - Val loss: 0.090931 | Val F1(macro): 97.888% | Val Recall(macro): 97.602% | Val Precision(macro): 98.176% | Infected F1: 98.130% | Spor F1: 97.646%
+[2026-01-22 00:50:37,280] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:50:37,280] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:50:37,922] - [root] - [INFO] - Train Epoch: 56 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.009613	Time Usage:81m 4s
+[2026-01-22 00:50:54,140] - [root] - [INFO] - Train Epoch: 56 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.006247	Time Usage:81m 20s
+[2026-01-22 00:51:10,649] - [root] - [INFO] - Train Epoch: 56 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.002779	Time Usage:81m 37s
+[2026-01-22 00:51:27,373] - [root] - [INFO] - Train Epoch: 56 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.014462	Time Usage:81m 54s
+[2026-01-22 00:51:43,131] - [root] - [INFO] - Train Epoch: 56 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.034744	Time Usage:82m 9s
+[2026-01-22 00:51:59,222] - [root] - [INFO] - Train Epoch: 56 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.040994	Time Usage:82m 25s
+[2026-01-22 00:51:59,861] - [root] - [INFO] - Loss on 32384 train images: 0.012903
+[2026-01-22 00:51:59,861] - [root] - [INFO] - Train F1(macro): 99.460% | Infected F1: 99.328% (P 99.70%, R 98.96%) | Spor F1: 99.592% (P 99.68%, R 99.51%)
+[2026-01-22 00:52:07,284] - [root] - [INFO] - Val loss: 0.094427 | Val F1(macro): 97.635% | Val Recall(macro): 97.426% | Val Precision(macro): 97.847% | Infected F1: 97.914% | Spor F1: 97.355%
+[2026-01-22 00:52:07,674] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:52:07,674] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:52:08,237] - [root] - [INFO] - Train Epoch: 57 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.011587	Time Usage:82m 34s
+[2026-01-22 00:52:25,776] - [root] - [INFO] - Train Epoch: 57 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.010363	Time Usage:82m 52s
+[2026-01-22 00:52:43,174] - [root] - [INFO] - Train Epoch: 57 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.011272	Time Usage:83m 9s
+[2026-01-22 00:52:58,520] - [root] - [INFO] - Train Epoch: 57 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.011522	Time Usage:83m 25s
+[2026-01-22 00:53:15,997] - [root] - [INFO] - Train Epoch: 57 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.004803	Time Usage:83m 42s
+[2026-01-22 00:53:33,781] - [root] - [INFO] - Train Epoch: 57 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.023682	Time Usage:84m 0s
+[2026-01-22 00:53:34,455] - [root] - [INFO] - Loss on 32384 train images: 0.011754
+[2026-01-22 00:53:34,455] - [root] - [INFO] - Train F1(macro): 99.482% | Infected F1: 99.354% (P 99.72%, R 98.99%) | Spor F1: 99.611% (P 99.68%, R 99.54%)
+[2026-01-22 00:53:41,938] - [root] - [INFO] - Val loss: 0.100642 | Val F1(macro): 97.703% | Val Recall(macro): 97.278% | Val Precision(macro): 98.132% | Infected F1: 97.955% | Spor F1: 97.451%
+[2026-01-22 00:53:42,306] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:53:42,306] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:53:42,841] - [root] - [INFO] - Train Epoch: 58 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.005838	Time Usage:84m 9s
+[2026-01-22 00:53:59,554] - [root] - [INFO] - Train Epoch: 58 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.002527	Time Usage:84m 26s
+[2026-01-22 00:54:16,551] - [root] - [INFO] - Train Epoch: 58 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.018276	Time Usage:84m 43s
+[2026-01-22 00:54:31,437] - [root] - [INFO] - Train Epoch: 58 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.008330	Time Usage:84m 58s
+[2026-01-22 00:54:48,067] - [root] - [INFO] - Train Epoch: 58 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.007676	Time Usage:85m 14s
+[2026-01-22 00:55:04,450] - [root] - [INFO] - Train Epoch: 58 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.001700	Time Usage:85m 31s
+[2026-01-22 00:55:05,183] - [root] - [INFO] - Loss on 32384 train images: 0.014339
+[2026-01-22 00:55:05,184] - [root] - [INFO] - Train F1(macro): 99.418% | Infected F1: 99.291% (P 99.71%, R 98.88%) | Spor F1: 99.546% (P 99.57%, R 99.52%)
+[2026-01-22 00:55:12,571] - [root] - [INFO] - Val loss: 0.092641 | Val F1(macro): 97.819% | Val Recall(macro): 97.185% | Val Precision(macro): 98.461% | Infected F1: 98.044% | Spor F1: 97.594%
+[2026-01-22 00:55:12,892] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:55:12,892] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:55:13,408] - [root] - [INFO] - Train Epoch: 59 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.004036	Time Usage:85m 40s
+[2026-01-22 00:55:30,995] - [root] - [INFO] - Train Epoch: 59 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.029539	Time Usage:85m 57s
+[2026-01-22 00:55:48,186] - [root] - [INFO] - Train Epoch: 59 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.022216	Time Usage:86m 14s
+[2026-01-22 00:56:04,949] - [root] - [INFO] - Train Epoch: 59 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.012409	Time Usage:86m 31s
+[2026-01-22 00:56:26,439] - [root] - [INFO] - Train Epoch: 59 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.003135	Time Usage:86m 53s
+[2026-01-22 00:56:50,898] - [root] - [INFO] - Train Epoch: 59 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.025001	Time Usage:87m 17s
+[2026-01-22 00:56:51,778] - [root] - [INFO] - Loss on 32384 train images: 0.011375
+[2026-01-22 00:56:51,778] - [root] - [INFO] - Train F1(macro): 99.535% | Infected F1: 99.408% (P 99.73%, R 99.08%) | Spor F1: 99.662% (P 99.72%, R 99.60%)
+[2026-01-22 00:57:01,948] - [root] - [INFO] - Val loss: 0.096716 | Val F1(macro): 97.829% | Val Recall(macro): 97.648% | Val Precision(macro): 98.012% | Infected F1: 97.939% | Spor F1: 97.720%
+[2026-01-22 00:57:02,270] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:57:02,270] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:57:02,986] - [root] - [INFO] - Train Epoch: 60 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.007713	Time Usage:87m 29s
+[2026-01-22 00:57:18,698] - [root] - [INFO] - Train Epoch: 60 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.010140	Time Usage:87m 45s
+[2026-01-22 00:57:37,054] - [root] - [INFO] - Train Epoch: 60 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.010170	Time Usage:88m 3s
+[2026-01-22 00:58:00,301] - [root] - [INFO] - Train Epoch: 60 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.002442	Time Usage:88m 26s
+[2026-01-22 00:58:21,554] - [root] - [INFO] - Train Epoch: 60 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.015111	Time Usage:88m 48s
+[2026-01-22 00:58:41,680] - [root] - [INFO] - Train Epoch: 60 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.009871	Time Usage:89m 8s
+[2026-01-22 00:58:42,459] - [root] - [INFO] - Loss on 32384 train images: 0.010914
+[2026-01-22 00:58:42,459] - [root] - [INFO] - Train F1(macro): 99.552% | Infected F1: 99.456% (P 99.79%, R 99.12%) | Spor F1: 99.648% (P 99.72%, R 99.57%)
+[2026-01-22 00:58:50,367] - [root] - [INFO] - Val loss: 0.098960 | Val F1(macro): 97.791% | Val Recall(macro): 97.380% | Val Precision(macro): 98.206% | Infected F1: 98.153% | Spor F1: 97.429%
+[2026-01-22 00:58:50,656] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 00:58:50,656] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 00:58:51,216] - [root] - [INFO] - Train Epoch: 61 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.003527	Time Usage:89m 17s
+[2026-01-22 00:59:06,478] - [root] - [INFO] - Train Epoch: 61 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.002315	Time Usage:89m 33s
+[2026-01-22 00:59:21,710] - [root] - [INFO] - Train Epoch: 61 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.011178	Time Usage:89m 48s
+[2026-01-22 00:59:36,550] - [root] - [INFO] - Train Epoch: 61 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.010701	Time Usage:90m 3s
+[2026-01-22 00:59:51,450] - [root] - [INFO] - Train Epoch: 61 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.020301	Time Usage:90m 18s
+[2026-01-22 01:00:06,660] - [root] - [INFO] - Train Epoch: 61 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.008994	Time Usage:90m 33s
+[2026-01-22 01:00:07,320] - [root] - [INFO] - Loss on 32384 train images: 0.011194
+[2026-01-22 01:00:07,320] - [root] - [INFO] - Train F1(macro): 99.552% | Infected F1: 99.437% (P 99.79%, R 99.09%) | Spor F1: 99.666% (P 99.69%, R 99.64%)
+[2026-01-22 01:00:14,411] - [root] - [INFO] - Val loss: 0.090753 | Val F1(macro): 97.763% | Val Recall(macro): 97.111% | Val Precision(macro): 98.424% | Infected F1: 97.910% | Spor F1: 97.616%
+[2026-01-22 01:00:14,721] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 01:00:14,721] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 01:00:15,170] - [root] - [INFO] - Train Epoch: 62 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.008940	Time Usage:90m 41s
+[2026-01-22 01:00:31,101] - [root] - [INFO] - Train Epoch: 62 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.010908	Time Usage:90m 57s
+[2026-01-22 01:00:46,284] - [root] - [INFO] - Train Epoch: 62 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.005979	Time Usage:91m 12s
+[2026-01-22 01:01:01,602] - [root] - [INFO] - Train Epoch: 62 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.022080	Time Usage:91m 28s
+[2026-01-22 01:01:16,461] - [root] - [INFO] - Train Epoch: 62 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.008843	Time Usage:91m 43s
+[2026-01-22 01:01:32,324] - [root] - [INFO] - Train Epoch: 62 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.001857	Time Usage:91m 58s
+[2026-01-22 01:01:33,012] - [root] - [INFO] - Loss on 32384 train images: 0.011146
+[2026-01-22 01:01:33,012] - [root] - [INFO] - Train F1(macro): 99.536% | Infected F1: 99.401% (P 99.72%, R 99.08%) | Spor F1: 99.671% (P 99.71%, R 99.63%)
+[2026-01-22 01:01:40,562] - [root] - [INFO] - Val loss: 0.100053 | Val F1(macro): 97.795% | Val Recall(macro): 97.139% | Val Precision(macro): 98.461% | Infected F1: 97.789% | Spor F1: 97.802%
+[2026-01-22 01:01:41,029] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 01:01:41,029] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 01:01:41,578] - [root] - [INFO] - Train Epoch: 63 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.002573	Time Usage:92m 8s
+[2026-01-22 01:01:57,162] - [root] - [INFO] - Train Epoch: 63 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.008838	Time Usage:92m 23s
+[2026-01-22 01:02:12,144] - [root] - [INFO] - Train Epoch: 63 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.008540	Time Usage:92m 38s
+[2026-01-22 01:02:27,520] - [root] - [INFO] - Train Epoch: 63 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.014029	Time Usage:92m 54s
+[2026-01-22 01:02:42,577] - [root] - [INFO] - Train Epoch: 63 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.009851	Time Usage:93m 9s
+[2026-01-22 01:02:57,841] - [root] - [INFO] - Train Epoch: 63 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.003215	Time Usage:93m 24s
+[2026-01-22 01:02:58,395] - [root] - [INFO] - Loss on 32384 train images: 0.011429
+[2026-01-22 01:02:58,395] - [root] - [INFO] - Train F1(macro): 99.520% | Infected F1: 99.382% (P 99.70%, R 99.06%) | Spor F1: 99.657% (P 99.68%, R 99.64%)
+[2026-01-22 01:03:05,443] - [root] - [INFO] - Val loss: 0.091871 | Val F1(macro): 97.940% | Val Recall(macro): 97.481% | Val Precision(macro): 98.403% | Infected F1: 98.014% | Spor F1: 97.865%
+[2026-01-22 01:03:05,805] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 01:03:05,805] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 01:03:06,357] - [root] - [INFO] - Train Epoch: 64 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.016183	Time Usage:93m 33s
+[2026-01-22 01:03:21,490] - [root] - [INFO] - Train Epoch: 64 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.005065	Time Usage:93m 48s
+[2026-01-22 01:03:36,842] - [root] - [INFO] - Train Epoch: 64 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.007123	Time Usage:94m 3s
+[2026-01-22 01:03:52,863] - [root] - [INFO] - Train Epoch: 64 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.006919	Time Usage:94m 19s
+[2026-01-22 01:04:08,094] - [root] - [INFO] - Train Epoch: 64 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.014553	Time Usage:94m 34s
+[2026-01-22 01:04:23,684] - [root] - [INFO] - Train Epoch: 64 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.016756	Time Usage:94m 50s
+[2026-01-22 01:04:24,288] - [root] - [INFO] - Loss on 32384 train images: 0.010685
+[2026-01-22 01:04:24,288] - [root] - [INFO] - Train F1(macro): 99.563% | Infected F1: 99.431% (P 99.72%, R 99.15%) | Spor F1: 99.694% (P 99.73%, R 99.66%)
+[2026-01-22 01:04:31,714] - [root] - [INFO] - Val loss: 0.092359 | Val F1(macro): 97.789% | Val Recall(macro): 97.509% | Val Precision(macro): 98.072% | Infected F1: 98.053% | Spor F1: 97.526%
+[2026-01-22 01:04:32,022] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 01:04:32,022] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 01:04:32,532] - [root] - [INFO] - Train Epoch: 65 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.001400	Time Usage:94m 59s
+[2026-01-22 01:04:48,009] - [root] - [INFO] - Train Epoch: 65 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.002572	Time Usage:95m 14s
+[2026-01-22 01:05:05,911] - [root] - [INFO] - Train Epoch: 65 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.007735	Time Usage:95m 32s
+[2026-01-22 01:05:22,055] - [root] - [INFO] - Train Epoch: 65 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.011726	Time Usage:95m 48s
+[2026-01-22 01:05:46,857] - [root] - [INFO] - Train Epoch: 65 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.004292	Time Usage:96m 13s
+[2026-01-22 01:06:06,086] - [root] - [INFO] - Train Epoch: 65 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.005950	Time Usage:96m 32s
+[2026-01-22 01:06:06,805] - [root] - [INFO] - Loss on 32384 train images: 0.010975
+[2026-01-22 01:06:06,806] - [root] - [INFO] - Train F1(macro): 99.575% | Infected F1: 99.461% (P 99.76%, R 99.16%) | Spor F1: 99.689% (P 99.74%, R 99.64%)
+[2026-01-22 01:06:15,136] - [root] - [INFO] - Val loss: 0.094735 | Val F1(macro): 97.878% | Val Recall(macro): 97.352% | Val Precision(macro): 98.410% | Infected F1: 98.192% | Spor F1: 97.564%
+[2026-01-22 01:06:15,440] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 01:06:15,440] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 01:06:15,993] - [root] - [INFO] - Train Epoch: 66 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.018531	Time Usage:96m 42s
+[2026-01-22 01:06:31,908] - [root] - [INFO] - Train Epoch: 66 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.011654	Time Usage:96m 58s
+[2026-01-22 01:06:46,123] - [root] - [INFO] - Train Epoch: 66 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.006485	Time Usage:97m 12s
+[2026-01-22 01:07:00,853] - [root] - [INFO] - Train Epoch: 66 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.024338	Time Usage:97m 27s
+[2026-01-22 01:07:15,704] - [root] - [INFO] - Train Epoch: 66 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.006923	Time Usage:97m 42s
+[2026-01-22 01:07:31,036] - [root] - [INFO] - Train Epoch: 66 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.023214	Time Usage:97m 57s
+[2026-01-22 01:07:31,617] - [root] - [INFO] - Loss on 32384 train images: 0.011951
+[2026-01-22 01:07:31,617] - [root] - [INFO] - Train F1(macro): 99.481% | Infected F1: 99.370% (P 99.70%, R 99.05%) | Spor F1: 99.592% (P 99.61%, R 99.57%)
+[2026-01-22 01:07:39,667] - [root] - [INFO] - Val loss: 0.091000 | Val F1(macro): 97.820% | Val Recall(macro): 97.380% | Val Precision(macro): 98.267% | Infected F1: 97.992% | Spor F1: 97.647%
+[2026-01-22 01:07:40,038] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 01:07:40,038] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 01:07:40,513] - [root] - [INFO] - Train Epoch: 67 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.040970	Time Usage:98m 7s
+[2026-01-22 01:07:54,887] - [root] - [INFO] - Train Epoch: 67 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.011931	Time Usage:98m 21s
+[2026-01-22 01:08:10,407] - [root] - [INFO] - Train Epoch: 67 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.006379	Time Usage:98m 37s
+[2026-01-22 01:08:25,733] - [root] - [INFO] - Train Epoch: 67 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.012608	Time Usage:98m 52s
+[2026-01-22 01:08:40,509] - [root] - [INFO] - Train Epoch: 67 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.007255	Time Usage:99m 7s
+[2026-01-22 01:08:56,322] - [root] - [INFO] - Train Epoch: 67 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.014853	Time Usage:99m 22s
+[2026-01-22 01:08:56,898] - [root] - [INFO] - Loss on 32384 train images: 0.009836
+[2026-01-22 01:08:56,898] - [root] - [INFO] - Train F1(macro): 99.594% | Infected F1: 99.489% (P 99.77%, R 99.21%) | Spor F1: 99.699% (P 99.76%, R 99.64%)
+[2026-01-22 01:09:04,938] - [root] - [INFO] - Val loss: 0.100300 | Val F1(macro): 97.877% | Val Recall(macro): 97.731% | Val Precision(macro): 98.024% | Infected F1: 98.142% | Spor F1: 97.612%
+[2026-01-22 01:09:05,278] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 01:09:05,278] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 01:09:05,785] - [root] - [INFO] - Train Epoch: 68 [0/32404 (0%)]	Learning Rate: 2.5e-05	Loss: 0.008017	Time Usage:99m 32s
+[2026-01-22 01:09:21,835] - [root] - [INFO] - Train Epoch: 68 [6400/32404 (20%)]	Learning Rate: 2.5e-05	Loss: 0.005165	Time Usage:99m 48s
+[2026-01-22 01:09:37,903] - [root] - [INFO] - Train Epoch: 68 [12800/32404 (40%)]	Learning Rate: 2.5e-05	Loss: 0.013867	Time Usage:100m 4s
+[2026-01-22 01:09:53,919] - [root] - [INFO] - Train Epoch: 68 [19200/32404 (59%)]	Learning Rate: 2.5e-05	Loss: 0.021603	Time Usage:100m 20s
+[2026-01-22 01:10:09,540] - [root] - [INFO] - Train Epoch: 68 [25600/32404 (79%)]	Learning Rate: 2.5e-05	Loss: 0.007524	Time Usage:100m 36s
+[2026-01-22 01:10:25,244] - [root] - [INFO] - Train Epoch: 68 [32000/32404 (99%)]	Learning Rate: 2.5e-05	Loss: 0.006512	Time Usage:100m 51s
+[2026-01-22 01:10:25,875] - [root] - [INFO] - Loss on 32384 train images: 0.009792
+[2026-01-22 01:10:25,876] - [root] - [INFO] - Train F1(macro): 99.627% | Infected F1: 99.496% (P 99.79%, R 99.20%) | Spor F1: 99.759% (P 99.76%, R 99.76%)
+[2026-01-22 01:10:33,732] - [root] - [INFO] - Val loss: 0.101667 | Val F1(macro): 97.792% | Val Recall(macro): 97.389% | Val Precision(macro): 98.199% | Infected F1: 98.017% | Spor F1: 97.567%
+[2026-01-22 01:10:34,069] - [root] - [INFO] - SAVED LAST to ..\..\results\models\ResNet_Jan21_23-29-29_2026\last_model_checkpoint.pth.tar
+[2026-01-22 01:10:34,069] - [root] - [INFO] - --------------------------------------------
+[2026-01-22 01:10:34,069] - [root] - [INFO] - Early stopping at epoch 68. Best F1=98.000%, best loss=0.074446, best placeholder-acc=98.000% (best epoch=43)
+[2026-01-22 01:10:34,069] - [root] - [INFO] - ============================================
+[2026-01-22 01:10:34,069] - [root] - [INFO] - \u2705 BEST MODEL @ epoch 43 | Val F1: 98.000% | Val Precision: 98.281% | Val Recall: 97.722% | Val Loss: 0.074446
+[2026-01-22 01:10:34,069] - [root] - [INFO] - ============================================

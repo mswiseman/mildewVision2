@@ -1,0 +1,26 @@
+usage: leaf_correlation_mw.py [-h] [--model_type MODEL_TYPE] [--pretrained]
+                              --loading_epoch LOADING_EPOCH --timestamp
+                              TIMESTAMP [--outdim OUTDIM] [--dual_head]
+                              --model_path MODEL_PATH [--step_size STEP_SIZE]
+                              [--means MEANS [MEANS ...]]
+                              [--stds STDS [STDS ...]]
+                              [--target_class TARGET_CLASS] [--contam_control]
+                              [--spor_th SPOR_TH] [--inf_gate INF_GATE]
+                              [--pm PM] [--mps] [--cuda] [--cuda_id CUDA_ID]
+                              [--sal_threshold SAL_THRESHOLD]
+                              [--up_threshold UP_THRESHOLD]
+                              [--down_threshold DOWN_THRESHOLD] --dataset_path
+                              DATASET_PATH [--img_folder IMG_FOLDER]
+                              [--platform PLATFORM]
+                              [--threshold THRESHOLD [THRESHOLD ...]]
+                              [--log LOG] --dpi DPI [--group GROUP]
+                              [--trays TRAYS [TRAYS ...]] [--sal_gradcam]
+                              [--sal_gradient] [--sal_smoothgrad]
+                              [--sal_deeplift]
+                              [--sal_thresh_method {percentile,fixed}]
+                              [--sal_thresh_p SAL_THRESH_P]
+leaf_correlation_mw.py: error: argument --dpi: invalid int value: '0.1'
+
+real	0m6.888s
+user	0m0.000s
+sys	0m0.015s

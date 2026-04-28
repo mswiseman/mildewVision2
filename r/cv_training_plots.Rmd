@@ -1,0 +1,107 @@
+---
+title: "cv model training visualization plots"
+author: "Michele Wiseman"
+date: "2026-01-22"
+output: html_document
+---
+
+```{r cv training plots}
+# =========================
+# Libraries
+# =========================
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+
+# =========================
+# Load data
+# =========================
+df <- read_csv("../spreadsheets/best_model_training_stats_jan_26_26_ep_44.csv")
+
+# Optional: set best epoch marker (adjust if needed)
+best_epoch <- df$Epoch[which.max(df$F1_macro_val)]  # picks epoch with best val macro F1
+
+# =========================
+# Plot 1: Train vs Val loss
+# =========================
+
+p1 <- ggplot(df, aes(x = Epoch)) +
+  geom_line(aes(y = Train_loss, color = "Train"), linewidth = 1) +
+  geom_line(aes(y = Val_loss, color = "Validation"), linewidth = 1) +
+  geom_vline(xintercept = best_epoch, linetype = "dashed") +
+  labs(title = "Loss", y = "Loss", color = NULL) +
+  theme_classic() +
+  theme(
+    legend.position = "top",
+    legend.direction = "horizontal",
+    legend.justification = "center",
+    legend.box.just = "center",
+    legend.margin = margin(t = -5, r = 0, b = 5, l = 0),   # pulls legend closer to title
+    plot.title = element_text(margin = margin(b = 4))
+  )
+
+# =========================
+# Plot 2: Validation macro F1
+# =========================
+
+
+p2 <- ggplot(df, aes(x = Epoch)) +
+  geom_line(aes(y = F1_macro_val), color = "#999999", linewidth = 0.75) +
+  geom_line(aes(y = F1_sporulating_val), color = "#800074", linewidth = 0.75) +
+  geom_line(aes(y = F1_infected_val), color = "#298c8c", linewidth = 0.75) +
+  geom_vline(xintercept = best_epoch, linetype = "dashed") +
+  labs(title = "Validation macro and class-specific F1 metrics", y = "F1 (%)") +
+  theme_classic() +
+    ylim(90, 100)
+
+
+p2
+
+# =========================
+# Plot 4: Validation macro recall
+# =========================
+p4 <- ggplot(df, aes(x = Epoch)) +
+  geom_line(aes(y = Recall_macro), color="#1a80bb", linewidth = 1) +
+  geom_line(aes(y = Precision_macro), color="#f2c45f", linewidth = 1) +
+  geom_vline(xintercept = best_epoch, linetype = "dashed") +
+  labs(title = "Validation Macro Recall and Precision", y = "%") +
+  theme_classic() +
+  ylim(90, 100)
+
+p4
+
+# =========================
+# Plot 5: Val loss only (clean view)
+# =========================
+p5 <- ggplot(df, aes(x = Epoch)) +
+  geom_line(aes(y = Val_loss), color="#97a6c4", linewidth = 1) +
+  geom_line(aes(y = Train_loss), color="#384860", linewidth = 1) +
+  geom_vline(xintercept = best_epoch, linetype = "dashed") +
+  labs(title = "Loss", y = "Loss") +
+  theme_classic()
+
+p5
+
+# =========================
+# Plot 6: Train loss only (clean view)
+# =========================
+#p6 <- ggplot(df, aes(x = Epoch, y = Train_loss)) +
+#  geom_line(linewidth = 1) +
+#  geom_vline(xintercept = best_epoch, linetype = "dashed") +
+#  labs(title = "Training Loss", y = "Loss") +
+#  theme_classic()
+
+# =========================
+# Combine into 2 rows x 3 cols
+# =========================
+final_plot <- grid.arrange(p2, p4, p5, ncol = 3)
+# =========================
+
+# Print to screen
+final_plot
+
+# Save figure
+ggsave("figures/training_curves_2x3_j26_ep44.pdf", final_plot,
+       width = 8, height = 3, dpi = 300)
+```

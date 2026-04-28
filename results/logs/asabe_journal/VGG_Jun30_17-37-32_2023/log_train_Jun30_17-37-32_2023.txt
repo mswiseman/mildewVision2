@@ -1,0 +1,882 @@
+[2023-06-30 17:37:32,618] - [root] - [INFO] - model_type       : VGG
+[2023-06-30 17:37:32,618] - [root] - [INFO] - pretrained       : True
+[2023-06-30 17:37:32,619] - [root] - [INFO] - feature_extract  : False
+[2023-06-30 17:37:32,619] - [root] - [INFO] - resume           : False
+[2023-06-30 17:37:32,619] - [root] - [INFO] - resume_timestamp : None
+[2023-06-30 17:37:32,620] - [root] - [INFO] - loading_epoch    : 0
+[2023-06-30 17:37:32,620] - [root] - [INFO] - total_epochs     : 3
+[2023-06-30 17:37:32,620] - [root] - [INFO] - outdim           : 2
+[2023-06-30 17:37:32,620] - [root] - [INFO] - save_model       : True
+[2023-06-30 17:37:32,620] - [root] - [INFO] - cuda             : True
+[2023-06-30 17:37:32,620] - [root] - [INFO] - optimType        : Adam
+[2023-06-30 17:37:32,621] - [root] - [INFO] - lr               : 0.0001
+[2023-06-30 17:37:32,621] - [root] - [INFO] - weight_decay     : 0.0002
+[2023-06-30 17:37:32,621] - [root] - [INFO] - weighted_loss    : True
+[2023-06-30 17:37:32,621] - [root] - [INFO] - scheduler        : True
+[2023-06-30 17:37:32,621] - [root] - [INFO] - step_size        : 60
+[2023-06-30 17:37:32,621] - [root] - [INFO] - gamma            : 0.5
+[2023-06-30 17:37:32,621] - [root] - [INFO] - bsize            : 32
+[2023-06-30 17:37:32,621] - [root] - [INFO] - nworker          : 2
+[2023-06-30 17:37:32,621] - [root] - [INFO] - manual_seed      : 1701
+[2023-06-30 17:37:32,621] - [root] - [INFO] - cuda_device      : 0
+[2023-06-30 17:37:32,622] - [root] - [INFO] - root_path        : C:/Users/Intel User/Desktop/blackbird_scripts
+[2023-06-30 17:37:32,622] - [root] - [INFO] - test_date        : None
+[2023-06-30 17:37:32,622] - [root] - [INFO] - qtl_partition_idx : None
+[2023-06-30 17:37:32,622] - [root] - [INFO] - seg_idx          : None
+[2023-06-30 17:37:32,622] - [root] - [INFO] - demo_dataset     : False
+[2023-06-30 17:37:32,622] - [root] - [INFO] - seg_dataset      : False
+[2023-06-30 17:37:32,622] - [root] - [INFO] - aug_dataset      : False
+[2023-06-30 17:37:32,623] - [root] - [INFO] - cross_validation : False
+[2023-06-30 17:37:32,623] - [root] - [INFO] - n_trials         : 10
+[2023-06-30 17:37:32,623] - [root] - [INFO] - study_name       : Study3
+[2023-06-30 17:37:32,623] - [root] - [INFO] - batch_size       : 32
+[2023-06-30 17:37:32,623] - [root] - [INFO] - Compose(
+    ToPILImage()
+    RandomHorizontalFlip(p=0.5)
+    RandomVerticalFlip(p=0.5)
+    ToTensor()
+    Normalize(mean=[0.4823529411764706, 0.5843137254901961, 0.3333333333333333], std=[0.13333333333333333, 0.13333333333333333, 0.17647058823529413])
+)
+[2023-06-30 17:37:34,585] - [root] - [INFO] - USING GPU
+[2023-06-30 17:37:34,585] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:37:36,040] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 17:37:50,024] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.0027316694665545055	Loss: 0.898586	Time Usage:0m 13s
+[2023-06-30 17:37:57,457] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.0027316694665545055	Loss: 21.838974	Time Usage:0m 21s
+[2023-06-30 17:38:04,857] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.0027316694665545055	Loss: 0.543902	Time Usage:0m 28s
+[2023-06-30 17:38:12,186] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.0027316694665545055	Loss: 122.902695	Time Usage:0m 36s
+[2023-06-30 17:38:19,497] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.0027316694665545055	Loss: 0.532947	Time Usage:0m 43s
+[2023-06-30 17:38:26,886] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.0027316694665545055	Loss: 3.723351	Time Usage:0m 50s
+[2023-06-30 17:38:34,223] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.0027316694665545055	Loss: 0.508392	Time Usage:0m 58s
+[2023-06-30 17:38:41,533] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.0027316694665545055	Loss: 0.695568	Time Usage:1m 5s
+[2023-06-30 17:38:48,819] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.0027316694665545055	Loss: 0.584351	Time Usage:1m 12s
+[2023-06-30 17:38:56,167] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.0027316694665545055	Loss: 0.649728	Time Usage:1m 20s
+[2023-06-30 17:39:03,507] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.0027316694665545055	Loss: 0.496172	Time Usage:1m 27s
+[2023-06-30 17:39:10,852] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.0027316694665545055	Loss: 0.488560	Time Usage:1m 34s
+[2023-06-30 17:39:16,462] - [root] - [INFO] - Loss of the network on the 18834 train images: 106842551665590176.000000
+[2023-06-30 17:39:16,462] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 52.517%
+[2023-06-30 17:39:16,462] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.213
+[2023-06-30 17:39:16,462] - [root] - [INFO] - Recall of the network on the 18834 train images: 81.605
+[2023-06-30 17:39:16,463] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6514.673
+[2023-06-30 17:39:26,789] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.697637
+[2023-06-30 17:39:26,789] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:39:26,789] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 17:39:26,790] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 17:39:26,790] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 17:39:27,976] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 17:39:27,976] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:39:38,198] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.0027316694665545055	Loss: 0.510635	Time Usage:2m 2s
+[2023-06-30 17:39:45,479] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.0027316694665545055	Loss: 0.540173	Time Usage:2m 9s
+[2023-06-30 17:39:52,746] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.0027316694665545055	Loss: 0.517164	Time Usage:2m 16s
+[2023-06-30 17:40:00,042] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.0027316694665545055	Loss: 0.567503	Time Usage:2m 23s
+[2023-06-30 17:40:07,344] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.0027316694665545055	Loss: 0.526356	Time Usage:2m 31s
+[2023-06-30 17:40:14,630] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.0027316694665545055	Loss: 0.508092	Time Usage:2m 38s
+[2023-06-30 17:40:21,898] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.0027316694665545055	Loss: 0.573144	Time Usage:2m 45s
+[2023-06-30 17:40:29,180] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.0027316694665545055	Loss: 0.602419	Time Usage:2m 53s
+[2023-06-30 17:40:36,470] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.0027316694665545055	Loss: 0.483017	Time Usage:3m 0s
+[2023-06-30 17:40:43,742] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.0027316694665545055	Loss: 0.540554	Time Usage:3m 7s
+[2023-06-30 17:40:51,021] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.0027316694665545055	Loss: 0.461967	Time Usage:3m 14s
+[2023-06-30 17:40:58,299] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.0027316694665545055	Loss: 1608758.125000	Time Usage:3m 22s
+[2023-06-30 17:41:03,747] - [root] - [INFO] - Loss of the network on the 18834 train images: 21216554.010432
+[2023-06-30 17:41:03,747] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 53.711%
+[2023-06-30 17:41:03,747] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.273
+[2023-06-30 17:41:03,747] - [root] - [INFO] - Recall of the network on the 18834 train images: 94.493
+[2023-06-30 17:41:03,747] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6894.636
+[2023-06-30 17:41:14,572] - [root] - [INFO] - Loss of the network on the 1177 val images: 292.715689
+[2023-06-30 17:41:14,572] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:41:14,572] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 17:41:14,572] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 17:41:14,572] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 17:41:24,577] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.0027316694665545055	Loss: 16.484015	Time Usage:3m 48s
+[2023-06-30 17:41:31,876] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.0027316694665545055	Loss: 0.405369	Time Usage:3m 55s
+[2023-06-30 17:41:39,136] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.0027316694665545055	Loss: 1587.814941	Time Usage:4m 3s
+[2023-06-30 17:41:46,450] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.0027316694665545055	Loss: 0.483096	Time Usage:4m 10s
+[2023-06-30 17:41:53,768] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.0027316694665545055	Loss: 0.630816	Time Usage:4m 17s
+[2023-06-30 17:42:01,045] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.0027316694665545055	Loss: 0.638821	Time Usage:4m 24s
+[2023-06-30 17:42:08,355] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.0027316694665545055	Loss: 0.655643	Time Usage:4m 32s
+[2023-06-30 17:42:15,720] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.0027316694665545055	Loss: 3.468910	Time Usage:4m 39s
+[2023-06-30 17:42:23,017] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.0027316694665545055	Loss: 0.524816	Time Usage:4m 46s
+[2023-06-30 17:42:30,392] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.0027316694665545055	Loss: 0.436338	Time Usage:4m 54s
+[2023-06-30 17:42:37,842] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.0027316694665545055	Loss: 1.887079	Time Usage:5m 1s
+[2023-06-30 17:42:45,401] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.0027316694665545055	Loss: 33.119568	Time Usage:5m 9s
+[2023-06-30 17:42:50,859] - [root] - [INFO] - Loss of the network on the 18834 train images: 1315020.118627
+[2023-06-30 17:42:50,859] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 53.499%
+[2023-06-30 17:42:50,859] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.396
+[2023-06-30 17:42:50,859] - [root] - [INFO] - Recall of the network on the 18834 train images: 89.641
+[2023-06-30 17:42:50,859] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6770.649
+[2023-06-30 17:43:02,104] - [root] - [INFO] - Loss of the network on the 1177 val images: 21.019213
+[2023-06-30 17:43:02,104] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:43:02,104] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 17:43:02,104] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 17:43:02,104] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 17:43:02,106] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 26s secs
+[2023-06-30 17:43:02,106] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:43:11,502] - [root] - [INFO] - Loss of the network on the 1177 val images: 21.019213
+[2023-06-30 17:43:11,502] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:43:12,498] - [root] - [INFO] - USING GPU
+[2023-06-30 17:43:12,498] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:43:12,499] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 17:43:22,170] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.0074010565229235895	Loss: 0.779919	Time Usage:0m 9s
+[2023-06-30 17:43:29,632] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.0074010565229235895	Loss: 245.872742	Time Usage:0m 17s
+[2023-06-30 17:43:37,116] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.0074010565229235895	Loss: 0.645368	Time Usage:0m 24s
+[2023-06-30 17:43:44,614] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.0074010565229235895	Loss: 0.524342	Time Usage:0m 32s
+[2023-06-30 17:43:52,112] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.0074010565229235895	Loss: 0.402942	Time Usage:0m 39s
+[2023-06-30 17:43:59,619] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.0074010565229235895	Loss: 0.446976	Time Usage:0m 47s
+[2023-06-30 17:44:07,107] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.0074010565229235895	Loss: 0.653552	Time Usage:0m 54s
+[2023-06-30 17:44:14,593] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.0074010565229235895	Loss: 0.458191	Time Usage:1m 1s
+[2023-06-30 17:44:22,078] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.0074010565229235895	Loss: 0.457885	Time Usage:1m 9s
+[2023-06-30 17:44:29,562] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.0074010565229235895	Loss: 0.459098	Time Usage:1m 16s
+[2023-06-30 17:44:37,074] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.0074010565229235895	Loss: 0.515013	Time Usage:1m 24s
+[2023-06-30 17:44:44,583] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.0074010565229235895	Loss: 0.590162	Time Usage:1m 31s
+[2023-06-30 17:44:50,185] - [root] - [INFO] - Loss of the network on the 18834 train images: 1195757957.232931
+[2023-06-30 17:44:50,185] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 53.711%
+[2023-06-30 17:44:50,185] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.357
+[2023-06-30 17:44:50,186] - [root] - [INFO] - Recall of the network on the 18834 train images: 92.824
+[2023-06-30 17:44:50,186] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6856.339
+[2023-06-30 17:45:01,530] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.677570
+[2023-06-30 17:45:01,530] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:45:01,531] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 17:45:01,531] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 17:45:01,531] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 17:45:03,260] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 17:45:03,260] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:45:13,103] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.0074010565229235895	Loss: 0.489294	Time Usage:2m 0s
+[2023-06-30 17:45:20,577] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.0074010565229235895	Loss: 0.497552	Time Usage:2m 7s
+[2023-06-30 17:45:28,081] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.0074010565229235895	Loss: 0.599556	Time Usage:2m 15s
+[2023-06-30 17:45:35,584] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.0074010565229235895	Loss: 0.570016	Time Usage:2m 22s
+[2023-06-30 17:45:43,091] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.0074010565229235895	Loss: 4.175799	Time Usage:2m 30s
+[2023-06-30 17:45:50,596] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.0074010565229235895	Loss: 2348794.500000	Time Usage:2m 37s
+[2023-06-30 17:45:58,103] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.0074010565229235895	Loss: 336.930756	Time Usage:2m 45s
+[2023-06-30 17:46:05,603] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.0074010565229235895	Loss: 127.720360	Time Usage:2m 53s
+[2023-06-30 17:46:13,122] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.0074010565229235895	Loss: 50.138420	Time Usage:3m 0s
+[2023-06-30 17:46:20,637] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.0074010565229235895	Loss: 0.424815	Time Usage:3m 8s
+[2023-06-30 17:46:28,145] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.0074010565229235895	Loss: 18.677675	Time Usage:3m 15s
+[2023-06-30 17:46:35,655] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.0074010565229235895	Loss: 0.508899	Time Usage:3m 23s
+[2023-06-30 17:46:41,254] - [root] - [INFO] - Loss of the network on the 18834 train images: 187570833.151259
+[2023-06-30 17:46:41,254] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 53.605%
+[2023-06-30 17:46:41,255] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.374
+[2023-06-30 17:46:41,255] - [root] - [INFO] - Recall of the network on the 18834 train images: 91.271
+[2023-06-30 17:46:41,255] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6814.901
+[2023-06-30 17:46:51,690] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.671938
+[2023-06-30 17:46:51,690] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:46:51,690] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 17:46:51,690] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 17:46:51,691] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 17:47:01,495] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.0074010565229235895	Loss: 0.564410	Time Usage:3m 48s
+[2023-06-30 17:47:08,951] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.0074010565229235895	Loss: 0.473590	Time Usage:3m 56s
+[2023-06-30 17:47:16,421] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.0074010565229235895	Loss: 0.398548	Time Usage:4m 3s
+[2023-06-30 17:47:23,906] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.0074010565229235895	Loss: 0.462372	Time Usage:4m 11s
+[2023-06-30 17:47:31,404] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.0074010565229235895	Loss: 872.316040	Time Usage:4m 18s
+[2023-06-30 17:47:38,894] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.0074010565229235895	Loss: 0.535960	Time Usage:4m 26s
+[2023-06-30 17:47:46,377] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.0074010565229235895	Loss: 0.536219	Time Usage:4m 33s
+[2023-06-30 17:47:53,876] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.0074010565229235895	Loss: 0.409152	Time Usage:4m 41s
+[2023-06-30 17:48:01,393] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.0074010565229235895	Loss: 0.697735	Time Usage:4m 48s
+[2023-06-30 17:48:08,902] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.0074010565229235895	Loss: 0.536288	Time Usage:4m 56s
+[2023-06-30 17:48:16,407] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.0074010565229235895	Loss: 0.687147	Time Usage:5m 3s
+[2023-06-30 17:48:23,911] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.0074010565229235895	Loss: 0.464439	Time Usage:5m 11s
+[2023-06-30 17:48:29,505] - [root] - [INFO] - Loss of the network on the 18834 train images: 330449.125968
+[2023-06-30 17:48:29,505] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 54.338%
+[2023-06-30 17:48:29,505] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.399
+[2023-06-30 17:48:29,506] - [root] - [INFO] - Recall of the network on the 18834 train images: 99.121
+[2023-06-30 17:48:29,506] - [root] - [INFO] - F1 score of the network on the 18834 train images: 7024.633
+[2023-06-30 17:48:39,829] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.680533
+[2023-06-30 17:48:39,830] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:48:39,830] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 17:48:39,830] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 17:48:39,830] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 17:48:40,612] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 28s secs
+[2023-06-30 17:48:40,612] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:48:50,394] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.680533
+[2023-06-30 17:48:50,395] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:48:51,311] - [root] - [INFO] - USING GPU
+[2023-06-30 17:48:51,311] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:48:51,312] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 17:49:01,446] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.0071561169540826875	Loss: 0.958648	Time Usage:0m 10s
+[2023-06-30 17:49:08,682] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.0071561169540826875	Loss: 444082.593750	Time Usage:0m 17s
+[2023-06-30 17:49:15,937] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.0071561169540826875	Loss: 755162.875000	Time Usage:0m 24s
+[2023-06-30 17:49:23,210] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.0071561169540826875	Loss: 113803.367188	Time Usage:0m 31s
+[2023-06-30 17:49:30,479] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.0071561169540826875	Loss: 807453.125000	Time Usage:0m 39s
+[2023-06-30 17:49:37,752] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.0071561169540826875	Loss: 22877.517578	Time Usage:0m 46s
+[2023-06-30 17:49:45,020] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.0071561169540826875	Loss: 56979.859375	Time Usage:0m 53s
+[2023-06-30 17:49:52,296] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.0071561169540826875	Loss: 13693.597656	Time Usage:1m 0s
+[2023-06-30 17:49:59,575] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.0071561169540826875	Loss: 8317.951172	Time Usage:1m 8s
+[2023-06-30 17:50:06,881] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.0071561169540826875	Loss: 2321.393066	Time Usage:1m 15s
+[2023-06-30 17:50:14,185] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.0071561169540826875	Loss: 1440.443237	Time Usage:1m 22s
+[2023-06-30 17:50:21,488] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.0071561169540826875	Loss: 323.688354	Time Usage:1m 30s
+[2023-06-30 17:50:26,927] - [root] - [INFO] - Loss of the network on the 18834 train images: 30642833661783372201984.000000
+[2023-06-30 17:50:26,927] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 52.761%
+[2023-06-30 17:50:26,927] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.653
+[2023-06-30 17:50:26,927] - [root] - [INFO] - Recall of the network on the 18834 train images: 77.124
+[2023-06-30 17:50:26,927] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6397.246
+[2023-06-30 17:50:37,280] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.793148
+[2023-06-30 17:50:37,280] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:50:37,280] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 17:50:37,280] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 17:50:37,281] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 17:50:38,403] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 17:50:38,404] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:50:48,195] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.0071561169540826875	Loss: 0.495538	Time Usage:1m 56s
+[2023-06-30 17:50:55,437] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.0071561169540826875	Loss: 0.501945	Time Usage:2m 4s
+[2023-06-30 17:51:02,699] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.0071561169540826875	Loss: 0.549909	Time Usage:2m 11s
+[2023-06-30 17:51:09,965] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.0071561169540826875	Loss: 0.510743	Time Usage:2m 18s
+[2023-06-30 17:51:17,235] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.0071561169540826875	Loss: 0.706917	Time Usage:2m 25s
+[2023-06-30 17:51:24,501] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.0071561169540826875	Loss: 0.520972	Time Usage:2m 33s
+[2023-06-30 17:51:31,775] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.0071561169540826875	Loss: 10446.014648	Time Usage:2m 40s
+[2023-06-30 17:51:39,044] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.0071561169540826875	Loss: 0.517836	Time Usage:2m 47s
+[2023-06-30 17:51:46,318] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.0071561169540826875	Loss: 0.570395	Time Usage:2m 54s
+[2023-06-30 17:51:53,598] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.0071561169540826875	Loss: 0.504826	Time Usage:3m 2s
+[2023-06-30 17:52:00,895] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.0071561169540826875	Loss: 0.583183	Time Usage:3m 9s
+[2023-06-30 17:52:08,197] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.0071561169540826875	Loss: 0.465446	Time Usage:3m 16s
+[2023-06-30 17:52:13,633] - [root] - [INFO] - Loss of the network on the 18834 train images: 1851405.924700
+[2023-06-30 17:52:13,633] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 54.173%
+[2023-06-30 17:52:13,633] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.404
+[2023-06-30 17:52:13,633] - [root] - [INFO] - Recall of the network on the 18834 train images: 97.149
+[2023-06-30 17:52:13,633] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6974.869
+[2023-06-30 17:52:23,744] - [root] - [INFO] - Loss of the network on the 1177 val images: 20.766698
+[2023-06-30 17:52:23,744] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:52:23,744] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 17:52:23,745] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 17:52:23,745] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 17:52:33,563] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.0071561169540826875	Loss: 0.614768	Time Usage:3m 42s
+[2023-06-30 17:52:40,807] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.0071561169540826875	Loss: 0.445990	Time Usage:3m 49s
+[2023-06-30 17:52:48,108] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.0071561169540826875	Loss: 0.674191	Time Usage:3m 56s
+[2023-06-30 17:52:55,469] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.0071561169540826875	Loss: 0.480277	Time Usage:4m 4s
+[2023-06-30 17:53:02,784] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.0071561169540826875	Loss: 11402.833984	Time Usage:4m 11s
+[2023-06-30 17:53:10,061] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.0071561169540826875	Loss: 727.003662	Time Usage:4m 18s
+[2023-06-30 17:53:17,342] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.0071561169540826875	Loss: 0.589116	Time Usage:4m 25s
+[2023-06-30 17:53:24,621] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.0071561169540826875	Loss: 0.529880	Time Usage:4m 33s
+[2023-06-30 17:53:31,904] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.0071561169540826875	Loss: 0.441436	Time Usage:4m 40s
+[2023-06-30 17:53:39,191] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.0071561169540826875	Loss: 0.559996	Time Usage:4m 47s
+[2023-06-30 17:53:46,493] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.0071561169540826875	Loss: 0.480973	Time Usage:4m 55s
+[2023-06-30 17:53:53,805] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.0071561169540826875	Loss: 0.450974	Time Usage:5m 2s
+[2023-06-30 17:53:59,249] - [root] - [INFO] - Loss of the network on the 18834 train images: 99743779780.660156
+[2023-06-30 17:53:59,250] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 53.738%
+[2023-06-30 17:53:59,250] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.354
+[2023-06-30 17:53:59,250] - [root] - [INFO] - Recall of the network on the 18834 train images: 93.185
+[2023-06-30 17:53:59,250] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6865.940
+[2023-06-30 17:54:09,516] - [root] - [INFO] - Loss of the network on the 1177 val images: 1692578.259766
+[2023-06-30 17:54:09,516] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:54:09,516] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 17:54:09,516] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 17:54:09,517] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 17:54:10,143] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 18s secs
+[2023-06-30 17:54:10,143] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:54:19,806] - [root] - [INFO] - Loss of the network on the 1177 val images: 1692578.259766
+[2023-06-30 17:54:19,806] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 17:54:20,702] - [root] - [INFO] - USING GPU
+[2023-06-30 17:54:20,702] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:54:20,703] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 17:54:30,551] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.0037716468910997643	Loss: 0.783592	Time Usage:0m 9s
+[2023-06-30 17:54:37,708] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.0037716468910997643	Loss: 0.367893	Time Usage:0m 16s
+[2023-06-30 17:54:44,872] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.0037716468910997643	Loss: 0.303860	Time Usage:0m 24s
+[2023-06-30 17:54:52,066] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.0037716468910997643	Loss: 0.262286	Time Usage:0m 31s
+[2023-06-30 17:54:59,290] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.0037716468910997643	Loss: 0.097042	Time Usage:0m 38s
+[2023-06-30 17:55:06,491] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.0037716468910997643	Loss: 0.197556	Time Usage:0m 45s
+[2023-06-30 17:55:13,698] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.0037716468910997643	Loss: 0.441953	Time Usage:0m 52s
+[2023-06-30 17:55:20,903] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.0037716468910997643	Loss: 0.200505	Time Usage:1m 0s
+[2023-06-30 17:55:28,117] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.0037716468910997643	Loss: 0.196943	Time Usage:1m 7s
+[2023-06-30 17:55:35,332] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.0037716468910997643	Loss: 0.133789	Time Usage:1m 14s
+[2023-06-30 17:55:42,549] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.0037716468910997643	Loss: 0.184830	Time Usage:1m 21s
+[2023-06-30 17:55:49,772] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.0037716468910997643	Loss: 0.123432	Time Usage:1m 28s
+[2023-06-30 17:55:55,153] - [root] - [INFO] - Loss of the network on the 18834 train images: 114.473848
+[2023-06-30 17:55:55,153] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 88.372%
+[2023-06-30 17:55:55,153] - [root] - [INFO] - Precision of the network on the 18834 train images: 85.254
+[2023-06-30 17:55:55,153] - [root] - [INFO] - Recall of the network on the 18834 train images: 95.060
+[2023-06-30 17:55:55,154] - [root] - [INFO] - F1 score of the network on the 18834 train images: 8989.013
+[2023-06-30 17:56:05,278] - [root] - [INFO] - Loss of the network on the 1177 val images: 4.329469
+[2023-06-30 17:56:05,278] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 90.739%
+[2023-06-30 17:56:05,279] - [root] - [INFO] - Precision of the network on the 1177 val images: 86.022%
+[2023-06-30 17:56:05,279] - [root] - [INFO] - Recall of the network on the 1177 val images: 99.225%
+[2023-06-30 17:56:05,279] - [root] - [INFO] - F1 of the network on the 1177 val images: 9215.263%
+[2023-06-30 17:56:06,477] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 17:56:06,477] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:56:16,323] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.0037716468910997643	Loss: 0.129450	Time Usage:1m 55s
+[2023-06-30 17:56:23,480] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.0037716468910997643	Loss: 0.289445	Time Usage:2m 2s
+[2023-06-30 17:56:30,664] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.0037716468910997643	Loss: 0.109825	Time Usage:2m 9s
+[2023-06-30 17:56:37,856] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.0037716468910997643	Loss: 0.069317	Time Usage:2m 17s
+[2023-06-30 17:56:45,068] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.0037716468910997643	Loss: 0.081397	Time Usage:2m 24s
+[2023-06-30 17:56:52,284] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.0037716468910997643	Loss: 0.087064	Time Usage:2m 31s
+[2023-06-30 17:56:59,499] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.0037716468910997643	Loss: 0.054736	Time Usage:2m 38s
+[2023-06-30 17:57:06,714] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.0037716468910997643	Loss: 0.043065	Time Usage:2m 45s
+[2023-06-30 17:57:13,932] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.0037716468910997643	Loss: 0.103401	Time Usage:2m 53s
+[2023-06-30 17:57:21,149] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.0037716468910997643	Loss: 0.092485	Time Usage:3m 0s
+[2023-06-30 17:57:28,369] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.0037716468910997643	Loss: 0.049169	Time Usage:3m 7s
+[2023-06-30 17:57:35,591] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.0037716468910997643	Loss: 0.031651	Time Usage:3m 14s
+[2023-06-30 17:57:40,975] - [root] - [INFO] - Loss of the network on the 18834 train images: 61.660266
+[2023-06-30 17:57:40,975] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 94.308%
+[2023-06-30 17:57:40,976] - [root] - [INFO] - Precision of the network on the 18834 train images: 92.509
+[2023-06-30 17:57:40,976] - [root] - [INFO] - Recall of the network on the 18834 train images: 97.422
+[2023-06-30 17:57:40,976] - [root] - [INFO] - F1 score of the network on the 18834 train images: 9490.204
+[2023-06-30 17:57:51,254] - [root] - [INFO] - Loss of the network on the 1177 val images: 3.001644
+[2023-06-30 17:57:51,254] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 97.111%
+[2023-06-30 17:57:51,254] - [root] - [INFO] - Precision of the network on the 1177 val images: 97.072%
+[2023-06-30 17:57:51,254] - [root] - [INFO] - Recall of the network on the 1177 val images: 97.674%
+[2023-06-30 17:57:51,255] - [root] - [INFO] - F1 of the network on the 1177 val images: 9737.249%
+[2023-06-30 17:57:52,536] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep002
+[2023-06-30 17:57:52,536] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:58:02,494] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.0037716468910997643	Loss: 0.069001	Time Usage:3m 41s
+[2023-06-30 17:58:09,650] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.0037716468910997643	Loss: 0.084995	Time Usage:3m 48s
+[2023-06-30 17:58:16,833] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.0037716468910997643	Loss: 0.122925	Time Usage:3m 56s
+[2023-06-30 17:58:24,026] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.0037716468910997643	Loss: 0.080709	Time Usage:4m 3s
+[2023-06-30 17:58:31,229] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.0037716468910997643	Loss: 0.069561	Time Usage:4m 10s
+[2023-06-30 17:58:38,433] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.0037716468910997643	Loss: 0.099411	Time Usage:4m 17s
+[2023-06-30 17:58:45,640] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.0037716468910997643	Loss: 0.029473	Time Usage:4m 24s
+[2023-06-30 17:58:52,860] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.0037716468910997643	Loss: 0.056508	Time Usage:4m 32s
+[2023-06-30 17:59:00,080] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.0037716468910997643	Loss: 0.100307	Time Usage:4m 39s
+[2023-06-30 17:59:07,302] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.0037716468910997643	Loss: 0.116155	Time Usage:4m 46s
+[2023-06-30 17:59:14,518] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.0037716468910997643	Loss: 0.025823	Time Usage:4m 53s
+[2023-06-30 17:59:21,747] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.0037716468910997643	Loss: 0.107760	Time Usage:5m 0s
+[2023-06-30 17:59:27,127] - [root] - [INFO] - Loss of the network on the 18834 train images: 52.650785
+[2023-06-30 17:59:27,127] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 95.365%
+[2023-06-30 17:59:27,127] - [root] - [INFO] - Precision of the network on the 18834 train images: 93.941
+[2023-06-30 17:59:27,127] - [root] - [INFO] - Recall of the network on the 18834 train images: 97.784
+[2023-06-30 17:59:27,127] - [root] - [INFO] - F1 score of the network on the 18834 train images: 9582.357
+[2023-06-30 17:59:37,494] - [root] - [INFO] - Loss of the network on the 1177 val images: 3.115748
+[2023-06-30 17:59:37,494] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 96.432%
+[2023-06-30 17:59:37,494] - [root] - [INFO] - Precision of the network on the 1177 val images: 95.613%
+[2023-06-30 17:59:37,494] - [root] - [INFO] - Recall of the network on the 1177 val images: 97.984%
+[2023-06-30 17:59:37,495] - [root] - [INFO] - F1 of the network on the 1177 val images: 9678.407%
+[2023-06-30 17:59:37,496] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 16s secs
+[2023-06-30 17:59:37,496] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:59:47,012] - [root] - [INFO] - Loss of the network on the 1177 val images: 3.115748
+[2023-06-30 17:59:47,012] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 96.432%
+[2023-06-30 17:59:47,906] - [root] - [INFO] - USING GPU
+[2023-06-30 17:59:47,906] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 17:59:47,908] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 17:59:57,638] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.0037539876000353273	Loss: 0.838630	Time Usage:0m 9s
+[2023-06-30 18:00:05,546] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.0037539876000353273	Loss: 0.341528	Time Usage:0m 17s
+[2023-06-30 18:00:13,353] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.0037539876000353273	Loss: 0.281121	Time Usage:0m 25s
+[2023-06-30 18:00:21,176] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.0037539876000353273	Loss: 0.270017	Time Usage:0m 33s
+[2023-06-30 18:00:29,005] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.0037539876000353273	Loss: 0.310435	Time Usage:0m 40s
+[2023-06-30 18:00:36,838] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.0037539876000353273	Loss: 0.288953	Time Usage:0m 48s
+[2023-06-30 18:00:44,677] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.0037539876000353273	Loss: 0.260417	Time Usage:0m 56s
+[2023-06-30 18:00:52,524] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.0037539876000353273	Loss: 0.253145	Time Usage:1m 4s
+[2023-06-30 18:01:00,367] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.0037539876000353273	Loss: 0.370372	Time Usage:1m 12s
+[2023-06-30 18:01:08,217] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.0037539876000353273	Loss: 0.220183	Time Usage:1m 20s
+[2023-06-30 18:01:16,064] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.0037539876000353273	Loss: 0.129039	Time Usage:1m 28s
+[2023-06-30 18:01:23,926] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.0037539876000353273	Loss: 0.113794	Time Usage:1m 35s
+[2023-06-30 18:01:29,793] - [root] - [INFO] - Loss of the network on the 18834 train images: 164.032632
+[2023-06-30 18:01:29,794] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 81.013%
+[2023-06-30 18:01:29,794] - [root] - [INFO] - Precision of the network on the 18834 train images: 76.638
+[2023-06-30 18:01:29,794] - [root] - [INFO] - Recall of the network on the 18834 train images: 93.624
+[2023-06-30 18:01:29,795] - [root] - [INFO] - F1 score of the network on the 18834 train images: 8428.408
+[2023-06-30 18:01:39,972] - [root] - [INFO] - Loss of the network on the 1177 val images: 6.711266
+[2023-06-30 18:01:39,973] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 88.360%
+[2023-06-30 18:01:39,973] - [root] - [INFO] - Precision of the network on the 1177 val images: 84.048%
+[2023-06-30 18:01:39,973] - [root] - [INFO] - Recall of the network on the 1177 val images: 97.209%
+[2023-06-30 18:01:39,973] - [root] - [INFO] - F1 of the network on the 1177 val images: 9015.097%
+[2023-06-30 18:01:41,722] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 18:01:41,722] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:01:51,438] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.0037539876000353273	Loss: 0.089543	Time Usage:2m 3s
+[2023-06-30 18:01:59,237] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.0037539876000353273	Loss: 0.119267	Time Usage:2m 11s
+[2023-06-30 18:02:07,066] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.0037539876000353273	Loss: 0.297746	Time Usage:2m 19s
+[2023-06-30 18:02:14,905] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.0037539876000353273	Loss: 0.194494	Time Usage:2m 26s
+[2023-06-30 18:02:22,739] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.0037539876000353273	Loss: 0.316129	Time Usage:2m 34s
+[2023-06-30 18:02:30,586] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.0037539876000353273	Loss: 0.204781	Time Usage:2m 42s
+[2023-06-30 18:02:38,432] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.0037539876000353273	Loss: 0.112207	Time Usage:2m 50s
+[2023-06-30 18:02:46,284] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.0037539876000353273	Loss: 0.158393	Time Usage:2m 58s
+[2023-06-30 18:02:54,137] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.0037539876000353273	Loss: 0.130542	Time Usage:3m 6s
+[2023-06-30 18:03:01,997] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.0037539876000353273	Loss: 0.222960	Time Usage:3m 13s
+[2023-06-30 18:03:09,856] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.0037539876000353273	Loss: 0.365668	Time Usage:3m 21s
+[2023-06-30 18:03:17,727] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.0037539876000353273	Loss: 0.063538	Time Usage:3m 29s
+[2023-06-30 18:03:23,595] - [root] - [INFO] - Loss of the network on the 18834 train images: 95.152335
+[2023-06-30 18:03:23,595] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 90.830%
+[2023-06-30 18:03:23,595] - [root] - [INFO] - Precision of the network on the 18834 train images: 88.387
+[2023-06-30 18:03:23,595] - [root] - [INFO] - Recall of the network on the 18834 train images: 95.714
+[2023-06-30 18:03:23,595] - [root] - [INFO] - F1 score of the network on the 18834 train images: 9190.456
+[2023-06-30 18:03:34,011] - [root] - [INFO] - Loss of the network on the 1177 val images: 8.391461
+[2023-06-30 18:03:34,011] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 82.158%
+[2023-06-30 18:03:34,011] - [root] - [INFO] - Precision of the network on the 1177 val images: 75.498%
+[2023-06-30 18:03:34,012] - [root] - [INFO] - Recall of the network on the 1177 val images: 99.845%
+[2023-06-30 18:03:34,012] - [root] - [INFO] - F1 of the network on the 1177 val images: 8598.131%
+[2023-06-30 18:03:43,982] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.0037539876000353273	Loss: 0.236070	Time Usage:3m 55s
+[2023-06-30 18:03:51,790] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.0037539876000353273	Loss: 0.074059	Time Usage:4m 3s
+[2023-06-30 18:03:59,627] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.0037539876000353273	Loss: 0.350768	Time Usage:4m 11s
+[2023-06-30 18:04:07,470] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.0037539876000353273	Loss: 0.210074	Time Usage:4m 19s
+[2023-06-30 18:04:15,320] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.0037539876000353273	Loss: 0.045824	Time Usage:4m 27s
+[2023-06-30 18:04:23,167] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.0037539876000353273	Loss: 0.054603	Time Usage:4m 35s
+[2023-06-30 18:04:31,025] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.0037539876000353273	Loss: 0.121455	Time Usage:4m 43s
+[2023-06-30 18:04:38,872] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.0037539876000353273	Loss: 0.136208	Time Usage:4m 50s
+[2023-06-30 18:04:46,729] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.0037539876000353273	Loss: 0.160539	Time Usage:4m 58s
+[2023-06-30 18:04:54,587] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.0037539876000353273	Loss: 0.090387	Time Usage:5m 6s
+[2023-06-30 18:05:02,469] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.0037539876000353273	Loss: 0.138643	Time Usage:5m 14s
+[2023-06-30 18:05:10,331] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.0037539876000353273	Loss: 0.136341	Time Usage:5m 22s
+[2023-06-30 18:05:16,207] - [root] - [INFO] - Loss of the network on the 18834 train images: 72.405760
+[2023-06-30 18:05:16,207] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 93.427%
+[2023-06-30 18:05:16,207] - [root] - [INFO] - Precision of the network on the 18834 train images: 91.608
+[2023-06-30 18:05:16,207] - [root] - [INFO] - Recall of the network on the 18834 train images: 96.778
+[2023-06-30 18:05:16,207] - [root] - [INFO] - F1 score of the network on the 18834 train images: 9412.212
+[2023-06-30 18:05:26,504] - [root] - [INFO] - Loss of the network on the 1177 val images: 3.898635
+[2023-06-30 18:05:26,504] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 95.157%
+[2023-06-30 18:05:26,504] - [root] - [INFO] - Precision of the network on the 1177 val images: 95.092%
+[2023-06-30 18:05:26,504] - [root] - [INFO] - Recall of the network on the 1177 val images: 96.124%
+[2023-06-30 18:05:26,504] - [root] - [INFO] - F1 of the network on the 1177 val images: 9560.524%
+[2023-06-30 18:05:28,350] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep003
+[2023-06-30 18:05:28,350] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:05:28,350] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 40s secs
+[2023-06-30 18:05:28,351] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:05:37,925] - [root] - [INFO] - Loss of the network on the 1177 val images: 3.898635
+[2023-06-30 18:05:37,926] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 95.157%
+[2023-06-30 18:05:38,832] - [root] - [INFO] - USING GPU
+[2023-06-30 18:05:38,834] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:05:38,835] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 18:05:48,538] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.725682	Time Usage:0m 9s
+[2023-06-30 18:05:56,335] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.730532	Time Usage:0m 17s
+[2023-06-30 18:06:04,144] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.668141	Time Usage:0m 25s
+[2023-06-30 18:06:11,975] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.499314	Time Usage:0m 33s
+[2023-06-30 18:06:19,838] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.494473	Time Usage:0m 40s
+[2023-06-30 18:06:27,687] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.505437	Time Usage:0m 48s
+[2023-06-30 18:06:35,542] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.536225	Time Usage:0m 56s
+[2023-06-30 18:06:43,403] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.486694	Time Usage:1m 4s
+[2023-06-30 18:06:51,266] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.485629	Time Usage:1m 12s
+[2023-06-30 18:06:59,128] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.442308	Time Usage:1m 20s
+[2023-06-30 18:07:07,003] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.417782	Time Usage:1m 28s
+[2023-06-30 18:07:14,871] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.479694	Time Usage:1m 35s
+[2023-06-30 18:07:20,730] - [root] - [INFO] - Loss of the network on the 18834 train images: 320.572694
+[2023-06-30 18:07:20,731] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 60.231%
+[2023-06-30 18:07:20,731] - [root] - [INFO] - Precision of the network on the 18834 train images: 59.466
+[2023-06-30 18:07:20,731] - [root] - [INFO] - Recall of the network on the 18834 train images: 84.398
+[2023-06-30 18:07:20,731] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6977.157
+[2023-06-30 18:07:30,873] - [root] - [INFO] - Loss of the network on the 1177 val images: 15.976127
+[2023-06-30 18:07:30,873] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 58.709%
+[2023-06-30 18:07:30,873] - [root] - [INFO] - Precision of the network on the 1177 val images: 57.092%
+[2023-06-30 18:07:30,873] - [root] - [INFO] - Recall of the network on the 1177 val images: 99.225%
+[2023-06-30 18:07:30,873] - [root] - [INFO] - F1 of the network on the 1177 val images: 7248.018%
+[2023-06-30 18:07:32,576] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 18:07:32,576] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:07:42,498] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.411987	Time Usage:2m 3s
+[2023-06-30 18:07:50,305] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.371892	Time Usage:2m 11s
+[2023-06-30 18:07:58,129] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.492390	Time Usage:2m 19s
+[2023-06-30 18:08:05,979] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.428322	Time Usage:2m 27s
+[2023-06-30 18:08:13,834] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.326793	Time Usage:2m 34s
+[2023-06-30 18:08:21,693] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.378979	Time Usage:2m 42s
+[2023-06-30 18:08:29,554] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.401575	Time Usage:2m 50s
+[2023-06-30 18:08:37,416] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.364645	Time Usage:2m 58s
+[2023-06-30 18:08:45,283] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.387443	Time Usage:3m 6s
+[2023-06-30 18:08:53,151] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.372759	Time Usage:3m 14s
+[2023-06-30 18:09:01,024] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.472889	Time Usage:3m 22s
+[2023-06-30 18:09:08,899] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.447167	Time Usage:3m 29s
+[2023-06-30 18:09:14,757] - [root] - [INFO] - Loss of the network on the 18834 train images: 241.360817
+[2023-06-30 18:09:14,758] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 64.925%
+[2023-06-30 18:09:14,758] - [root] - [INFO] - Precision of the network on the 18834 train images: 61.201
+[2023-06-30 18:09:14,758] - [root] - [INFO] - Recall of the network on the 18834 train images: 96.983
+[2023-06-30 18:09:14,758] - [root] - [INFO] - F1 score of the network on the 18834 train images: 7504.533
+[2023-06-30 18:09:25,025] - [root] - [INFO] - Loss of the network on the 1177 val images: 13.582884
+[2023-06-30 18:09:25,025] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 68.649%
+[2023-06-30 18:09:25,025] - [root] - [INFO] - Precision of the network on the 1177 val images: 64.227%
+[2023-06-30 18:09:25,025] - [root] - [INFO] - Recall of the network on the 1177 val images: 96.589%
+[2023-06-30 18:09:25,026] - [root] - [INFO] - F1 of the network on the 1177 val images: 7715.170%
+[2023-06-30 18:09:26,841] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep002
+[2023-06-30 18:09:26,841] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:09:36,660] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.439720	Time Usage:3m 57s
+[2023-06-30 18:09:44,467] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.372823	Time Usage:4m 5s
+[2023-06-30 18:09:52,297] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.422049	Time Usage:4m 13s
+[2023-06-30 18:10:00,166] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.271701	Time Usage:4m 21s
+[2023-06-30 18:10:08,012] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.413822	Time Usage:4m 29s
+[2023-06-30 18:10:15,865] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.379544	Time Usage:4m 36s
+[2023-06-30 18:10:23,718] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.264620	Time Usage:4m 44s
+[2023-06-30 18:10:31,586] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.414604	Time Usage:4m 52s
+[2023-06-30 18:10:39,449] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.325012	Time Usage:5m 0s
+[2023-06-30 18:10:47,323] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.304906	Time Usage:5m 8s
+[2023-06-30 18:10:55,196] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.278794	Time Usage:5m 16s
+[2023-06-30 18:11:03,071] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 9.873633150810391e-05	Loss: 0.352981	Time Usage:5m 24s
+[2023-06-30 18:11:08,927] - [root] - [INFO] - Loss of the network on the 18834 train images: 211.005647
+[2023-06-30 18:11:08,927] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 71.074%
+[2023-06-30 18:11:08,927] - [root] - [INFO] - Precision of the network on the 18834 train images: 66.216
+[2023-06-30 18:11:08,927] - [root] - [INFO] - Recall of the network on the 18834 train images: 95.567
+[2023-06-30 18:11:08,928] - [root] - [INFO] - F1 score of the network on the 18834 train images: 7822.890
+[2023-06-30 18:11:19,186] - [root] - [INFO] - Loss of the network on the 1177 val images: 12.139024
+[2023-06-30 18:11:19,186] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 74.427%
+[2023-06-30 18:11:19,187] - [root] - [INFO] - Precision of the network on the 1177 val images: 69.196%
+[2023-06-30 18:11:19,187] - [root] - [INFO] - Recall of the network on the 1177 val images: 96.124%
+[2023-06-30 18:11:19,187] - [root] - [INFO] - F1 of the network on the 1177 val images: 8046.723%
+[2023-06-30 18:11:21,027] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep003
+[2023-06-30 18:11:21,027] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:11:21,709] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 42s secs
+[2023-06-30 18:11:21,710] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:11:31,382] - [root] - [INFO] - Loss of the network on the 1177 val images: 12.139024
+[2023-06-30 18:11:31,382] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 74.427%
+[2023-06-30 18:11:32,251] - [root] - [INFO] - USING GPU
+[2023-06-30 18:11:32,252] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:11:32,253] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 18:11:42,255] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.00116566234562835	Loss: 0.638448	Time Usage:0m 9s
+[2023-06-30 18:11:49,803] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.00116566234562835	Loss: 0.482091	Time Usage:0m 17s
+[2023-06-30 18:11:57,373] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.00116566234562835	Loss: 0.578791	Time Usage:0m 25s
+[2023-06-30 18:12:04,964] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.00116566234562835	Loss: 0.469100	Time Usage:0m 32s
+[2023-06-30 18:12:12,570] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.00116566234562835	Loss: 0.431581	Time Usage:0m 40s
+[2023-06-30 18:12:20,180] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.00116566234562835	Loss: 0.367194	Time Usage:0m 47s
+[2023-06-30 18:12:27,796] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.00116566234562835	Loss: 0.450687	Time Usage:0m 55s
+[2023-06-30 18:12:35,405] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.00116566234562835	Loss: 0.427622	Time Usage:1m 3s
+[2023-06-30 18:12:43,018] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.00116566234562835	Loss: 0.290764	Time Usage:1m 10s
+[2023-06-30 18:12:50,637] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.00116566234562835	Loss: 0.437108	Time Usage:1m 18s
+[2023-06-30 18:12:58,243] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.00116566234562835	Loss: 0.377146	Time Usage:1m 25s
+[2023-06-30 18:13:05,858] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.00116566234562835	Loss: 0.434802	Time Usage:1m 33s
+[2023-06-30 18:13:11,535] - [root] - [INFO] - Loss of the network on the 18834 train images: 266.194168
+[2023-06-30 18:13:11,535] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 56.308%
+[2023-06-30 18:13:11,535] - [root] - [INFO] - Precision of the network on the 18834 train images: 55.541
+[2023-06-30 18:13:11,535] - [root] - [INFO] - Recall of the network on the 18834 train images: 98.496
+[2023-06-30 18:13:11,535] - [root] - [INFO] - F1 score of the network on the 18834 train images: 7102.975
+[2023-06-30 18:13:21,749] - [root] - [INFO] - Loss of the network on the 1177 val images: 13.683687
+[2023-06-30 18:13:21,749] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 67.630%
+[2023-06-30 18:13:21,749] - [root] - [INFO] - Precision of the network on the 1177 val images: 63.360%
+[2023-06-30 18:13:21,749] - [root] - [INFO] - Recall of the network on the 1177 val images: 97.054%
+[2023-06-30 18:13:21,751] - [root] - [INFO] - F1 of the network on the 1177 val images: 7666.871%
+[2023-06-30 18:13:23,429] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 18:13:23,429] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:13:33,199] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.00116566234562835	Loss: 0.380155	Time Usage:2m 0s
+[2023-06-30 18:13:40,761] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.00116566234562835	Loss: 0.278456	Time Usage:2m 8s
+[2023-06-30 18:13:48,332] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.00116566234562835	Loss: 0.386398	Time Usage:2m 15s
+[2023-06-30 18:13:55,924] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.00116566234562835	Loss: 0.474835	Time Usage:2m 23s
+[2023-06-30 18:14:03,519] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.00116566234562835	Loss: 0.422007	Time Usage:2m 31s
+[2023-06-30 18:14:11,114] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.00116566234562835	Loss: 0.465757	Time Usage:2m 38s
+[2023-06-30 18:14:18,711] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.00116566234562835	Loss: 0.337052	Time Usage:2m 46s
+[2023-06-30 18:14:26,323] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.00116566234562835	Loss: 0.337471	Time Usage:2m 53s
+[2023-06-30 18:14:33,925] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.00116566234562835	Loss: 0.396222	Time Usage:3m 1s
+[2023-06-30 18:14:41,531] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.00116566234562835	Loss: 0.386850	Time Usage:3m 9s
+[2023-06-30 18:14:49,131] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.00116566234562835	Loss: 0.427946	Time Usage:3m 16s
+[2023-06-30 18:14:56,739] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.00116566234562835	Loss: 0.228925	Time Usage:3m 24s
+[2023-06-30 18:15:02,401] - [root] - [INFO] - Loss of the network on the 18834 train images: 225.690427
+[2023-06-30 18:15:02,401] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 67.782%
+[2023-06-30 18:15:02,402] - [root] - [INFO] - Precision of the network on the 18834 train images: 63.587
+[2023-06-30 18:15:02,402] - [root] - [INFO] - Recall of the network on the 18834 train images: 95.362
+[2023-06-30 18:15:02,402] - [root] - [INFO] - F1 score of the network on the 18834 train images: 7629.873
+[2023-06-30 18:15:12,936] - [root] - [INFO] - Loss of the network on the 1177 val images: 13.635311
+[2023-06-30 18:15:12,936] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 73.237%
+[2023-06-30 18:15:12,937] - [root] - [INFO] - Precision of the network on the 1177 val images: 68.498%
+[2023-06-30 18:15:12,937] - [root] - [INFO] - Recall of the network on the 1177 val images: 94.729%
+[2023-06-30 18:15:12,937] - [root] - [INFO] - F1 of the network on the 1177 val images: 7950.553%
+[2023-06-30 18:15:14,809] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep002
+[2023-06-30 18:15:14,810] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:15:24,953] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.00116566234562835	Loss: 0.431308	Time Usage:3m 52s
+[2023-06-30 18:15:32,502] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.00116566234562835	Loss: 0.301855	Time Usage:4m 0s
+[2023-06-30 18:15:40,047] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.00116566234562835	Loss: 0.318314	Time Usage:4m 7s
+[2023-06-30 18:15:47,620] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.00116566234562835	Loss: 0.379923	Time Usage:4m 15s
+[2023-06-30 18:15:55,188] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.00116566234562835	Loss: 0.317410	Time Usage:4m 22s
+[2023-06-30 18:16:02,768] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.00116566234562835	Loss: 0.412959	Time Usage:4m 30s
+[2023-06-30 18:16:10,351] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.00116566234562835	Loss: 0.329317	Time Usage:4m 37s
+[2023-06-30 18:16:17,935] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.00116566234562835	Loss: 0.341152	Time Usage:4m 45s
+[2023-06-30 18:16:25,521] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.00116566234562835	Loss: 0.326780	Time Usage:4m 53s
+[2023-06-30 18:16:33,110] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.00116566234562835	Loss: 0.264566	Time Usage:5m 0s
+[2023-06-30 18:16:40,700] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.00116566234562835	Loss: 0.471353	Time Usage:5m 8s
+[2023-06-30 18:16:48,288] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.00116566234562835	Loss: 0.438648	Time Usage:5m 15s
+[2023-06-30 18:16:53,937] - [root] - [INFO] - Loss of the network on the 18834 train images: 220.035602
+[2023-06-30 18:16:53,937] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 71.573%
+[2023-06-30 18:16:53,937] - [root] - [INFO] - Precision of the network on the 18834 train images: 67.036
+[2023-06-30 18:16:53,937] - [root] - [INFO] - Recall of the network on the 18834 train images: 93.898
+[2023-06-30 18:16:53,938] - [root] - [INFO] - F1 score of the network on the 18834 train images: 7822.515
+[2023-06-30 18:17:04,314] - [root] - [INFO] - Loss of the network on the 1177 val images: 13.522630
+[2023-06-30 18:17:04,315] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 80.799%
+[2023-06-30 18:17:04,315] - [root] - [INFO] - Precision of the network on the 1177 val images: 77.386%
+[2023-06-30 18:17:04,315] - [root] - [INFO] - Recall of the network on the 1177 val images: 91.783%
+[2023-06-30 18:17:04,315] - [root] - [INFO] - F1 of the network on the 1177 val images: 8397.163%
+[2023-06-30 18:17:06,132] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep003
+[2023-06-30 18:17:06,132] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:17:06,841] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 34s secs
+[2023-06-30 18:17:06,841] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:17:16,520] - [root] - [INFO] - Loss of the network on the 1177 val images: 13.522630
+[2023-06-30 18:17:16,521] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 80.799%
+[2023-06-30 18:17:17,478] - [root] - [INFO] - USING GPU
+[2023-06-30 18:17:17,478] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:17:17,479] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 18:17:27,337] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.00406957944371363	Loss: 0.647010	Time Usage:0m 9s
+[2023-06-30 18:17:34,839] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.00406957944371363	Loss: 3.680245	Time Usage:0m 17s
+[2023-06-30 18:17:42,338] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.00406957944371363	Loss: 0.615824	Time Usage:0m 24s
+[2023-06-30 18:17:49,835] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.00406957944371363	Loss: 0.598919	Time Usage:0m 32s
+[2023-06-30 18:17:57,331] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.00406957944371363	Loss: 0.453911	Time Usage:0m 39s
+[2023-06-30 18:18:04,854] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.00406957944371363	Loss: 0.465654	Time Usage:0m 47s
+[2023-06-30 18:18:12,377] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.00406957944371363	Loss: 0.516801	Time Usage:0m 54s
+[2023-06-30 18:18:19,900] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.00406957944371363	Loss: 0.645209	Time Usage:1m 2s
+[2023-06-30 18:18:27,425] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.00406957944371363	Loss: 0.520750	Time Usage:1m 9s
+[2023-06-30 18:18:34,949] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.00406957944371363	Loss: 0.617496	Time Usage:1m 17s
+[2023-06-30 18:18:42,479] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.00406957944371363	Loss: 0.562481	Time Usage:1m 24s
+[2023-06-30 18:18:50,012] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.00406957944371363	Loss: 0.608339	Time Usage:1m 32s
+[2023-06-30 18:18:55,622] - [root] - [INFO] - Loss of the network on the 18834 train images: 41969.414208
+[2023-06-30 18:18:55,622] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 53.749%
+[2023-06-30 18:18:55,622] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.338
+[2023-06-30 18:18:55,622] - [root] - [INFO] - Recall of the network on the 18834 train images: 93.624
+[2023-06-30 18:18:55,622] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6876.546
+[2023-06-30 18:19:06,037] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.676553
+[2023-06-30 18:19:06,038] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 18:19:06,038] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 18:19:06,038] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 18:19:06,038] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 18:19:07,812] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 18:19:07,812] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:19:17,708] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.00406957944371363	Loss: 0.467036	Time Usage:2m 0s
+[2023-06-30 18:19:25,194] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.00406957944371363	Loss: 0.466950	Time Usage:2m 7s
+[2023-06-30 18:19:32,692] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.00406957944371363	Loss: 0.410912	Time Usage:2m 15s
+[2023-06-30 18:19:40,187] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.00406957944371363	Loss: 0.682295	Time Usage:2m 22s
+[2023-06-30 18:19:47,711] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.00406957944371363	Loss: 1.026829	Time Usage:2m 30s
+[2023-06-30 18:19:55,238] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.00406957944371363	Loss: 0.541716	Time Usage:2m 37s
+[2023-06-30 18:20:02,785] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.00406957944371363	Loss: 0.511259	Time Usage:2m 45s
+[2023-06-30 18:20:10,344] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.00406957944371363	Loss: 2.188651	Time Usage:2m 52s
+[2023-06-30 18:20:17,878] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.00406957944371363	Loss: 0.495714	Time Usage:3m 0s
+[2023-06-30 18:20:25,413] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.00406957944371363	Loss: 250.020493	Time Usage:3m 7s
+[2023-06-30 18:20:32,936] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.00406957944371363	Loss: 0.394048	Time Usage:3m 15s
+[2023-06-30 18:20:40,467] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.00406957944371363	Loss: 0.510111	Time Usage:3m 22s
+[2023-06-30 18:20:46,075] - [root] - [INFO] - Loss of the network on the 18834 train images: 86418.763681
+[2023-06-30 18:20:46,075] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 53.865%
+[2023-06-30 18:20:46,075] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.365
+[2023-06-30 18:20:46,075] - [root] - [INFO] - Recall of the network on the 18834 train images: 94.435
+[2023-06-30 18:20:46,076] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6900.439
+[2023-06-30 18:20:59,238] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.705064
+[2023-06-30 18:20:59,240] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 18:20:59,240] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 18:20:59,240] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 18:20:59,240] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 18:21:09,479] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.00406957944371363	Loss: 0.518673	Time Usage:3m 51s
+[2023-06-30 18:21:16,984] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.00406957944371363	Loss: 0.476597	Time Usage:3m 59s
+[2023-06-30 18:21:24,489] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.00406957944371363	Loss: 0.869611	Time Usage:4m 6s
+[2023-06-30 18:21:31,986] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.00406957944371363	Loss: 5.277376	Time Usage:4m 14s
+[2023-06-30 18:21:39,504] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.00406957944371363	Loss: 3.331144	Time Usage:4m 21s
+[2023-06-30 18:21:47,021] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.00406957944371363	Loss: 1.201128	Time Usage:4m 29s
+[2023-06-30 18:21:54,539] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.00406957944371363	Loss: 77516568.000000	Time Usage:4m 36s
+[2023-06-30 18:22:02,068] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.00406957944371363	Loss: 6.204956	Time Usage:4m 44s
+[2023-06-30 18:22:09,595] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.00406957944371363	Loss: 1.017068	Time Usage:4m 52s
+[2023-06-30 18:22:17,129] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.00406957944371363	Loss: 0.720974	Time Usage:4m 59s
+[2023-06-30 18:22:24,669] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.00406957944371363	Loss: 4.283771	Time Usage:5m 7s
+[2023-06-30 18:22:32,202] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.00406957944371363	Loss: 1.295901	Time Usage:5m 14s
+[2023-06-30 18:22:37,812] - [root] - [INFO] - Loss of the network on the 18834 train images: 2119319554.640742
+[2023-06-30 18:22:37,813] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 52.841%
+[2023-06-30 18:22:37,813] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.435
+[2023-06-30 18:22:37,813] - [root] - [INFO] - Recall of the network on the 18834 train images: 81.488
+[2023-06-30 18:22:37,813] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6526.941
+[2023-06-30 18:22:48,181] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.677538
+[2023-06-30 18:22:48,181] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 18:22:48,181] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 18:22:48,181] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 18:22:48,181] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 18:22:48,969] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 31s secs
+[2023-06-30 18:22:48,969] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:22:58,610] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.677538
+[2023-06-30 18:22:58,611] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 18:22:59,504] - [root] - [INFO] - USING GPU
+[2023-06-30 18:22:59,505] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:22:59,505] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 18:23:09,419] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.005583943537207527	Loss: 0.522109	Time Usage:0m 9s
+[2023-06-30 18:23:16,926] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.005583943537207527	Loss: 2.272282	Time Usage:0m 17s
+[2023-06-30 18:23:24,424] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.005583943537207527	Loss: 12.377218	Time Usage:0m 24s
+[2023-06-30 18:23:31,929] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.005583943537207527	Loss: 0.436966	Time Usage:0m 32s
+[2023-06-30 18:23:39,488] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.005583943537207527	Loss: 0.472161	Time Usage:0m 39s
+[2023-06-30 18:23:47,220] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.005583943537207527	Loss: 0.505097	Time Usage:0m 47s
+[2023-06-30 18:23:54,950] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.005583943537207527	Loss: 0.450805	Time Usage:0m 55s
+[2023-06-30 18:24:02,554] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.005583943537207527	Loss: 0.522516	Time Usage:1m 2s
+[2023-06-30 18:24:10,118] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.005583943537207527	Loss: 0.391520	Time Usage:1m 10s
+[2023-06-30 18:24:17,739] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.005583943537207527	Loss: 0.531456	Time Usage:1m 18s
+[2023-06-30 18:24:25,368] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.005583943537207527	Loss: 0.582199	Time Usage:1m 25s
+[2023-06-30 18:24:33,147] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.005583943537207527	Loss: 0.563073	Time Usage:1m 33s
+[2023-06-30 18:24:38,770] - [root] - [INFO] - Loss of the network on the 18834 train images: 771205.494094
+[2023-06-30 18:24:38,770] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 54.131%
+[2023-06-30 18:24:38,770] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.399
+[2023-06-30 18:24:38,770] - [root] - [INFO] - Recall of the network on the 18834 train images: 96.778
+[2023-06-30 18:24:38,770] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6964.832
+[2023-06-30 18:24:49,517] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.811727
+[2023-06-30 18:24:49,517] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 18:24:49,517] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 18:24:49,517] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 18:24:49,518] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 18:24:51,401] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 18:24:51,401] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:25:01,794] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.005583943537207527	Loss: 0.477775	Time Usage:2m 2s
+[2023-06-30 18:25:09,499] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.005583943537207527	Loss: 0.539552	Time Usage:2m 9s
+[2023-06-30 18:25:17,251] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.005583943537207527	Loss: 0.616196	Time Usage:2m 17s
+[2023-06-30 18:25:24,754] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.005583943537207527	Loss: 0.490137	Time Usage:2m 25s
+[2023-06-30 18:25:32,598] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.005583943537207527	Loss: 0.493256	Time Usage:2m 32s
+[2023-06-30 18:25:40,111] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.005583943537207527	Loss: 0.472264	Time Usage:2m 40s
+[2023-06-30 18:25:47,639] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.005583943537207527	Loss: 17090.863281	Time Usage:2m 48s
+[2023-06-30 18:25:55,170] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.005583943537207527	Loss: 243545.921875	Time Usage:2m 55s
+[2023-06-30 18:26:02,700] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.005583943537207527	Loss: 443.427521	Time Usage:3m 3s
+[2023-06-30 18:26:10,220] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.005583943537207527	Loss: 351.187317	Time Usage:3m 10s
+[2023-06-30 18:26:17,740] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.005583943537207527	Loss: 0.614919	Time Usage:3m 18s
+[2023-06-30 18:26:25,271] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.005583943537207527	Loss: 26.247013	Time Usage:3m 25s
+[2023-06-30 18:26:30,877] - [root] - [INFO] - Loss of the network on the 18834 train images: 25818752.851236
+[2023-06-30 18:26:30,877] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 53.770%
+[2023-06-30 18:26:30,878] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.448
+[2023-06-30 18:26:30,878] - [root] - [INFO] - Recall of the network on the 18834 train images: 91.730
+[2023-06-30 18:26:30,878] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6833.473
+[2023-06-30 18:26:41,428] - [root] - [INFO] - Loss of the network on the 1177 val images: 19.754299
+[2023-06-30 18:26:41,429] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 18:26:41,429] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 18:26:41,429] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 18:26:41,429] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 18:26:51,367] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.005583943537207527	Loss: 0.495981	Time Usage:3m 51s
+[2023-06-30 18:26:58,858] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.005583943537207527	Loss: 0.536994	Time Usage:3m 59s
+[2023-06-30 18:27:06,343] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.005583943537207527	Loss: 0.592064	Time Usage:4m 6s
+[2023-06-30 18:27:13,843] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.005583943537207527	Loss: 201.390625	Time Usage:4m 14s
+[2023-06-30 18:27:21,341] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.005583943537207527	Loss: 0.594071	Time Usage:4m 21s
+[2023-06-30 18:27:28,853] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.005583943537207527	Loss: 0.481036	Time Usage:4m 29s
+[2023-06-30 18:27:36,370] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.005583943537207527	Loss: 0.489124	Time Usage:4m 36s
+[2023-06-30 18:27:43,901] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.005583943537207527	Loss: 0.490437	Time Usage:4m 44s
+[2023-06-30 18:27:51,429] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.005583943537207527	Loss: 0.440064	Time Usage:4m 51s
+[2023-06-30 18:27:58,949] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.005583943537207527	Loss: 0.473785	Time Usage:4m 59s
+[2023-06-30 18:28:06,483] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.005583943537207527	Loss: 0.565785	Time Usage:5m 6s
+[2023-06-30 18:28:14,008] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.005583943537207527	Loss: 0.470824	Time Usage:5m 14s
+[2023-06-30 18:28:19,618] - [root] - [INFO] - Loss of the network on the 18834 train images: 115543355799.285416
+[2023-06-30 18:28:19,618] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 53.780%
+[2023-06-30 18:28:19,618] - [root] - [INFO] - Precision of the network on the 18834 train images: 54.332
+[2023-06-30 18:28:19,618] - [root] - [INFO] - Recall of the network on the 18834 train images: 94.103
+[2023-06-30 18:28:19,619] - [root] - [INFO] - F1 score of the network on the 18834 train images: 6888.960
+[2023-06-30 18:28:29,878] - [root] - [INFO] - Loss of the network on the 1177 val images: 45.430016
+[2023-06-30 18:28:29,878] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 18:28:29,879] - [root] - [INFO] - Precision of the network on the 1177 val images: 54.800%
+[2023-06-30 18:28:29,879] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 18:28:29,879] - [root] - [INFO] - F1 of the network on the 1177 val images: 7080.132%
+[2023-06-30 18:28:30,649] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 31s secs
+[2023-06-30 18:28:30,649] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:28:40,303] - [root] - [INFO] - Loss of the network on the 1177 val images: 45.430016
+[2023-06-30 18:28:40,304] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 54.800%
+[2023-06-30 18:28:41,201] - [root] - [INFO] - USING GPU
+[2023-06-30 18:28:41,201] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:28:41,202] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 18:28:51,150] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.007603141885393257	Loss: 0.752829	Time Usage:0m 9s
+[2023-06-30 18:28:58,951] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.007603141885393257	Loss: 0.401891	Time Usage:0m 17s
+[2023-06-30 18:29:06,764] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.007603141885393257	Loss: 0.278264	Time Usage:0m 25s
+[2023-06-30 18:29:14,591] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.007603141885393257	Loss: 0.337066	Time Usage:0m 33s
+[2023-06-30 18:29:22,429] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.007603141885393257	Loss: 0.212816	Time Usage:0m 41s
+[2023-06-30 18:29:30,267] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.007603141885393257	Loss: 0.176834	Time Usage:0m 48s
+[2023-06-30 18:29:38,133] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.007603141885393257	Loss: 0.166133	Time Usage:0m 56s
+[2023-06-30 18:29:45,996] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.007603141885393257	Loss: 0.168995	Time Usage:1m 4s
+[2023-06-30 18:29:53,872] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.007603141885393257	Loss: 0.163810	Time Usage:1m 12s
+[2023-06-30 18:30:01,856] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.007603141885393257	Loss: 0.206937	Time Usage:1m 20s
+[2023-06-30 18:30:09,734] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.007603141885393257	Loss: 0.277061	Time Usage:1m 28s
+[2023-06-30 18:30:17,618] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.007603141885393257	Loss: 0.203951	Time Usage:1m 36s
+[2023-06-30 18:30:23,485] - [root] - [INFO] - Loss of the network on the 18834 train images: 145.430692
+[2023-06-30 18:30:23,486] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 83.817%
+[2023-06-30 18:30:23,486] - [root] - [INFO] - Precision of the network on the 18834 train images: 79.772
+[2023-06-30 18:30:23,486] - [root] - [INFO] - Recall of the network on the 18834 train images: 94.103
+[2023-06-30 18:30:23,486] - [root] - [INFO] - F1 score of the network on the 18834 train images: 8634.653
+[2023-06-30 18:30:33,673] - [root] - [INFO] - Loss of the network on the 1177 val images: 15.585388
+[2023-06-30 18:30:33,674] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 66.780%
+[2023-06-30 18:30:33,674] - [root] - [INFO] - Precision of the network on the 1177 val images: 62.259%
+[2023-06-30 18:30:33,674] - [root] - [INFO] - Recall of the network on the 1177 val images: 100.000%
+[2023-06-30 18:30:33,674] - [root] - [INFO] - F1 of the network on the 1177 val images: 7674.004%
+[2023-06-30 18:30:35,394] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 18:30:35,395] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:30:45,306] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.007603141885393257	Loss: 0.635781	Time Usage:2m 3s
+[2023-06-30 18:30:53,156] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.007603141885393257	Loss: 0.097560	Time Usage:2m 11s
+[2023-06-30 18:31:01,047] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.007603141885393257	Loss: 0.070280	Time Usage:2m 19s
+[2023-06-30 18:31:08,912] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.007603141885393257	Loss: 0.249155	Time Usage:2m 27s
+[2023-06-30 18:31:16,793] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.007603141885393257	Loss: 0.087235	Time Usage:2m 35s
+[2023-06-30 18:31:24,674] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.007603141885393257	Loss: 0.172903	Time Usage:2m 43s
+[2023-06-30 18:31:32,571] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.007603141885393257	Loss: 0.151033	Time Usage:2m 51s
+[2023-06-30 18:31:40,475] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.007603141885393257	Loss: 0.302504	Time Usage:2m 59s
+[2023-06-30 18:31:48,381] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.007603141885393257	Loss: 0.188387	Time Usage:3m 7s
+[2023-06-30 18:31:56,291] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.007603141885393257	Loss: 0.068280	Time Usage:3m 14s
+[2023-06-30 18:32:04,195] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.007603141885393257	Loss: 0.443628	Time Usage:3m 22s
+[2023-06-30 18:32:12,115] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.007603141885393257	Loss: 0.279780	Time Usage:3m 30s
+[2023-06-30 18:32:18,007] - [root] - [INFO] - Loss of the network on the 18834 train images: 97.116754
+[2023-06-30 18:32:18,007] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 90.974%
+[2023-06-30 18:32:18,007] - [root] - [INFO] - Precision of the network on the 18834 train images: 88.666
+[2023-06-30 18:32:18,007] - [root] - [INFO] - Recall of the network on the 18834 train images: 95.626
+[2023-06-30 18:32:18,007] - [root] - [INFO] - F1 score of the network on the 18834 train images: 9201.428
+[2023-06-30 18:32:28,257] - [root] - [INFO] - Loss of the network on the 1177 val images: 4.218761
+[2023-06-30 18:32:28,257] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 93.968%
+[2023-06-30 18:32:28,257] - [root] - [INFO] - Precision of the network on the 1177 val images: 92.708%
+[2023-06-30 18:32:28,258] - [root] - [INFO] - Recall of the network on the 1177 val images: 96.589%
+[2023-06-30 18:32:28,258] - [root] - [INFO] - F1 of the network on the 1177 val images: 9460.896%
+[2023-06-30 18:32:30,103] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep002
+[2023-06-30 18:32:30,103] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:32:40,064] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.007603141885393257	Loss: 0.095137	Time Usage:3m 58s
+[2023-06-30 18:32:47,908] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.007603141885393257	Loss: 0.149617	Time Usage:4m 6s
+[2023-06-30 18:32:55,759] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.007603141885393257	Loss: 0.145553	Time Usage:4m 14s
+[2023-06-30 18:33:03,633] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.007603141885393257	Loss: 0.159156	Time Usage:4m 22s
+[2023-06-30 18:33:11,505] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.007603141885393257	Loss: 0.063954	Time Usage:4m 30s
+[2023-06-30 18:33:19,399] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.007603141885393257	Loss: 0.387512	Time Usage:4m 38s
+[2023-06-30 18:33:27,309] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.007603141885393257	Loss: 0.228895	Time Usage:4m 45s
+[2023-06-30 18:33:35,209] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.007603141885393257	Loss: 0.251604	Time Usage:4m 53s
+[2023-06-30 18:33:43,119] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.007603141885393257	Loss: 0.166148	Time Usage:5m 1s
+[2023-06-30 18:33:51,028] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.007603141885393257	Loss: 0.515308	Time Usage:5m 9s
+[2023-06-30 18:33:58,943] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.007603141885393257	Loss: 0.190251	Time Usage:5m 17s
+[2023-06-30 18:34:06,861] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.007603141885393257	Loss: 0.120437	Time Usage:5m 25s
+[2023-06-30 18:34:12,756] - [root] - [INFO] - Loss of the network on the 18834 train images: 90.533454
+[2023-06-30 18:34:12,756] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 91.696%
+[2023-06-30 18:34:12,757] - [root] - [INFO] - Precision of the network on the 18834 train images: 89.676
+[2023-06-30 18:34:12,757] - [root] - [INFO] - Recall of the network on the 18834 train images: 95.753
+[2023-06-30 18:34:12,757] - [root] - [INFO] - F1 score of the network on the 18834 train images: 9261.498
+[2023-06-30 18:34:23,211] - [root] - [INFO] - Loss of the network on the 1177 val images: 4.850189
+[2023-06-30 18:34:23,211] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 94.817%
+[2023-06-30 18:34:23,211] - [root] - [INFO] - Precision of the network on the 1177 val images: 95.625%
+[2023-06-30 18:34:23,211] - [root] - [INFO] - Recall of the network on the 1177 val images: 94.884%
+[2023-06-30 18:34:23,211] - [root] - [INFO] - F1 of the network on the 1177 val images: 9525.292%
+[2023-06-30 18:34:25,012] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep003
+[2023-06-30 18:34:25,013] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:34:25,690] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 44s secs
+[2023-06-30 18:34:25,690] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:34:35,397] - [root] - [INFO] - Loss of the network on the 1177 val images: 4.850189
+[2023-06-30 18:34:35,397] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 94.817%
+[2023-06-30 18:34:36,357] - [root] - [INFO] - USING GPU
+[2023-06-30 18:34:36,358] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:34:36,359] - [root] - [INFO] - weighted tensor([1., 3.], device='cuda:0')
+[2023-06-30 18:34:46,215] - [root] - [INFO] - Train Epoch: 1 [0/18834 (0%)]	Learning Rate: 0.0037716468910997643	Loss: 0.735885	Time Usage:0m 9s
+[2023-06-30 18:34:53,393] - [root] - [INFO] - Train Epoch: 1 [1600/18834 (8%)]	Learning Rate: 0.0037716468910997643	Loss: 0.309772	Time Usage:0m 16s
+[2023-06-30 18:35:00,587] - [root] - [INFO] - Train Epoch: 1 [3200/18834 (17%)]	Learning Rate: 0.0037716468910997643	Loss: 0.576109	Time Usage:0m 24s
+[2023-06-30 18:35:07,792] - [root] - [INFO] - Train Epoch: 1 [4800/18834 (25%)]	Learning Rate: 0.0037716468910997643	Loss: 0.205283	Time Usage:0m 31s
+[2023-06-30 18:35:14,999] - [root] - [INFO] - Train Epoch: 1 [6400/18834 (34%)]	Learning Rate: 0.0037716468910997643	Loss: 0.103581	Time Usage:0m 38s
+[2023-06-30 18:35:22,217] - [root] - [INFO] - Train Epoch: 1 [8000/18834 (42%)]	Learning Rate: 0.0037716468910997643	Loss: 0.338546	Time Usage:0m 45s
+[2023-06-30 18:35:29,443] - [root] - [INFO] - Train Epoch: 1 [9600/18834 (51%)]	Learning Rate: 0.0037716468910997643	Loss: 0.120004	Time Usage:0m 52s
+[2023-06-30 18:35:36,693] - [root] - [INFO] - Train Epoch: 1 [11200/18834 (59%)]	Learning Rate: 0.0037716468910997643	Loss: 0.190682	Time Usage:1m 0s
+[2023-06-30 18:35:43,942] - [root] - [INFO] - Train Epoch: 1 [12800/18834 (68%)]	Learning Rate: 0.0037716468910997643	Loss: 0.111816	Time Usage:1m 7s
+[2023-06-30 18:35:51,197] - [root] - [INFO] - Train Epoch: 1 [14400/18834 (76%)]	Learning Rate: 0.0037716468910997643	Loss: 0.014031	Time Usage:1m 14s
+[2023-06-30 18:35:58,455] - [root] - [INFO] - Train Epoch: 1 [16000/18834 (85%)]	Learning Rate: 0.0037716468910997643	Loss: 0.076741	Time Usage:1m 22s
+[2023-06-30 18:36:05,720] - [root] - [INFO] - Train Epoch: 1 [17600/18834 (93%)]	Learning Rate: 0.0037716468910997643	Loss: 0.063648	Time Usage:1m 29s
+[2023-06-30 18:36:11,123] - [root] - [INFO] - Loss of the network on the 18834 train images: 122.497993
+[2023-06-30 18:36:11,123] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 87.167%
+[2023-06-30 18:36:11,123] - [root] - [INFO] - Precision of the network on the 18834 train images: 83.866
+[2023-06-30 18:36:11,123] - [root] - [INFO] - Recall of the network on the 18834 train images: 94.601
+[2023-06-30 18:36:11,124] - [root] - [INFO] - F1 score of the network on the 18834 train images: 8891.030
+[2023-06-30 18:36:21,452] - [root] - [INFO] - Loss of the network on the 1177 val images: 3.823129
+[2023-06-30 18:36:21,452] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 93.203%
+[2023-06-30 18:36:21,452] - [root] - [INFO] - Precision of the network on the 1177 val images: 89.621%
+[2023-06-30 18:36:21,453] - [root] - [INFO] - Recall of the network on the 1177 val images: 99.070%
+[2023-06-30 18:36:21,453] - [root] - [INFO] - F1 of the network on the 1177 val images: 9410.898%
+[2023-06-30 18:36:22,617] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep001
+[2023-06-30 18:36:22,618] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:36:32,566] - [root] - [INFO] - Train Epoch: 2 [0/18834 (0%)]	Learning Rate: 0.0037716468910997643	Loss: 0.116619	Time Usage:1m 56s
+[2023-06-30 18:36:39,765] - [root] - [INFO] - Train Epoch: 2 [1600/18834 (8%)]	Learning Rate: 0.0037716468910997643	Loss: 0.038924	Time Usage:2m 3s
+[2023-06-30 18:36:46,977] - [root] - [INFO] - Train Epoch: 2 [3200/18834 (17%)]	Learning Rate: 0.0037716468910997643	Loss: 0.149522	Time Usage:2m 10s
+[2023-06-30 18:36:54,200] - [root] - [INFO] - Train Epoch: 2 [4800/18834 (25%)]	Learning Rate: 0.0037716468910997643	Loss: 0.074497	Time Usage:2m 17s
+[2023-06-30 18:37:01,424] - [root] - [INFO] - Train Epoch: 2 [6400/18834 (34%)]	Learning Rate: 0.0037716468910997643	Loss: 0.100380	Time Usage:2m 24s
+[2023-06-30 18:37:08,660] - [root] - [INFO] - Train Epoch: 2 [8000/18834 (42%)]	Learning Rate: 0.0037716468910997643	Loss: 0.071815	Time Usage:2m 32s
+[2023-06-30 18:37:15,905] - [root] - [INFO] - Train Epoch: 2 [9600/18834 (51%)]	Learning Rate: 0.0037716468910997643	Loss: 0.061204	Time Usage:2m 39s
+[2023-06-30 18:37:23,168] - [root] - [INFO] - Train Epoch: 2 [11200/18834 (59%)]	Learning Rate: 0.0037716468910997643	Loss: 0.075712	Time Usage:2m 46s
+[2023-06-30 18:37:30,423] - [root] - [INFO] - Train Epoch: 2 [12800/18834 (68%)]	Learning Rate: 0.0037716468910997643	Loss: 0.115199	Time Usage:2m 53s
+[2023-06-30 18:37:37,683] - [root] - [INFO] - Train Epoch: 2 [14400/18834 (76%)]	Learning Rate: 0.0037716468910997643	Loss: 0.030256	Time Usage:3m 1s
+[2023-06-30 18:37:44,984] - [root] - [INFO] - Train Epoch: 2 [16000/18834 (85%)]	Learning Rate: 0.0037716468910997643	Loss: 0.239199	Time Usage:3m 8s
+[2023-06-30 18:37:52,352] - [root] - [INFO] - Train Epoch: 2 [17600/18834 (93%)]	Learning Rate: 0.0037716468910997643	Loss: 0.100903	Time Usage:3m 15s
+[2023-06-30 18:37:57,844] - [root] - [INFO] - Loss of the network on the 18834 train images: 66.257718
+[2023-06-30 18:37:57,844] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 93.979%
+[2023-06-30 18:37:57,844] - [root] - [INFO] - Precision of the network on the 18834 train images: 92.300
+[2023-06-30 18:37:57,844] - [root] - [INFO] - Recall of the network on the 18834 train images: 97.022
+[2023-06-30 18:37:57,844] - [root] - [INFO] - F1 score of the network on the 18834 train images: 9460.206
+[2023-06-30 18:38:08,133] - [root] - [INFO] - Loss of the network on the 1177 val images: 2.630057
+[2023-06-30 18:38:08,133] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 96.432%
+[2023-06-30 18:38:08,134] - [root] - [INFO] - Precision of the network on the 1177 val images: 95.613%
+[2023-06-30 18:38:08,134] - [root] - [INFO] - Recall of the network on the 1177 val images: 97.984%
+[2023-06-30 18:38:08,134] - [root] - [INFO] - F1 of the network on the 1177 val images: 9678.407%
+[2023-06-30 18:38:09,379] - [root] - [INFO] - SAVED MODEL: C:\Users\Intel User\Desktop\blackbird_scripts\results\models\VGG_Jun30_17-37-32_2023\VGG_model_ep002
+[2023-06-30 18:38:09,379] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:38:19,157] - [root] - [INFO] - Train Epoch: 3 [0/18834 (0%)]	Learning Rate: 0.0037716468910997643	Loss: 0.036234	Time Usage:3m 42s
+[2023-06-30 18:38:26,363] - [root] - [INFO] - Train Epoch: 3 [1600/18834 (8%)]	Learning Rate: 0.0037716468910997643	Loss: 0.018697	Time Usage:3m 49s
+[2023-06-30 18:38:33,568] - [root] - [INFO] - Train Epoch: 3 [3200/18834 (17%)]	Learning Rate: 0.0037716468910997643	Loss: 0.065401	Time Usage:3m 57s
+[2023-06-30 18:38:40,789] - [root] - [INFO] - Train Epoch: 3 [4800/18834 (25%)]	Learning Rate: 0.0037716468910997643	Loss: 0.216269	Time Usage:4m 4s
+[2023-06-30 18:38:48,011] - [root] - [INFO] - Train Epoch: 3 [6400/18834 (34%)]	Learning Rate: 0.0037716468910997643	Loss: 0.097678	Time Usage:4m 11s
+[2023-06-30 18:38:55,241] - [root] - [INFO] - Train Epoch: 3 [8000/18834 (42%)]	Learning Rate: 0.0037716468910997643	Loss: 0.029074	Time Usage:4m 18s
+[2023-06-30 18:39:02,480] - [root] - [INFO] - Train Epoch: 3 [9600/18834 (51%)]	Learning Rate: 0.0037716468910997643	Loss: 0.105214	Time Usage:4m 26s
+[2023-06-30 18:39:09,731] - [root] - [INFO] - Train Epoch: 3 [11200/18834 (59%)]	Learning Rate: 0.0037716468910997643	Loss: 0.115025	Time Usage:4m 33s
+[2023-06-30 18:39:16,977] - [root] - [INFO] - Train Epoch: 3 [12800/18834 (68%)]	Learning Rate: 0.0037716468910997643	Loss: 0.094047	Time Usage:4m 40s
+[2023-06-30 18:39:24,231] - [root] - [INFO] - Train Epoch: 3 [14400/18834 (76%)]	Learning Rate: 0.0037716468910997643	Loss: 0.062103	Time Usage:4m 47s
+[2023-06-30 18:39:31,499] - [root] - [INFO] - Train Epoch: 3 [16000/18834 (85%)]	Learning Rate: 0.0037716468910997643	Loss: 0.086848	Time Usage:4m 55s
+[2023-06-30 18:39:38,758] - [root] - [INFO] - Train Epoch: 3 [17600/18834 (93%)]	Learning Rate: 0.0037716468910997643	Loss: 0.113406	Time Usage:5m 2s
+[2023-06-30 18:39:44,165] - [root] - [INFO] - Loss of the network on the 18834 train images: 50.375613
+[2023-06-30 18:39:44,165] - [root] - [INFO] - Accuracy of the network on the 18834 train images: 95.758%
+[2023-06-30 18:39:44,167] - [root] - [INFO] - Precision of the network on the 18834 train images: 94.580
+[2023-06-30 18:39:44,167] - [root] - [INFO] - Recall of the network on the 18834 train images: 97.803
+[2023-06-30 18:39:44,167] - [root] - [INFO] - F1 score of the network on the 18834 train images: 9616.474
+[2023-06-30 18:39:54,467] - [root] - [INFO] - Loss of the network on the 1177 val images: 2.593399
+[2023-06-30 18:39:54,468] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 95.327%
+[2023-06-30 18:39:54,468] - [root] - [INFO] - Precision of the network on the 1177 val images: 93.255%
+[2023-06-30 18:39:54,468] - [root] - [INFO] - Recall of the network on the 1177 val images: 98.605%
+[2023-06-30 18:39:54,468] - [root] - [INFO] - F1 of the network on the 1177 val images: 9585.531%
+[2023-06-30 18:39:54,990] - [root] - [INFO] - TRAINING FINISHED, TIME USAGE: 5m 18s secs
+[2023-06-30 18:39:54,990] - [root] - [INFO] - --------------------------------------------
+[2023-06-30 18:40:04,699] - [root] - [INFO] - Loss of the network on the 1177 val images: 2.593399
+[2023-06-30 18:40:04,699] - [root] - [INFO] - Accuracy of the network on the 1177 val images: 95.327%
