@@ -21,7 +21,7 @@ def metric(patch_info, heatmap_info, threshold_info, outdim):
     heatmap_info.pop('prob_heatmap2', None)
 
     # Debug
-    print("pixel_sr1 heatmap keys:", list(heatmap_info.keys()))
+    # print("pixel_sr1 heatmap keys:", list(heatmap_info.keys()))
 
     lost_focus_patch = patch_info['lost_focus_patch']
     lost_focus_pixel = lost_focus_patch * IMG_HEIGHT * IMG_WIDTH
