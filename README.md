@@ -54,9 +54,90 @@ Once that's working, you can customize the argparse arguments in the [leaf_corre
 ## Testing
 *Coming soon...*
 
-# Image data
+## Image data
 1 cm leaf disks were excised using ethanol disinfested leather punches and subsequently arrayed adaxial side onto up on 1% water agar plates. Image acquisition was performed using the Blackbird CNC Imaging Robot (version 1 "Blackbird-Green", developed by Cornell University, USDA-ARS Grape Genetics Research Unit, and Moblanc Robotics).  The Blackbird is a G-code driven CNC that positions a Nikon Z 7II mirrorless camera equipped with a 2.5x zoom ultra-macro lens (Venus Optics Laowa 25mm) in the X/Y position and then the camera captures images in a z-stack every 200 µM in Z-height.  Blackbird datasheets can be prepared using the [generateBlackbirdDatasheet.py](code/common/generateBlackbirdDatasheet.py) script. The image stacking process is automated using the [stackPhotosParallel.py](code/common/stackPhotosParallel.py) Python script. [Helicon Focus software](https://www.heliconsoft.com/software-downloads/) (Helicon Software, version 8.1) was utilized to perform the focus stacking, with the parameters set to method B (depth map radius: 1, smoothing radius: 4, and sharpness: 2). <br><br>Example images can be viewed [here](https://app.box.com/folder/221778779975?s=cfuosvlzzldi53pbjocjmbnf2ymhrkwa).
 ![blackbird robot](manuscript_figures/fig_1.png)
+
+## High-level structure of repository
+
+```
+miteVision2/
+├── code
+│   ├── analysis
+│   ├── classification
+│   ├── segmentation
+│   ├── visualization
+│   ├── metric
+│   ├── common
+│   ├── script
+│   │   ├── inference.sh
+│   │   ├── inference_seg.sh
+│   │   ├── leaf_correlation_all.sh
+│   │   ├── plot_leaf_correlation_all.sh
+│   │   ├── plot_sal_map_leaf.sh
+│   │   ├── plot_sal_map_patch.sh
+│   │   ├── train.sh
+│   │   └── train_seg.sh
+│   ├── figures
+│   ├── sanity_check
+│   ├── analyzer_config.py
+│   ├── utils.py
+│   ├── environment.yml
+│   ├── README.md
+│   ├── leaf_correlation_mw.py
+│   ├── plot_sal_map_leaf.py
+│   ├── plot_sal_map_leaf_fixed_optimized_th.py
+│   ├── plot_sal_map_patch.py
+│   └── plot_sal_map_patch_seg_iou.py
+│
+├── data
+│   ├── patches_for_class_visualization
+│   ├── human_disk_assessments/  # need to download from zenodo
+│   │   ├── 1-22-2026
+│   │   │   ├── 5dpi
+│   │   │   └── 10dpi
+│   └── 6-28-2023_10dpi/1
+│
+├── results
+│   ├── models/ResNet_Jan26_23-15-35_2026 # need to download from zenodo 
+│   ├── logs
+│   │   ├── asabe_journal
+│   │   ├── cls_cv
+│   │   ├── seg
+│   │   └── grid_logs
+│   ├── runs
+│   │   ├── asabe_journal
+│   │   ├── cls_cv
+│   │   └── seg
+│   ├── segmentation
+│   │   ├── 6-28-2023_10dpi-1
+│   │   ├── human_disk_assessments
+│   │   └── time_series
+│   └── journal
+│       └── inference_results
+│
+├── r
+│   ├── figures
+│   │   ├── agreement_plots
+│   │   ├── correlation_plots
+│   │   ├── training_curves
+│   │   └── validation_figures
+│   ├── cv_training_plots.Rmd
+│   ├── model_concordance_with_humans.Rmd
+│   └── gh_v_cv_models_mapping_population_streamlined.Rmd
+│
+├── spreadsheets
+    ├── human_patch_ratings
+        ├── *_response.csv
+        └── human_vs_blackbird_patches.xlsx
+    ├── 2023 Multiparent PM Phenotyping project Datasheet.xlsx
+    ├── best_model_training_stats_jan_26_26_ep_44.csv
+    ├── segmentation_results.csv
+    ├── human_vs_bb_models_disase_severity.csv
+    ├── human_vs_bb_models_disase_severity.csv
+    └── mapping_population_Jan26_26_ResNet_model_data_*.xlsx
+```
+
 
 
 
