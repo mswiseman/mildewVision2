@@ -196,11 +196,11 @@ def compute_head_sr_and_union(
         inter = inf_mask & spor_mask
 
         # Debug
-        if k == sal_method_keys[0]:
-            print("valid_pixels", valid_pixels,
-                  "inf_on", int(inf_mask[valid_mask].sum()),
-                  "spor_on", int(spor_mask[valid_mask].sum()),
-                  "inter_on", int(inter[valid_mask].sum()))
+        # if k == sal_method_keys[0]:
+        #     print("valid_pixels", valid_pixels,
+        #           "inf_on", int(inf_mask[valid_mask].sum()),
+        #           "spor_on", int(spor_mask[valid_mask].sum()),
+        #           "inter_on", int(inter[valid_mask].sum()))
 
         if valid_pixels > 0:
             inf_sr = float(inf_mask[valid_mask].mean() * 100.0)
