@@ -1,0 +1,1 @@
+This directory contains std out logs for classification training (cls), segmentation training (seg), grid search optimization (grid_logs), inference, and a google colab notebook with the baseline architecture exploration. 
