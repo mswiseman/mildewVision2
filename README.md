@@ -4,7 +4,6 @@ The Blackbird is a highthroughput phenomics imaging platform developed through c
 
 This codebase is a continual work-in-progress as I'm always trying to improve our code, documentation, and models; alas, feel free to email me with any questions or clarifications: [wisemami@oregonstate.edu](mailto:wisemami@oregonstate.edu) 
 
-
 # Introduction
 
 The code in this repository primarily uses [PyTorch](https://pytorch.org/get-started/locally/) pretrained models to train and subsequently make inferences on leaf disks with or without powdery mildew. <br>
@@ -15,7 +14,6 @@ Overview of the training and inference process: <br>
 </p>
 
 # Implementation
-
 
 [CUDA](https://developer.nvidia.com/cuda-toolkit) is required for GPU usage; currently it's only available for PCs. Please check your GPU to figure out which version you need. If running on Apple Silicon, [MPS](https://developer.apple.com/metal/pytorch/) is necessary to take advantage of accelerated PyTorch. <br>
 
@@ -56,10 +54,10 @@ Once that's working, you can customize the argparse arguments in the [leaf_corre
 *Coming soon...*
 
 ## Image data
-1 cm leaf disks were excised using ethanol disinfested leather punches and subsequently arrayed adaxial side onto up on 1% water agar plates. Image acquisition was performed using the Blackbird CNC Imaging Robot (version 1 "Blackbird-Green", developed by Cornell University, USDA-ARS Grape Genetics Research Unit, and Moblanc Robotics).  The Blackbird is a G-code driven CNC that positions a Nikon Z 7II mirrorless camera equipped with a 2.5x zoom ultra-macro lens (Venus Optics Laowa 25mm) in the X/Y position and then the camera captures images in a z-stack every 200 µM in Z-height.  Blackbird datasheets can be prepared using the [generateBlackbirdDatasheet.py](code/common/generateBlackbirdDatasheet.py) script. The image stacking process is automated using the [stackPhotosParallel.py](code/common/stackPhotosParallel.py) Python script. [Helicon Focus software](https://www.heliconsoft.com/software-downloads/) (Helicon Software, version 8.1) was utilized to perform the focus stacking, with the parameters set to method B (depth map radius: 1, smoothing radius: 4, and sharpness: 2). <br><br>Example images can be viewed [here](https://app.box.com/folder/221778779975?s=cfuosvlzzldi53pbjocjmbnf2ymhrkwa).
+1 cm leaf disks were excised using ethanol disinfested leather punches and subsequently arrayed adaxial side onto up on 1% water agar plates. Image acquisition was performed using the Blackbird CNC Imaging Robot (version 1 "Blackbird-Green", developed by Cornell University, USDA-ARS Grape Genetics Research Unit, and Moblanc Robotics).  The Blackbird is a G-code driven CNC that positions a Nikon Z 7II mirrorless camera equipped with a 2.5x zoom ultra-macro lens (Venus Optics Laowa 25mm) in the X/Y position and then the camera captures images in a z-stack every 200 µM in Z-height. The image stacking process is automated using the [stackPhotosParallel.py](code/common/stackPhotosParallel.py). [Helicon Focus software](https://www.heliconsoft.com/software-downloads/) (Helicon Software, version 8.1) was utilized to perform the focus stacking, with the parameters set to method B (depth map radius: 1, smoothing radius: 4, and sharpness: 2). <br><br> The test set used for assessing concordance with human raters can be downloaded [here](10.5281/zenodo.19897533).
 ![blackbird robot](manuscript_figures/fig_1.png)
 
-## High-level structure of repository
+## File structure of repository
 
 ```
 miteVision2/
