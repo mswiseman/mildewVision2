@@ -91,7 +91,7 @@ miteVision2/
 │   └── 6-28-2023_10dpi/1
 │
 ├── results
-│   ├── models/ResNet_Jan26_23-15-35_2026 # need to download from zenodo 
+│   ├── models/ResNet_Jan26_23-15-35_2026 # need to download from figshare 
 │   ├── logs
 │   │   ├── asabe_journal
 │   │   ├── cls_cv
@@ -129,7 +129,10 @@ miteVision2/
     ├── human_vs_bb_models_disase_severity.csv
     └── mapping_population_Jan26_26_ResNet_model_data_*.xlsx
 ```
+## Data and model availability
+Pretrained model and train/val/test sets are available [here](https://doi.org/10.6084/m9.figshare.32136550). Human disk assessment dataset can be downloaded [here](https://doi.org/10.5281/zenodo.19897533). 
 
+*Note: these are currenlty under embargo until publication, so contact [wisemami@oregonstate.edu](mailto:wisemami@oregonstate.edu) for early access permission*.
 
 
 
