@@ -39,4 +39,3 @@ time python code/leaf_correlation_mw.py \
     # Hardware
     --cuda \
     --cuda_id 0
-    ```
