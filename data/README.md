@@ -39,3 +39,6 @@ time python code/leaf_correlation_mw.py \
     # Hardware
     --cuda \
     --cuda_id 0
+```
+
+Alternatively, you can replicate our model assessments on the human leaf disk dataset, available for download from [Zenodo](https://doi.org/10.5281/zenodo.19897533). Once the dataset is downloaded and unzipped to `data` and you have loaded the Jan26 model to `results/models`, then you should be able to run `bash code/script/plot_leaf_correlation_all`. 
