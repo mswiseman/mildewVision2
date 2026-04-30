@@ -27,9 +27,9 @@ To train your own model, you need:<br>
 
 1. A labeled image patch dataset to build the necessary train/test/val .hdf5 files
    - you can make image patches using [code/common/makePatches.py](code/common/make_patches.py). It's easiest to sort these patches into different directories according to the label (e.g. if infected, put in the "infected" directory. If not infected, put in the "healthy" directory)
-   - In subsequent models, I would make patches by using the `--save_infected`, `--save_healthy` or `--save_discarded` tags when running [plot_sal_map_leaf.py](code/plot_sal_map_leaf.py), this way I could correct and add previously missclassified patches to my new dataset in hopes the next model iteration would learn the features better. 
+   - In subsequent models, I would make patches by using the `--save_infected`, `--save_healthy` or `--save_discarded` tags when running [code/plot_sal_map_leaf.py](code/plot_sal_map_leaf.py), this way I could correct and add previously missclassified patches to my new dataset in hopes the next model iteration would learn the features better. 
    - you can then make a train/test/val hdf5 files (or k-fold splits) using [code/common/images_to_test_train_hdf5.py](code/common/images_to_test_train_hdf5.py)
-   - alternatively, you can reproduce our training by downloading the train/val/test splits used for our Jan26 model [here](10.5281/zenodo.19897533). 
+   - alternatively, you can reproduce our training by downloading the train/val/test splits used for our Jan26 model [here](10.6084/m9.figshare.32136550).
 
 2. To determine mean rgb chanel values for your test/train/val sets using [code/common/get_mean_std.py](code/common/get_mean_std.py) and plug those into your [code/script/train.sh](code/script/train.sh) script under `--means` and `--stds` (super important...this dramatically effects your model performance). 
 
@@ -39,19 +39,13 @@ To train your own model, you need:<br>
 ## Inference
 Once you have downloaded our example [two-class hop powdery mildew model]() to [results/ResNet_Jan26_23-15-35_2026](results/ResNet_Jan26_23-15-35_2026), you should be able to activate the conda environment (`conda activate mildewVision`) and run either `bash ./code/script/leaf_correlation_all.sh` or `bash ./code/script/plot_sal_map_leaf.sh` as a minimal working example. 
 
-Once that's working, you can customize the argparse arguments in the [leaf_correleation_all.sh](code/script/leaf_correlation_all.sh) bash script to run inference on multiple datasets in parallel (adjust the `MAX_JOBS` parameter according to your computational power).  In the example [here](code/script/leaf_correlation_all.sh), I have included commands for calling either [plot_sal_map_leaf.py](code/plot_sal_map_leaf.py) or  [leaf_correlation_mw.py](code/leaf_correlation_mw.py). Both code/script return the same .csv file that provides metadata about your run parameters, disease severity estimates, saliency metrics, etc., but [plot_sal_map_leaf.py](code/plot_sal_map_leaf.py) also returns visual outputs of patch disease severity as well as saliency maps (if you include the optional saliency tags, see example below). If you are running standard inference you may opt to call the [code/leaf_correlation_mw.py](code/leaf_correlation_mw.py) [script](code/script/leaf_correlation_all.sh) instead as it runs 5-10x faster. 
+Once that's working, you can customize the argparse arguments in the [code/script/leaf_correleation_all.sh](code/script/leaf_correlation_all.sh) bash script to run inference on multiple datasets in parallel (adjust the `MAX_JOBS` parameter according to your computational power).  In the example [here](code/script/leaf_correlation_all.sh), I have included commands for calling either [code/plot_sal_map_leaf.py](code/plot_sal_map_leaf.py) or [code/leaf_correlation_mw.py](code/leaf_correlation_mw.py). Both code/script return the same .csv file that provides metadata about your run parameters, disease severity estimates, saliency metrics, etc., but [code/plot_sal_map_leaf.py](code/plot_sal_map_leaf.py) also returns visual outputs of patch disease severity as well as saliency maps (if you include the optional saliency tags, see example below). If you are running standard inference you may opt to call the [code/leaf_correlation_mw.py](code/leaf_correlation_mw.py) [script](code/script/leaf_correlation_all.sh) instead as it runs 5-10x faster. 
 
 <br>Example raw, patch and saliency maps output of from `plot_sal_map_leaf.py`:
 
 <p align="center">
   <img src="manuscript_figures/fig_6.png" width="600">
 </p>
-
-## Segmentation Training
-*Coming soon...*
-
-## Testing
-*Coming soon...*
 
 ## Image data
 1 cm leaf disks were excised using ethanol disinfested leather punches and subsequently arrayed adaxial side onto up on 1% water agar plates. Image acquisition was performed using the Blackbird CNC Imaging Robot (version 1 "Blackbird-Green", developed by Cornell University, USDA-ARS Grape Genetics Research Unit, and Moblanc Robotics).  The Blackbird is a G-code driven CNC that positions a Nikon Z 7II mirrorless camera equipped with a 2.5x zoom ultra-macro lens (Venus Optics Laowa 25mm) in the X/Y position and then the camera captures images in a z-stack every 200 µM in Z-height. The image stacking process is automated using the [stackPhotosParallel.py](code/common/stackPhotosParallel.py). [Helicon Focus software](https://www.heliconsoft.com/software-downloads/) (Helicon Software, version 8.1) was utilized to perform the focus stacking, with the parameters set to method B (depth map radius: 1, smoothing radius: 4, and sharpness: 2). <br><br> The test set used for assessing concordance with human raters can be downloaded [here](10.5281/zenodo.19897533).
