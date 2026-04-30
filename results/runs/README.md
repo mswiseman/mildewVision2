@@ -1,7 +1,9 @@
-This directory contains tensorboard logs. To visualize:
+This directory contains tensorboard logs. 
+
+To visualize (assuming from mildewVision2 directory):
 
 ```
-tensorboard --logdir results/runs/cls
-tensorboard --logdir results/runs/seg
+python -m tensorboard.main --logdir results/runs/cls
+python -m tensorboard.main --logdir results/runs/seg
 ```
 
