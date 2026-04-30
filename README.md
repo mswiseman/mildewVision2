@@ -94,9 +94,8 @@ miteVision2/
 ├── data
 │   ├── patches_for_class_visualization
 │   ├── human_disk_assessments/  # need to download from zenodo
-│   │   ├── 1-22-2026
-│   │   │   ├── 5dpi
-│   │   │   └── 10dpi
+│   │   ├── 1-22-2026_5dpi/1
+│   │   ├── 1-22-2026_10dpi/1
 │   └── 6-28-2023_10dpi/1
 │
 ├── results
