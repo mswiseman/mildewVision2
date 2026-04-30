@@ -52,15 +52,15 @@ commands=(
         --means 0.5663 0.6596 0.4508 \
         --stds 0.1811 0.1667 0.2434 \
         --timestamp Jan26_23-15-35_2026 \
-        --dpi 10 \
+        --dpi 5 \
         --pretrained \
         --sal_thresh_method fixed \
         --sal_smoothgrad \
         --sal_deeplift \
         --sal_gradcam \
         --dual_head \
-        --img_folder 1-22-2026 \
-        --trays 5dpi"
+        --img_folder 1-22-2026_5dpi \
+        --trays 1"
 
     "time \"$PYTHON\" ../plot_sal_map_leaf_fixed_optimized_th.py \
         --model_type ResNet \
@@ -84,11 +84,10 @@ commands=(
         --sal_deeplift \
         --sal_gradcam \
         --dual_head \
-        --img_folder 1-22-2026 \
-        --trays 10dpi \
-        --store_both_sal_heads"
-
-    "time \"$PYTHON\" ../plot_sal_map_leaf_fixed_optimized_th_draft.py \
+        --img_folder 1-22-2026_10dpi \
+        --trays 1"
+        
+    "time \"$PYTHON\" ../plot_sal_map_leaf_fixed_optimized_th.py \
         --model_type ResNet \
         --model_path ../.. \
         --dataset_path ../../data \
@@ -103,17 +102,16 @@ commands=(
         --means 0.5663 0.6596 0.4508 \
         --stds 0.1811 0.1667 0.2434 \
         --timestamp Jan26_23-15-35_2026 \
-        --dpi 10 \
+        --dpi 5 \
         --pretrained \
         --sal_thresh_method fixed \
         --sal_smoothgrad \
         --sal_deeplift \
         --sal_gradcam \
         --dual_head \
-        --img_folder 1-22-2026 \
-        --trays 5dpi \
-        --store_both_sal_heads"
-
+        --img_folder 1-22-2026_5dpi \
+        --trays 1"
+        
     "time \"$PYTHON\" ../leaf_correlation_mw.py \
         --model_type ResNet \
         --model_path ../.. \
@@ -136,8 +134,8 @@ commands=(
         --sal_deeplift \
         --sal_gradcam \
         --dual_head \
-        --img_folder 1-22-2026 \
-        --trays 10dpi"
+        --img_folder 1-22-2026_10dpi \
+        --trays 1"
 
     "time \"$PYTHON\" ../leaf_correlation_mw.py \
         --model_type ResNet \
@@ -161,8 +159,8 @@ commands=(
         --sal_deeplift \
         --sal_gradcam \
         --dual_head \
-        --img_folder 1-22-2026 \
-        --trays 5dpi"
+        --img_folder 1-22-2026_5dpi \
+        --trays 1"
 )
 
 
