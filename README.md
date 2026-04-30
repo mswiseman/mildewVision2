@@ -20,7 +20,7 @@ Overview of the training and inference process: <br>
 [CUDA](https://developer.nvidia.com/cuda-toolkit) is required for GPU usage; currently it's only available for PCs. Please check your GPU to figure out which version you need. If running on Apple Silicon, [MPS](https://developer.apple.com/metal/pytorch/) is necessary to take advantage of accelerated Pytorch. <br>
 
 **Package Requirements**: <br>
-To install the required packages via conda, simply run `conda env create -f environment.yml` and then `conda activate mildewVision` to activate the environment.   <br><br>If running on **Google Colab**, check out a GPU (preferably A100 or better when training) and run: `!pip install optuna==3.1.0 termcolor` as the other packages should already be installed (as of 11/25/2025).  
+To install the required packages via conda, simply run `conda env create -f code/environment.yml` and then `conda activate mildewVision` to activate the environment.   <br><br>If running on **Google Colab**, check out a GPU (preferably A100 or better when training) and run: `!pip install optuna==3.1.0 termcolor` as the other packages should already be installed (as of 11/25/2025).  
 
 ![overview part 2](manuscript_figures/fig_3.png)
 
@@ -31,6 +31,7 @@ To train your own model, you need:<br>
    - you can make image patches using [code/common/makePatches.py](code/common/make_patches.py). It's easiest to sort these patches into different directories according to the label (e.g. if infected, put in the "infected" directory. If not infected, put in the "healthy" directory)
    - In subsequent models, I would make patches by using the `--save_infected`, `--save_healthy` or `--save_discarded` tags when running [plot_sal_map_leaf.py](code/plot_sal_map_leaf.py), this way I could correct and add previously missclassified patches to my new dataset in hopes the next model iteration would learn the features better. 
    - you can then make a train/test/val hdf5 files (or k-fold splits) using [code/common/images_to_test_train_hdf5.py](code/common/images_to_test_train_hdf5.py)
+   - alternatively, you can reproduce our training by downloading the train/val/test splits used for our Jan26 model [here](10.5281/zenodo.19897533). 
 
 2. To determine mean rgb chanel values for your test/train/val sets using [code/common/get_mean_std.py](code/common/get_mean_std.py) and plug those into your [code/script/train.sh](code/script/train.sh) script under `--means` and `--stds` (super important...this dramatically effects your model performance). 
 
