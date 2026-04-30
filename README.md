@@ -7,7 +7,7 @@ This codebase is a continual work-in-progress as I'm always trying to improve ou
 
 # Introduction
 
-The code in this repository primarily uses [Pytorch](https://pytorch.org/get-started/locally/) pretrained models to train and subsequently make inferences on leaf disks with or without powdery mildew. <br>
+The code in this repository primarily uses [PyTorch](https://pytorch.org/get-started/locally/) pretrained models to train and subsequently make inferences on leaf disks with or without powdery mildew. <br>
 
 Overview of the training and inference process: <br>
 <p align="center">
@@ -17,7 +17,7 @@ Overview of the training and inference process: <br>
 # Implementation
 
 
-[CUDA](https://developer.nvidia.com/cuda-toolkit) is required for GPU usage; currently it's only available for PCs. Please check your GPU to figure out which version you need. If running on Apple Silicon, [MPS](https://developer.apple.com/metal/pytorch/) is necessary to take advantage of accelerated Pytorch. <br>
+[CUDA](https://developer.nvidia.com/cuda-toolkit) is required for GPU usage; currently it's only available for PCs. Please check your GPU to figure out which version you need. If running on Apple Silicon, [MPS](https://developer.apple.com/metal/pytorch/) is necessary to take advantage of accelerated PyTorch. <br>
 
 **Package Requirements**: <br>
 To install the required packages via conda, simply run `conda env create -f code/environment.yml` and then `conda activate mildewVision` to activate the environment.   <br><br>If running on **Google Colab**, check out a GPU (preferably A100 or better when training) and run: `!pip install optuna==3.1.0 termcolor` as the other packages should already be installed (as of 11/25/2025).  
