@@ -1,8 +1,10 @@
 import sys
 import subprocess
 import re
+import threading
 from pathlib import Path
-
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from PySide6.QtCore import QThread, Signal, Qt
 from PySide6.QtWidgets import (
     QApplication,
     QWidget,
@@ -24,6 +26,8 @@ from PySide6.QtWidgets import (
     QMessageBox,
 )
 
+DEFAULT_CORRELATION_SCRIPT = "../leaf_correlation_mw.py"
+DEFAULT_SALIENCY_PLOT_SCRIPT = "../plot_sal_map_leaf.py"
 
 PIPELINE_PRESETS = {
     "powdery": {
@@ -34,7 +38,7 @@ PIPELINE_PRESETS = {
         "down_threshold": 0.3,
         "cuda": True,
         "cuda_id": "0",
-        "outdim": 2,
+        #"outdim": 2,
         "means": [0.5663, 0.6596, 0.4508],
         "stds": [0.1811, 0.1667, 0.2434],
         "timestamp": "Jan26_23-15-35_2026",
@@ -57,18 +61,18 @@ PIPELINE_PRESETS = {
         "down_threshold": 0.2,
         "cuda": True,
         "cuda_id": "0",
-        "outdim": 2,
+        #"outdim": 2,
         "means": [0.5765, 0.6403, 0.4478],
         "stds": [0.1584, 0.1574, 0.1902],
         "timestamp": "Nov26_02-59-03_2024",
         "pretrained": True,
-        "sal_thresh_method": "percentile",
+        "sal_thresh_method": "fixed",
         "dual_head": False,
         "inf_gate": None,
         "spor_th": None,
-        "sal_gradcam": False,
+        "sal_gradcam": True,
         "sal_gradient": False,
-        "sal_smoothgrad": False,
+        "sal_smoothgrad": True,
         "sal_deeplift": False,
         "store_both_sal_heads": False,
     },
@@ -82,10 +86,8 @@ PARAMETER_HELP = {
         "Downy mildew usually uses VGG."
     ),
     "model_path": (
-        "Model root path",
-        "The root folder where the trained model results are stored.\n\n"
-        "The script expects to find checkpoints under:\n"
-        "model_path/results/models/model_name_timestamp/"
+        "Blackbird folder root path",
+        "The root folder where blackbird code, logs, etc. subdirectories live.\n\n"
     ),
     "dataset_path": (
         "Dataset root path",
@@ -124,8 +126,7 @@ PARAMETER_HELP = {
     ),
     "cuda": (
         "Use CUDA",
-        "Run inference on an NVIDIA GPU.\n\n"
-        "Use this on the 309 computer if PyTorch CUDA is available."
+        "Run inference on an CUDA-endabled GPU if available.\n\n"
     ),
     "cuda_id": (
         "CUDA ID",
@@ -196,18 +197,20 @@ PARAMETER_HELP = {
         "If infected probability is less than or equal to this value, the patch is called clear."
     ),
     "inf_gate": (
-        "Infection gate",
+        "Infected-head gate",
         "Minimum infected-head probability required before allowing a sporulation call.\n\n"
-        "This is mainly used for the powdery dual-head model."
+        "This is mainly used for the powdery dual-head model. The goal is to prevent erroneous sporulation calls in "
+        "patches that have very low infected-head signal."
     ),
     "spor_th": (
         "Sporulation threshold",
         "Patch-level sporulation threshold for the powdery dual-head model.\n\n"
-        "If sporulation probability is above this threshold and the infection gate is met, the patch can be called sporulating."
+        "If sporulation probability is above this threshold and the infection gate is met, the patch can be called "
+        "sporulating."
     ),
     "sal_threshold": (
         "Saliency threshold",
-        "Fixed threshold used to convert saliency maps into binary saliency regions.\n\n"
+        "Fixed threshold used to convert saliency maps into binary saliency regions.\n"
         "Used when saliency threshold method is fixed."
     ),
     "sal_thresh_method": (
@@ -243,6 +246,131 @@ PARAMETER_HELP = {
     ),
 }
 
+
+class BatchRunner(QThread):
+    log_signal = Signal(str)
+    finished_signal = Signal()
+
+    def __init__(self, commands, max_parallel=1):
+        super().__init__()
+        self.commands = commands
+        self.max_parallel = max_parallel
+
+        self.should_stop = False
+        self.active_processes = []
+        self.process_lock = threading.Lock()
+
+    def stop(self):
+        """
+        Request all running jobs to stop and terminate active subprocesses.
+        """
+        self.should_stop = True
+        self.log_signal.emit("\nSTOP requested. Terminating active run(s)...\n")
+
+        with self.process_lock:
+            for process in self.active_processes:
+                if process.poll() is None:
+                    try:
+                        process.terminate()
+                    except Exception as e:
+                        self.log_signal.emit(f"Could not terminate process: {e}")
+
+    def run_one_command(self, cmd, job_label):
+        if self.should_stop:
+            self.log_signal.emit(f"\nSkipping {job_label}; stop was requested.\n")
+            return 1
+
+        self.log_signal.emit(f"\n===== Starting {job_label} =====\n")
+        self.log_signal.emit(" ".join(f'"{x}"' if " " in x else x for x in cmd) + "\n")
+
+        process = None
+
+        try:
+            process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1,
+            )
+
+            with self.process_lock:
+                self.active_processes.append(process)
+
+            if process.stdout is not None:
+                for line in process.stdout:
+                    if self.should_stop:
+                        break
+                    self.log_signal.emit(f"[{job_label}] {line.rstrip()}")
+
+            if self.should_stop and process.poll() is None:
+                process.terminate()
+
+            process.wait()
+
+            if self.should_stop:
+                self.log_signal.emit(f"\n===== Stopped {job_label} =====\n")
+            else:
+                self.log_signal.emit(
+                    f"\n===== Finished {job_label} with exit code {process.returncode} =====\n"
+                )
+
+            return process.returncode
+
+        except Exception as e:
+            self.log_signal.emit(f"\n===== ERROR in {job_label}: {e} =====\n")
+            return 1
+
+        finally:
+            if process is not None:
+                with self.process_lock:
+                    if process in self.active_processes:
+                        self.active_processes.remove(process)
+
+    def run(self):
+        total = len(self.commands)
+        self.log_signal.emit(
+            f"Launching {total} job(s) with up to {self.max_parallel} in parallel.\n"
+        )
+
+        with ThreadPoolExecutor(max_workers=self.max_parallel) as executor:
+            futures = []
+
+            for item in self.commands:
+                if self.should_stop:
+                    break
+
+                cmd = item["cmd"]
+                job_label = item["label"]
+
+                futures.append(
+                    executor.submit(self.run_one_command, cmd, job_label)
+                )
+
+            completed = 0
+
+            for future in as_completed(futures):
+                completed += 1
+
+                try:
+                    future.result()
+                except Exception as e:
+                    self.log_signal.emit(f"\nWorker error: {e}\n")
+
+                self.log_signal.emit(
+                    f"\nProgress: {completed}/{total} job(s) complete.\n"
+                )
+
+                if self.should_stop:
+                    break
+
+        if self.should_stop:
+            self.log_signal.emit("\nBatch run stopped by user.\n")
+        else:
+            self.log_signal.emit("\nBatch run completed.\n")
+
+        self.finished_signal.emit()
+
 class PowderyMildewGUI(QWidget):
     def __init__(self):
         super().__init__()
@@ -252,6 +380,31 @@ class PowderyMildewGUI(QWidget):
         main_layout = QVBoxLayout()
 
         # ------------------------------------------------------------
+        # Header / attribution section
+        # ------------------------------------------------------------
+        header_group_box = QGroupBox()
+        header_layout = QVBoxLayout()
+
+        title_label = QLabel("mildewVision2 Inference GUI")
+        title_label.setAlignment(Qt.AlignCenter)
+        title_label.setStyleSheet("font-size: 18px; font-weight: bold;")
+
+        credit_label = QLabel(
+            "GUI made by Michele Wiseman, v1.0 release May 21st 2026<br>"
+            "Hover over parameters for quick tips or refer to the "
+            '<a href="https://github.com/mswiseman/mildewVision2">mildewVision2 GitHub page</a>.'
+        )
+        credit_label.setAlignment(Qt.AlignCenter)
+        credit_label.setOpenExternalLinks(True)
+        credit_label.setWordWrap(True)
+
+        header_layout.addWidget(title_label)
+        header_layout.addWidget(credit_label)
+
+        header_group_box.setLayout(header_layout)
+        main_layout.addWidget(header_group_box)
+
+        # ------------------------------------------------------------
         # Disease preset section
         # ------------------------------------------------------------
         disease_group_box = QGroupBox("Disease model preset")
@@ -259,6 +412,7 @@ class PowderyMildewGUI(QWidget):
 
         self.powdery_radio = QRadioButton("Powdery mildew")
         self.downy_radio = QRadioButton("Downy mildew")
+
 
         self.disease_group = QButtonGroup()
         self.disease_group.addButton(self.powdery_radio)
@@ -275,12 +429,31 @@ class PowderyMildewGUI(QWidget):
         main_layout.addWidget(disease_group_box)
 
         # ------------------------------------------------------------
+        # Output mode section
+        # ------------------------------------------------------------
+        output_mode_group_box = QGroupBox("Output mode")
+        output_mode_layout = QHBoxLayout()
+
+        self.save_saliency_plots = QCheckBox("Save saliency map plots")
+        self.save_saliency_plots.setChecked(False)
+        self.save_saliency_plots.setToolTip(
+            "Switches the script to plot_sal_map_leaf.py so saliency map plot outputs are saved. This is much slower "
+            "and usually not necessary unless you're having model issues or want visualization for a pub."
+        )
+
+        self.save_saliency_plots.toggled.connect(self.update_script_for_output_mode)
+
+        output_mode_layout.addWidget(self.save_saliency_plots)
+        output_mode_group_box.setLayout(output_mode_layout)
+        main_layout.addWidget(output_mode_group_box)
+
+        # ------------------------------------------------------------
         # Script section
         # ------------------------------------------------------------
         script_group_box = QGroupBox("Script")
         script_layout = QGridLayout()
 
-        self.script_path = QLineEdit("../leaf_correlation_mw.py")
+        self.script_path = QLineEdit(DEFAULT_CORRELATION_SCRIPT)
         script_browse_button = QPushButton("Browse")
         script_browse_button.clicked.connect(self.browse_script)
 
@@ -309,17 +482,27 @@ class PowderyMildewGUI(QWidget):
         dataset_browse_button.clicked.connect(self.browse_dataset_folder)
         log_browse_button.clicked.connect(lambda: self.browse_save_file(self.log_path))
 
-        path_layout.addWidget(QLabel("Model root path"), 0, 0)
+        path_layout.addWidget(QLabel("Blackbird folder root path"), 0, 0)
         path_layout.addWidget(self.model_path, 0, 1)
         path_layout.addWidget(model_browse_button, 0, 2)
+        self.model_path.setToolTip("The root folder where blackbird code, logs, etc. subdirectories live.")
+
 
         path_layout.addWidget(QLabel("Dataset root path"), 1, 0)
         path_layout.addWidget(self.dataset_path, 1, 1)
         path_layout.addWidget(dataset_browse_button, 1, 2)
+        self.dataset_path.setToolTip("The root folder containing your image folders. Expected structure:\n"
+                                        "dataset_path/image_folder/tray_folder/images.png")
 
         path_layout.addWidget(QLabel("Log path"), 2, 0)
         path_layout.addWidget(self.log_path, 2, 1)
         path_layout.addWidget(log_browse_button, 2, 2)
+        self.log_path.setToolTip(
+            "The file where console output from the runs will be saved. This is useful for keeping a permanent record "
+            "of the run output, especially if you are running multiple batches or want to refer back to the results "
+            "later. Make sure to set this to a .log or .txt file. If the file already exists, new output will be "
+            "appended to it rather than overwriting."
+        )
 
         path_group_box.setLayout(path_layout)
         main_layout.addWidget(path_group_box)
@@ -334,54 +517,63 @@ class PowderyMildewGUI(QWidget):
         self.model_type.addItems(["ResNet", "VGG", "Inception3"])
 
         self.loading_epoch = QSpinBox()
-        self.loading_epoch.setRange(0, 100000)
+        self.loading_epoch.setRange(0, 200)
+        self.loading_epoch.setToolTip("Epoch number of the model checkpoint to load.")
 
         self.timestamp = QLineEdit()
 
-        self.outdim = QSpinBox()
-        self.outdim.setRange(1, 10)
+        #self.outdim = QSpinBox()
+        #self.outdim.setRange(1, 10)
 
-        self.pretrained = QCheckBox("Pretrained")
+        #self.pretrained = QCheckBox("Pretrained")
         self.dual_head = QCheckBox("Dual-head model")
 
         self.cuda = QCheckBox("Use CUDA")
-        self.cuda_id = QLineEdit("0")
+        #self.cuda_id = QLineEdit("0")
 
         self.means = QLineEdit()
         self.stds = QLineEdit()
 
         model_layout.addWidget(QLabel("Model type"), 0, 0)
         model_layout.addWidget(self.model_type, 0, 1)
+        self.model_type.setToolTip("The neural network architecture used for inference. The best current powdery "
+        "mildew model uses ResNet; the best current downy mildew usually uses VGG (May 2026).")
+
         self.add_help_button(model_layout, 0, 2, "model_type")
 
         model_layout.addWidget(QLabel("Loading epoch"), 1, 0)
         model_layout.addWidget(self.loading_epoch, 1, 1)
+
         self.add_help_button(model_layout, 1, 2, "loading_epoch")
 
         model_layout.addWidget(QLabel("Model timestamp"), 2, 0)
         model_layout.addWidget(self.timestamp, 2, 1)
+        self.timestamp.setToolTip(
+            "The timestamp string used in the trained model folder name.")
+
         self.add_help_button(model_layout, 2, 2, "timestamp")
 
-        model_layout.addWidget(QLabel("Output classes / outdim"), 3, 0)
-        model_layout.addWidget(self.outdim, 3, 1)
-        self.add_help_button(model_layout, 3, 2, "outdim")
+        #model_layout.addWidget(QLabel("Output classes / outdim"), 3, 0)
+        #model_layout.addWidget(self.outdim, 3, 1)
+        #self.add_help_button(model_layout, 3, 2, "outdim")
 
-        model_layout.addWidget(self.pretrained, 4, 0)
-        model_layout.addWidget(self.dual_head, 4, 1)
-        self.add_help_button(model_layout, 4, 2, "dual_head")
+        #model_layout.addWidget(self.pretrained, 4, 0)
+        model_layout.addWidget(self.dual_head, 3, 1)
+        self.dual_head.setToolTip("Use this for the powdery mildew model with two output heads: infected/hyphal signal and sporulation signal. \n Usually checked for powdery mildew and unchecked for downy mildew.")
+        model_layout.addWidget(self.cuda, 3, 0)
 
-        model_layout.addWidget(self.cuda, 5, 0)
-        #model_layout.addWidget(QLabel("CUDA ID"), 5, 1)
-        #model_layout.addWidget(self.cuda_id, 5, 2)
-        #self.add_help_button(model_layout, 5, 3, "cuda_id")
+        # model_layout.addWidget(QLabel("CUDA ID"), 5, 1)
+        # model_layout.addWidget(self.cuda_id, 5, 2)
+        # self.add_help_button(model_layout, 5, 3, "cuda_id")
 
-        model_layout.addWidget(QLabel("Channel means"), 6, 0)
-        model_layout.addWidget(self.means, 6, 1, 1, 2)
-        self.add_help_button(model_layout, 6, 3, "means")
+        model_layout.addWidget(QLabel("Channel means"), 4, 0)
+        model_layout.addWidget(self.means, 4, 1, 1, 2)
+        self.means.setToolTip("RGB normalization means used during model training.\n Do not change unless using new model.")
 
-        model_layout.addWidget(QLabel("Channel stds"), 7, 0)
-        model_layout.addWidget(self.stds, 7, 1, 1, 2)
-        self.add_help_button(model_layout, 7, 3, "stds")
+        model_layout.addWidget(QLabel("Channel stds"), 5, 0)
+        model_layout.addWidget(self.stds, 5, 1, 1, 2)
+        self.stds.setToolTip(
+            "RGB normalization std dev. used during model training.\n Do not change unless using new model.")
 
         model_group_box.setLayout(model_layout)
         main_layout.addWidget(model_group_box)
@@ -404,13 +596,13 @@ class PowderyMildewGUI(QWidget):
         self.add_help_button(run_layout, 2, 2, "trays")
 
         self.pm = QLineEdit("")
-        #self.platform = QLineEdit("BlackBird")
+        # self.platform = QLineEdit("BlackBird")
         self.group = QLineEdit("baseline")
 
-        #self.step_size = QSpinBox()
-        #self.step_size.setRange(1, 5000)
-        #self.step_size.setValue(224)
-        #self.add_help_button(run_layout, 5, 2, "step_size")
+        # self.step_size = QSpinBox()
+        # self.step_size.setRange(1, 5000)
+        # self.step_size.setValue(224)
+        # self.add_help_button(run_layout, 5, 2, "step_size")
 
         refresh_data_button = QPushButton("Refresh folders")
         refresh_data_button.clicked.connect(self.refresh_image_folders)
@@ -426,17 +618,34 @@ class PowderyMildewGUI(QWidget):
         run_layout.addWidget(QLabel("Tray"), 2, 0)
         run_layout.addWidget(self.trays, 2, 1)
 
-        run_layout.addWidget(QLabel("PM isolate / metadata"), 3, 0)
-        run_layout.addWidget(self.pm, 3, 1)
+        self.run_all_jobs = QCheckBox("Run all image folders and trays within data path")
 
-        #run_layout.addWidget(QLabel("Platform"), 4, 0)
-        #run_layout.addWidget(self.platform, 4, 1)
+        self.max_parallel_jobs = QSpinBox()
+        self.max_parallel_jobs.setRange(1, 4)
+        self.max_parallel_jobs.setValue(1)
 
-        run_layout.addWidget(QLabel("Group"), 4, 0)
-        run_layout.addWidget(self.group, 4, 1)
+        run_layout.addWidget(self.run_all_jobs, 3, 0, 1, 2)
+        run_layout.addWidget(QLabel("Max parallel jobs"), 4, 0)
+        run_layout.addWidget(self.max_parallel_jobs, 4, 1)
+        self.max_parallel_jobs.setToolTip(
+            "If running all image folders and trays, this controls how many run scripts are executed at the same "
+            "time. Set to 1 for sequential runs, or higher to run multiple at once if you have the resources. Note "
+            "that bigger models, such as VGG16, require more GPU memory and may not run successfully with multiple "
+            "parallel jobs. Monitor GPU usage and adjust as needed. If you get out-of-memory errors, reduce this "
+            "number or switch to sequential runs. The default max is set to 4."
+        )
 
-        #run_layout.addWidget(QLabel("Step size"), 5, 0)
-        #run_layout.addWidget(self.step_size, 5, 1)
+        run_layout.addWidget(QLabel("PM isolate / metadata"), 5, 0)
+        run_layout.addWidget(self.pm, 5, 1)
+
+        # run_layout.addWidget(QLabel("Platform"), 4, 0)
+        # run_layout.addWidget(self.platform, 4, 1)
+
+        run_layout.addWidget(QLabel("Group"), 6, 0)
+        run_layout.addWidget(self.group, 6, 1)
+
+        # run_layout.addWidget(QLabel("Step size"), 5, 0)
+        # run_layout.addWidget(self.step_size, 5, 1)
 
         run_group_box.setLayout(run_layout)
         main_layout.addWidget(run_group_box)
@@ -452,31 +661,40 @@ class PowderyMildewGUI(QWidget):
         self.inf_gate = self.double_box(0.30, 0.0, 1.0)
         self.spor_th = self.double_box(0.50, 0.0, 1.0)
         self.sal_threshold = self.double_box(0.50, 0.0, 1.0)
+        self.sal_threshold.setToolTip(
+            "Fixed saliency cutoff used to convert saliency heatmaps into binary patch class-associated regions."
+        )
         self.sal_thresh_p = self.double_box(95.0, 0.0, 100.0)
 
         self.sal_thresh_method = QComboBox()
         self.sal_thresh_method.addItems(["fixed", "percentile"])
 
-        threshold_layout.addWidget(QLabel("Up threshold / infected threshold"), 0, 0)
-        threshold_layout.addWidget(self.up_threshold, 0, 1)
+        self.allow_threshold_editing = QCheckBox("Allow threshold editing")
+        self.allow_threshold_editing.setChecked(False)
+        self.allow_threshold_editing.toggled.connect(self.set_threshold_editing_enabled)
 
-        threshold_layout.addWidget(QLabel("Down threshold / healthy threshold"), 1, 0)
-        threshold_layout.addWidget(self.down_threshold, 1, 1)
+        threshold_layout.addWidget(self.allow_threshold_editing, 0, 0, 1, 2)
 
-        threshold_layout.addWidget(QLabel("Infection gate"), 2, 0)
-        threshold_layout.addWidget(self.inf_gate, 2, 1)
+        threshold_layout.addWidget(QLabel("Up threshold / infected threshold"), 1, 0)
+        threshold_layout.addWidget(self.up_threshold, 1, 1)
 
-        threshold_layout.addWidget(QLabel("Sporulation threshold"), 3, 0)
-        threshold_layout.addWidget(self.spor_th, 3, 1)
+        threshold_layout.addWidget(QLabel("Down threshold / healthy threshold"), 2, 0)
+        threshold_layout.addWidget(self.down_threshold, 2, 1)
 
-        threshold_layout.addWidget(QLabel("Saliency threshold"), 4, 0)
-        threshold_layout.addWidget(self.sal_threshold, 4, 1)
+        threshold_layout.addWidget(QLabel("Infection gate"), 3, 0)
+        threshold_layout.addWidget(self.inf_gate, 3, 1)
 
-        threshold_layout.addWidget(QLabel("Saliency threshold method"), 5, 0)
-        threshold_layout.addWidget(self.sal_thresh_method, 5, 1)
+        threshold_layout.addWidget(QLabel("Sporulation threshold"), 4, 0)
+        threshold_layout.addWidget(self.spor_th, 4, 1)
 
-        threshold_layout.addWidget(QLabel("Saliency percentile"), 6, 0)
-        threshold_layout.addWidget(self.sal_thresh_p, 6, 1)
+        threshold_layout.addWidget(QLabel("Saliency threshold"), 5, 0)
+        threshold_layout.addWidget(self.sal_threshold, 5, 1)
+
+        threshold_layout.addWidget(QLabel("Saliency threshold method"), 6, 0)
+        threshold_layout.addWidget(self.sal_thresh_method, 6, 1)
+
+        threshold_layout.addWidget(QLabel("Saliency percentile"), 7, 0)
+        threshold_layout.addWidget(self.sal_thresh_p, 7, 1)
 
         threshold_group_box.setLayout(threshold_layout)
         main_layout.addWidget(threshold_group_box)
@@ -505,19 +723,24 @@ class PowderyMildewGUI(QWidget):
         # ------------------------------------------------------------
         # Action buttons
         # ------------------------------------------------------------
+
         button_layout = QHBoxLayout()
 
         preview_button = QPushButton("Preview command")
         copy_button = QPushButton("Copy command")
-        run_button = QPushButton("Run pipeline")
+        self.run_button = QPushButton("Run pipeline")
+        self.stop_button = QPushButton("Stop all runs")
+        self.stop_button.setEnabled(False)
 
         preview_button.clicked.connect(self.preview_command)
         copy_button.clicked.connect(self.copy_command)
-        run_button.clicked.connect(self.run_pipeline)
+        self.run_button.clicked.connect(self.run_pipeline)
+        self.stop_button.clicked.connect(self.stop_all_runs)
 
         button_layout.addWidget(preview_button)
         button_layout.addWidget(copy_button)
-        button_layout.addWidget(run_button)
+        button_layout.addWidget(self.run_button)
+        button_layout.addWidget(self.stop_button)
 
         main_layout.addLayout(button_layout)
 
@@ -534,6 +757,7 @@ class PowderyMildewGUI(QWidget):
 
         # Apply default powdery preset after all widgets exist
         self.apply_selected_preset()
+        self.set_threshold_editing_enabled(False)
 
         # Try to populate image folders from default dataset path
         self.refresh_image_folders()
@@ -556,7 +780,6 @@ class PowderyMildewGUI(QWidget):
         )
 
         QMessageBox.information(self, title, message)
-
 
     def add_help_button(self, layout, row, col, key):
         button = QPushButton("?")
@@ -681,6 +904,82 @@ class PowderyMildewGUI(QWidget):
         self.refresh_trays()
         self.infer_dpi_from_image_folder()
 
+    def infer_dpi_value_from_name(self, image_folder_name):
+        """
+        Infer dpi from folder names ending like:
+            5-18-2026_10dpi -> 10
+            5-13-2026_5dpi  -> 5
+        """
+        match = re.search(r"_(\d+)\s*dpi$", image_folder_name, re.IGNORECASE)
+        if match:
+            return int(match.group(1))
+        return self.dpi.value()
+
+    def normalize_windows_path(self, path_text):
+        """
+        Convert Git Bash / MSYS-style paths like:
+            /c/Users/name/Desktop/project
+        into Windows-friendly paths like:
+            C:/Users/name/Desktop/project
+        """
+        path_text = path_text.strip()
+
+        match = re.match(r"^/([a-zA-Z])/(.*)", path_text)
+        if match:
+            drive = match.group(1).upper()
+            rest = match.group(2)
+            return f"{drive}:/{rest}"
+
+        return path_text
+
+    def discover_all_image_tray_jobs(self):
+        """
+        Find all image_folder/tray combinations under dataset_path.
+
+        Expected structure:
+            dataset_path/
+                image_folder/
+                    tray_folder/
+                        images.png
+        """
+        dataset_root = Path(self.normalize_windows_path(self.dataset_path.text()))
+
+        jobs = []
+
+        if not dataset_root.exists() or not dataset_root.is_dir():
+            self.output.append(f"Dataset path does not exist: {dataset_root}")
+            return jobs
+
+        image_folders = [
+            p for p in dataset_root.iterdir()
+            if p.is_dir() and not p.name.endswith("_masking")
+        ]
+
+        image_folders = sorted(image_folders, key=lambda p: p.name)
+
+        for image_folder_path in image_folders:
+            tray_folders = [
+                p for p in image_folder_path.iterdir()
+                if p.is_dir()
+            ]
+
+            tray_folders = sorted(tray_folders, key=lambda p: p.name)
+
+            for tray_path in tray_folders:
+                png_files = list(tray_path.glob("*.png"))
+
+                # Skip folders that do not contain images
+                if not png_files:
+                    continue
+
+                jobs.append({
+                    "image_folder": image_folder_path.name,
+                    "tray": tray_path.name,
+                    "dpi": self.infer_dpi_value_from_name(image_folder_path.name),
+                })
+
+        return jobs
+
     # ------------------------------------------------------------
     # Preset logic
     # ------------------------------------------------------------
@@ -697,17 +996,20 @@ class PowderyMildewGUI(QWidget):
         self.model_path.setText(preset["model_path"])
         self.loading_epoch.setValue(preset["loading_epoch"])
         self.timestamp.setText(preset["timestamp"])
-        self.outdim.setValue(preset["outdim"])
+        #self.outdim.setValue(preset["outdim"])
 
         self.up_threshold.setValue(preset["up_threshold"])
         self.down_threshold.setValue(preset["down_threshold"])
         self.up_threshold.setToolTip("Probability cutoff for calling a patch infected.")
         self.down_threshold.setToolTip("Probability cutoff for calling a patch clear.")
         self.spor_th.setToolTip("Sporulation-head cutoff for dual-head powdery mildew models.")
+        self.inf_gate.setToolTip(
+            "Minimum infected-head probability required before a patch can be called sporulating."
+        )
 
         self.cuda.setChecked(preset["cuda"])
-        #self.cuda_id.setText(str(preset["cuda_id"]))
-        self.pretrained.setChecked(preset["pretrained"])
+        # self.cuda_id.setText(str(preset["cuda_id"]))
+        # self.pretrained.setChecked(preset["pretrained"])
         self.dual_head.setChecked(preset["dual_head"])
 
         self.means.setText(" ".join(str(x) for x in preset["means"]))
@@ -720,6 +1022,11 @@ class PowderyMildewGUI(QWidget):
         self.sal_smoothgrad.setChecked(preset["sal_smoothgrad"])
         self.sal_deeplift.setChecked(preset["sal_deeplift"])
         self.store_both_sal_heads.setChecked(preset["store_both_sal_heads"])
+        self.store_both_sal_heads.setToolTip(
+            "For dual-head powdery models, save saliency maps for both infected and sporulation heads when "
+            "applicable. \n Leave this unchecked for standard runs. Turn it on when you want to compare where the "
+            "infected-head and sporulation-head saliency maps overlap or differ."
+        )
 
         if preset["inf_gate"] is not None:
             self.inf_gate.setValue(preset["inf_gate"])
@@ -738,47 +1045,81 @@ class PowderyMildewGUI(QWidget):
         else:
             self.store_both_sal_heads.setEnabled(True)
 
+        self.set_threshold_editing_enabled(self.allow_threshold_editing.isChecked())
+
+    def set_threshold_editing_enabled(self, enabled):
+        """
+        Lock/unlock threshold-related settings.
+        """
+        threshold_widgets = [
+            self.up_threshold,
+            self.down_threshold,
+            self.inf_gate,
+            self.spor_th,
+            self.sal_threshold,
+            self.sal_thresh_method,
+            self.sal_thresh_p,
+        ]
+
+        for widget in threshold_widgets:
+            widget.setEnabled(enabled)
+
+        # Preserve disease-specific logic:
+        # If the selected preset is downy, keep powdery-only thresholds disabled.
+        if self.downy_radio.isChecked():
+            self.inf_gate.setEnabled(False)
+            self.spor_th.setEnabled(False)
+
     # ------------------------------------------------------------
     # Command building
     # ------------------------------------------------------------
     def parse_space_or_comma_list(self, text):
         return text.replace(",", " ").split()
 
-    def build_command(self):
+    def update_script_for_output_mode(self, checked):
+        """
+        Switch default script depending on whether the user wants saliency map plots.
+        """
+        if checked:
+            self.script_path.setText(DEFAULT_SALIENCY_PLOT_SCRIPT)
+        else:
+            self.script_path.setText(DEFAULT_CORRELATION_SCRIPT)
+
+    def build_command_for_job(self, image_folder=None, tray=None, dpi=None):
         script = self.script_path.text().strip()
         means = self.parse_space_or_comma_list(self.means.text())
         stds = self.parse_space_or_comma_list(self.stds.text())
 
-        selected_tray = self.trays.currentText().strip()
-        trays = [selected_tray] if selected_tray else []
-
-        selected_image_folder = self.img_folder.currentText().strip()
+        selected_image_folder = image_folder or self.img_folder.currentText().strip()
+        selected_tray = tray or self.trays.currentText().strip()
+        selected_dpi = dpi if dpi is not None else self.dpi.value()
 
         cmd = [
             sys.executable,
             script,
             "--model_type", self.model_type.currentText(),
-            "--model_path", self.model_path.text().strip(),
-            "--dataset_path", self.dataset_path.text().strip(),
+            "--model_path", self.normalize_windows_path(self.model_path.text()),
+            "--dataset_path", self.normalize_windows_path(self.dataset_path.text()),
             "--loading_epoch", str(self.loading_epoch.value()),
             "--timestamp", self.timestamp.text().strip(),
-            "--outdim", str(self.outdim.value()),
+            #"--outdim", str(self.outdim.value()),
             "--up_threshold", str(self.up_threshold.value()),
             "--down_threshold", str(self.down_threshold.value()),
-            "--dpi", str(self.dpi.value()),
+            "--dpi", str(selected_dpi),
             "--img_folder", selected_image_folder,
+            #"--platform", self.platform.text().strip(),
             "--group", self.group.text().strip(),
             #"--step_size", str(self.step_size.value()),
             "--sal_threshold", str(self.sal_threshold.value()),
             "--sal_thresh_method", self.sal_thresh_method.currentText(),
             "--sal_thresh_p", str(self.sal_thresh_p.value()),
-            "--log", self.log_path.text().strip(),
+            "--log", self.normalize_windows_path(self.log_path.text()),
             "--means", *means,
             "--stds", *stds,
         ]
 
-        if trays:
-            cmd += ["--trays", *trays]
+        if selected_tray:
+            cmd += ["--trays", selected_tray]
 
         pm_value = self.pm.text().strip()
         if pm_value:
@@ -787,8 +1128,11 @@ class PowderyMildewGUI(QWidget):
         if self.cuda.isChecked():
             cmd += ["--cuda"]
 
-        if self.pretrained.isChecked():
-            cmd.append("--pretrained")
+        #if self.mps.isChecked():
+        #    cmd.append("--mps")
+
+        #if self.pretrained.isChecked():
+        #    cmd.append("--pretrained")
 
         if self.dual_head.isChecked():
             cmd.append("--dual_head")
@@ -812,6 +1156,9 @@ class PowderyMildewGUI(QWidget):
 
         return cmd
 
+    def build_command(self):
+        return self.build_command_for_job()
+
     def command_to_string(self, cmd):
         return " ".join(f'"{x}"' if " " in x else x for x in cmd)
 
@@ -819,47 +1166,115 @@ class PowderyMildewGUI(QWidget):
     # Button actions
     # ------------------------------------------------------------
     def preview_command(self):
-        cmd = self.build_command()
         self.output.clear()
-        self.output.append("Command preview:\n")
-        self.output.append(self.command_to_string(cmd))
+
+        if self.run_all_jobs.isChecked():
+            jobs = self.discover_all_image_tray_jobs()
+
+            self.output.append(f"Batch mode: found {len(jobs)} job(s).\n")
+
+            for job in jobs:
+                cmd = self.build_command_for_job(
+                    image_folder=job["image_folder"],
+                    tray=job["tray"],
+                    dpi=job["dpi"],
+                )
+
+                label = f'{job["image_folder"]} / {job["tray"]}'
+                self.output.append(f"\n--- {label} ---")
+                self.output.append(self.command_to_string(cmd))
+
+        else:
+            cmd = self.build_command()
+            self.output.append("Command preview:\n")
+            self.output.append(self.command_to_string(cmd))
 
     def copy_command(self):
         cmd = self.build_command()
         QApplication.clipboard().setText(self.command_to_string(cmd))
         self.output.append("\n\nCommand copied to clipboard.")
 
+    def on_runner_finished(self):
+        self.output.append("\nRun manager finished.")
+        self.run_button.setEnabled(True)
+        self.stop_button.setEnabled(False)
+
+    def stop_all_runs(self):
+        """
+        Stop any active single-run or batch-run subprocesses.
+        """
+        if hasattr(self, "batch_runner") and self.batch_runner is not None:
+            if self.batch_runner.isRunning():
+                self.batch_runner.stop()
+                self.output.append("\nStop signal sent to active run(s).")
+            else:
+                self.output.append("\nNo active run is currently running.")
+        else:
+            self.output.append("\nNo active run is currently running.")
+
     def run_pipeline(self):
-        cmd = self.build_command()
-
         self.output.clear()
-        self.output.append("Running command:\n")
-        self.output.append(self.command_to_string(cmd))
-        self.output.append("\n\nOutput:\n")
 
-        try:
-            process = subprocess.Popen(
-                cmd,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                bufsize=1,
+        if self.run_all_jobs.isChecked():
+            jobs = self.discover_all_image_tray_jobs()
+
+            if not jobs:
+                self.output.append("No jobs found. Check dataset folder structure.")
+                return
+
+            commands = []
+
+            for job in jobs:
+                cmd = self.build_command_for_job(
+                    image_folder=job["image_folder"],
+                    tray=job["tray"],
+                    dpi=job["dpi"],
+                )
+
+                label = f'{job["image_folder"]}/{job["tray"]}'
+                commands.append({
+                    "cmd": cmd,
+                    "label": label,
+                })
+
+            max_parallel = self.max_parallel_jobs.value()
+
+            self.output.append(
+                f"Starting batch run with {len(commands)} job(s), "
+                f"up to {max_parallel} in parallel.\n"
             )
 
-            if process.stdout is not None:
-                for line in process.stdout:
-                    self.output.append(line.rstrip())
-                    QApplication.processEvents()
+            self.batch_runner = BatchRunner(commands, max_parallel=max_parallel)
+            self.batch_runner.log_signal.connect(self.output.append)
+            self.batch_runner.finished_signal.connect(
+                lambda: self.output.append("\nAll batch jobs finished.")
+            )
+            self.run_button.setEnabled(False)
+            self.stop_button.setEnabled(True)
 
-            process.wait()
+            self.batch_runner.start()
+            self.batch_runner.finished_signal.connect(self.on_runner_finished)
 
-            self.output.append(f"\nFinished with exit code {process.returncode}")
+        else:
+            cmd = self.build_command()
 
-        except FileNotFoundError as e:
-            self.output.append(f"\nERROR: Could not find file or executable:\n{e}")
+            self.output.append("Running command:\n")
+            self.output.append(self.command_to_string(cmd))
+            self.output.append("\n\nOutput:\n")
 
-        except Exception as e:
-            self.output.append(f"\nERROR while running pipeline:\n{e}")
+            self.batch_runner = BatchRunner(
+                [{"cmd": cmd, "label": "single run"}],
+                max_parallel=1,
+            )
+            self.batch_runner.log_signal.connect(self.output.append)
+            self.batch_runner.finished_signal.connect(
+                lambda: self.output.append("\nRun finished.")
+            )
+            self.run_button.setEnabled(False)
+            self.stop_button.setEnabled(True)
+
+            self.batch_runner.start()
+            self.batch_runner.finished_signal.connect(self.on_runner_finished)
 
 
 if __name__ == "__main__":
