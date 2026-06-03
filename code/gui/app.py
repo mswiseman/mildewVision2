@@ -25,9 +25,14 @@ from PySide6.QtWidgets import (
     QGroupBox,
     QMessageBox,
 )
+import shutil
+
+conda_exe = shutil.which("conda")
 
 DEFAULT_CORRELATION_SCRIPT = "../leaf_correlation_mw.py"
 DEFAULT_SALIENCY_PLOT_SCRIPT = "../plot_sal_map_leaf.py"
+DEFAULT_CONDA_ENV = "mildewVision"
+DEFAULT_CONDA_ENV_PYTHON = "C:/Users/Intel User/.conda/envs/mildewVision/python.exe"
 
 PIPELINE_PRESETS = {
     "powdery": {
@@ -38,7 +43,7 @@ PIPELINE_PRESETS = {
         "down_threshold": 0.3,
         "cuda": True,
         "cuda_id": "0",
-        #"outdim": 2,
+        "outdim": 2,
         "means": [0.5663, 0.6596, 0.4508],
         "stds": [0.1811, 0.1667, 0.2434],
         "timestamp": "Jan26_23-15-35_2026",
@@ -61,7 +66,7 @@ PIPELINE_PRESETS = {
         "down_threshold": 0.2,
         "cuda": True,
         "cuda_id": "0",
-        #"outdim": 2,
+        "outdim": 2,
         "means": [0.5765, 0.6403, 0.4478],
         "stds": [0.1584, 0.1574, 0.1902],
         "timestamp": "Nov26_02-59-03_2024",
@@ -437,7 +442,7 @@ class PowderyMildewGUI(QWidget):
         self.save_saliency_plots = QCheckBox("Save saliency map plots")
         self.save_saliency_plots.setChecked(False)
         self.save_saliency_plots.setToolTip(
-            "Switches the script to plot_sal_map_leaf.py so saliency map plot outputs are saved. This is much slower "
+            "Switches the script to plot_sal_map_leaf.py so saliency map plot outputs are saved. This is much slower \n"
             "and usually not necessary unless you're having model issues or want visualization for a pub."
         )
 
@@ -450,20 +455,46 @@ class PowderyMildewGUI(QWidget):
         # ------------------------------------------------------------
         # Script section
         # ------------------------------------------------------------
-        script_group_box = QGroupBox("Script")
+
+        script_group_box = QGroupBox("Script / Python environment")
         script_layout = QGridLayout()
 
+        self.conda_exe_path = QLineEdit("auto")
+        self.conda_exe_path.setToolTip(
+            "Path to conda.exe. Leave as 'auto' to let the GUI find conda."
+        )
+
+        conda_browse_button = QPushButton("Browse conda")
+        conda_browse_button.clicked.connect(self.browse_conda_exe)
+
+        script_layout.addWidget(QLabel("Conda executable"), 2, 0)
+        script_layout.addWidget(self.conda_exe_path, 2, 1, 1, 2)
+        script_layout.addWidget(conda_browse_button, 2, 3)
+
         self.script_path = QLineEdit(DEFAULT_CORRELATION_SCRIPT)
+        self.script_path.setToolTip(
+            "Python script to run. Usually leaf_correlation_mw.py or plot_sal_map_leaf.py."
+        )
+
         script_browse_button = QPushButton("Browse")
         script_browse_button.clicked.connect(self.browse_script)
 
+        # Row 0: script picker
         script_layout.addWidget(QLabel("Python script"), 0, 0)
         script_layout.addWidget(self.script_path, 0, 1)
         script_layout.addWidget(script_browse_button, 0, 2)
 
+        # Row 1: conda environment toggle/name
+        self.use_conda_env = QCheckBox("Run using mildewVision Python")
+        self.use_conda_env.setChecked(True)
+
+        self.conda_python_path = QLineEdit(DEFAULT_CONDA_ENV_PYTHON)
+
+        python_browse_button = QPushButton("Browse")
+        python_browse_button.clicked.connect(self.browse_conda_python)
+
         script_group_box.setLayout(script_layout)
         main_layout.addWidget(script_group_box)
-
         # ------------------------------------------------------------
         # Path section
         # ------------------------------------------------------------
@@ -498,9 +529,9 @@ class PowderyMildewGUI(QWidget):
         path_layout.addWidget(self.log_path, 2, 1)
         path_layout.addWidget(log_browse_button, 2, 2)
         self.log_path.setToolTip(
-            "The file where console output from the runs will be saved. This is useful for keeping a permanent record "
-            "of the run output, especially if you are running multiple batches or want to refer back to the results "
-            "later. Make sure to set this to a .log or .txt file. If the file already exists, new output will be "
+            "The file where console output from the runs will be saved. This is useful for keeping a permanent record \n"
+            "of the run output, especially if you are running multiple batches or want to refer back to the results \n"
+            "later. Make sure to set this to a .log or .txt file. If the file already exists, new output will be \n"
             "appended to it rather than overwriting."
         )
 
@@ -539,7 +570,7 @@ class PowderyMildewGUI(QWidget):
         self.model_type.setToolTip("The neural network architecture used for inference. The best current powdery "
         "mildew model uses ResNet; the best current downy mildew usually uses VGG (May 2026).")
 
-        self.add_help_button(model_layout, 0, 2, "model_type")
+        # self.add_help_button(model_layout, 0, 2, "model_type")
 
         model_layout.addWidget(QLabel("Loading epoch"), 1, 0)
         model_layout.addWidget(self.loading_epoch, 1, 1)
@@ -590,10 +621,19 @@ class PowderyMildewGUI(QWidget):
         self.dpi = QSpinBox()
         self.dpi.setRange(0, 100)
         self.dpi.setValue(10)
-        self.add_help_button(run_layout, 1, 2, "dpi")
+        self.dpi.setToolTip(
+        "Days post inoculation. This value plays a role in the powdery mildew model logic for determining sporulation \n"
+        "calls, so make sure it's correct. If your image folders are named with the dpi at the end like 5-13-2026_5dpi, \n"
+        " 6-28-2023_10dpi, etc., selecting the folder will automatically set the dpi value. If not, set it manually here.")
+        #self.add_help_button(run_layout, 1, 2, "dpi")
 
         self.trays = QComboBox()
-        self.add_help_button(run_layout, 2, 2, "trays")
+        self.trays.setToolTip(
+        "The tray folder inside the selected image folder. If your dataset is organized with trays inside image \n"
+        "folders, select the appropriate tray here. If you want to run all trays within the selected image folder, \n"
+        "check the 'Run all jobs' box and leave this dropdown at its default value.")
+
+            #self.add_help_button(run_layout, 2, 2, "trays")
 
         self.pm = QLineEdit("")
         # self.platform = QLineEdit("BlackBird")
@@ -611,6 +651,11 @@ class PowderyMildewGUI(QWidget):
         run_layout.addWidget(self.img_folder, 0, 1)
         run_layout.addWidget(refresh_data_button, 0, 2)
         self.add_help_button(run_layout, 0, 3, "img_folder")
+        self.img_folder.setToolTip(
+        "The imaging-date folder inside the dataset root. For example, 5-13-2026_5dpi. The image folders are populated \n"
+        "from the dataset root path you set in the Paths section. If your dataset is organized with trays inside image \n"
+        "folders, select the appropriate tray here. If you want to run all trays within the selected image folder, \n"
+        "check the 'Run all jobs' box and leave the tray dropdown at its default value.")
 
         run_layout.addWidget(QLabel("DPI"), 1, 0)
         run_layout.addWidget(self.dpi, 1, 1)
@@ -628,21 +673,29 @@ class PowderyMildewGUI(QWidget):
         run_layout.addWidget(QLabel("Max parallel jobs"), 4, 0)
         run_layout.addWidget(self.max_parallel_jobs, 4, 1)
         self.max_parallel_jobs.setToolTip(
-            "If running all image folders and trays, this controls how many run scripts are executed at the same "
-            "time. Set to 1 for sequential runs, or higher to run multiple at once if you have the resources. Note "
-            "that bigger models, such as VGG16, require more GPU memory and may not run successfully with multiple "
-            "parallel jobs. Monitor GPU usage and adjust as needed. If you get out-of-memory errors, reduce this "
+            "If running all image folders and trays, this controls how many run scripts are executed at the same \n"
+            "time. Set to 1 for sequential runs, or higher to run multiple at once if you have the resources. Note \n"
+            "that bigger models, such as VGG16, require more GPU memory and may not run successfully with multiple \n"
+            "parallel jobs. Monitor GPU usage and adjust as needed. If you get out-of-memory errors, reduce this \n"
             "number or switch to sequential runs. The default max is set to 4."
         )
 
-        run_layout.addWidget(QLabel("PM isolate / metadata"), 5, 0)
+        run_layout.addWidget(QLabel("Isolate metadata"), 5, 0)
         run_layout.addWidget(self.pm, 5, 1)
+        self.pm.setToolTip(
+        "Optional field to keep track of powdery or downy mildew isolate identifiers. Be careful filling this out \n" 
+        "when running batch runs across multiple isolates, as the value will be applied to all runs in the batch. \n"
+        "You can also leave it blank if you don't need this metadata.")
 
         # run_layout.addWidget(QLabel("Platform"), 4, 0)
         # run_layout.addWidget(self.platform, 4, 1)
 
         run_layout.addWidget(QLabel("Group"), 6, 0)
         run_layout.addWidget(self.group, 6, 1)
+        self.group.setToolTip(""
+        "Optional metadata field to differentiate experimental groups. This is especially useful if you are running \n"
+        " multiple batches of runs and want to keep their outputs organized in the logs and output files. You can set \n"
+        " it to something like 'baseline', 'treatmentA', 'treatmentB', etc., or leave it as the default 'baseline'.")
 
         # run_layout.addWidget(QLabel("Step size"), 5, 0)
         # run_layout.addWidget(self.step_size, 5, 1)
@@ -661,9 +714,7 @@ class PowderyMildewGUI(QWidget):
         self.inf_gate = self.double_box(0.30, 0.0, 1.0)
         self.spor_th = self.double_box(0.50, 0.0, 1.0)
         self.sal_threshold = self.double_box(0.50, 0.0, 1.0)
-        self.sal_threshold.setToolTip(
-            "Fixed saliency cutoff used to convert saliency heatmaps into binary patch class-associated regions."
-        )
+
         self.sal_thresh_p = self.double_box(95.0, 0.0, 100.0)
 
         self.sal_thresh_method = QComboBox()
@@ -672,23 +723,37 @@ class PowderyMildewGUI(QWidget):
         self.allow_threshold_editing = QCheckBox("Allow threshold editing")
         self.allow_threshold_editing.setChecked(False)
         self.allow_threshold_editing.toggled.connect(self.set_threshold_editing_enabled)
+        self.sal_threshold.setToolTip(
+            "Uncheck if you want to alter the optimized threshold values. Note: the downy model doesn't current use \n"
+            "the infection gate or sporulation threshold so these will be ignored if you have the downy preset selected."
+        )
 
         threshold_layout.addWidget(self.allow_threshold_editing, 0, 0, 1, 2)
 
         threshold_layout.addWidget(QLabel("Up threshold / infected threshold"), 1, 0)
         threshold_layout.addWidget(self.up_threshold, 1, 1)
+        self.up_threshold.setToolTip("Probability cutoff for calling a patch infected.")
 
         threshold_layout.addWidget(QLabel("Down threshold / healthy threshold"), 2, 0)
         threshold_layout.addWidget(self.down_threshold, 2, 1)
+        self.down_threshold.setToolTip("Probability cutoff for calling a patch clear.")
 
         threshold_layout.addWidget(QLabel("Infection gate"), 3, 0)
         threshold_layout.addWidget(self.inf_gate, 3, 1)
+        self.inf_gate.setToolTip(
+            "Minimum infected-head probability required before a patch can be called sporulating."
+        )
 
         threshold_layout.addWidget(QLabel("Sporulation threshold"), 4, 0)
         threshold_layout.addWidget(self.spor_th, 4, 1)
+        self.spor_th.setToolTip("Sporulation-head cutoff for dual-head powdery mildew models.")
 
         threshold_layout.addWidget(QLabel("Saliency threshold"), 5, 0)
         threshold_layout.addWidget(self.sal_threshold, 5, 1)
+        self.sal_threshold.setToolTip(
+            "Fixed saliency cutoff used to convert saliency heatmaps into binary patch class-associated regions."
+        )
+
 
         threshold_layout.addWidget(QLabel("Saliency threshold method"), 6, 0)
         threshold_layout.addWidget(self.sal_thresh_method, 6, 1)
@@ -710,6 +775,11 @@ class PowderyMildewGUI(QWidget):
         self.sal_smoothgrad = QCheckBox("SmoothGrad")
         self.sal_deeplift = QCheckBox("DeepLift")
         self.store_both_sal_heads = QCheckBox("Store both saliency heads")
+        self.store_both_sal_heads.setToolTip(
+            "For dual-head models, save saliency maps for both infected and sporulation heads when applicable.\n"
+            "Leave this unchecked for standard runs. Turn it on when you want to compare where the infected-head and \n"
+            " sporulation-head saliency maps overlap or differ."
+        )
 
         saliency_layout.addWidget(self.sal_gradcam, 0, 0)
         saliency_layout.addWidget(self.sal_gradient, 0, 1)
@@ -799,6 +869,16 @@ class PowderyMildewGUI(QWidget):
             self.dataset_path.setText(folder)
             self.refresh_image_folders()
 
+    def browse_conda_python(self):
+        file_path, _ = QFileDialog.getOpenFileName(
+            self,
+            "Select Python executable",
+            "",
+            "Python executable (python.exe);;All files (*)",
+        )
+        if file_path:
+            self.conda_python_path.setText(file_path)
+
     def browse_script(self):
         file_path, _ = QFileDialog.getOpenFileName(
             self,
@@ -818,6 +898,51 @@ class PowderyMildewGUI(QWidget):
         )
         if file_path:
             target_line_edit.setText(file_path)
+
+    def find_conda_executable(self):
+        """
+        Try to find conda in a portable way across machines.
+        """
+        manual_path = self.conda_exe_path.text().strip()
+
+        if manual_path and manual_path.lower() != "auto":
+            manual_path = self.normalize_windows_path(manual_path)
+            if Path(manual_path).exists():
+                return manual_path
+            raise FileNotFoundError(f"Conda executable does not exist: {manual_path}")
+
+        conda_exe = shutil.which("conda")
+        if conda_exe:
+            return conda_exe
+
+        user_home = Path.home()
+
+        possible_paths = [
+            user_home / "miniconda3" / "Scripts" / "conda.exe",
+            user_home / "anaconda3" / "Scripts" / "conda.exe",
+            user_home / "Miniconda3" / "Scripts" / "conda.exe",
+            user_home / "Anaconda3" / "Scripts" / "conda.exe",
+            Path("C:/ProgramData/miniconda3/Scripts/conda.exe"),
+            Path("C:/ProgramData/anaconda3/Scripts/conda.exe"),
+            Path("C:/ProgramData/Miniconda3/Scripts/conda.exe"),
+            Path("C:/ProgramData/Anaconda3/Scripts/conda.exe"),
+        ]
+
+        for path in possible_paths:
+            if path.exists():
+                return str(path)
+
+        return None
+
+    def browse_conda_exe(self):
+        file_path, _ = QFileDialog.getOpenFileName(
+            self,
+            "Select conda executable",
+            "",
+            "Conda executable (conda.exe);;All files (*)",
+        )
+        if file_path:
+            self.conda_exe_path.setText(file_path)
 
     # ------------------------------------------------------------
     # Dataset folder scanning logic
@@ -1000,12 +1125,6 @@ class PowderyMildewGUI(QWidget):
 
         self.up_threshold.setValue(preset["up_threshold"])
         self.down_threshold.setValue(preset["down_threshold"])
-        self.up_threshold.setToolTip("Probability cutoff for calling a patch infected.")
-        self.down_threshold.setToolTip("Probability cutoff for calling a patch clear.")
-        self.spor_th.setToolTip("Sporulation-head cutoff for dual-head powdery mildew models.")
-        self.inf_gate.setToolTip(
-            "Minimum infected-head probability required before a patch can be called sporulating."
-        )
 
         self.cuda.setChecked(preset["cuda"])
         # self.cuda_id.setText(str(preset["cuda_id"]))
@@ -1022,11 +1141,6 @@ class PowderyMildewGUI(QWidget):
         self.sal_smoothgrad.setChecked(preset["sal_smoothgrad"])
         self.sal_deeplift.setChecked(preset["sal_deeplift"])
         self.store_both_sal_heads.setChecked(preset["store_both_sal_heads"])
-        self.store_both_sal_heads.setToolTip(
-            "For dual-head powdery models, save saliency maps for both infected and sporulation heads when "
-            "applicable. \n Leave this unchecked for standard runs. Turn it on when you want to compare where the "
-            "infected-head and sporulation-head saliency maps overlap or differ."
-        )
 
         if preset["inf_gate"] is not None:
             self.inf_gate.setValue(preset["inf_gate"])
@@ -1094,9 +1208,18 @@ class PowderyMildewGUI(QWidget):
         selected_tray = tray or self.trays.currentText().strip()
         selected_dpi = dpi if dpi is not None else self.dpi.value()
 
-        cmd = [
-            sys.executable,
-            script,
+        if self.use_conda_env.isChecked():
+            cmd_start = [
+                self.normalize_windows_path(self.conda_python_path.text()),
+                script,
+            ]
+        else:
+            cmd_start = [
+                sys.executable,
+                script,
+            ]
+
+        cmd = cmd_start + [
             "--model_type", self.model_type.currentText(),
             "--model_path", self.normalize_windows_path(self.model_path.text()),
             "--dataset_path", self.normalize_windows_path(self.dataset_path.text()),
@@ -1153,6 +1276,29 @@ class PowderyMildewGUI(QWidget):
 
         if self.store_both_sal_heads.isChecked() and self.dual_head.isChecked():
             cmd.append("--store_both_sal_heads")
+
+        if self.use_conda_env.isChecked():
+            conda_exe = self.find_conda_executable()
+
+            if conda_exe is None:
+                raise FileNotFoundError(
+                    "Could not find conda. Either launch this GUI from an Anaconda/Miniconda prompt, "
+                    "or add conda to PATH, or browse to conda.exe in the GUI."
+                )
+
+            cmd_start = [
+                conda_exe,
+                "run",
+                "-n",
+                self.conda_exe_path.text().strip(),
+                "python",
+                script,
+            ]
+        else:
+            cmd_start = [
+                sys.executable,
+                script,
+            ]
 
         return cmd
 
