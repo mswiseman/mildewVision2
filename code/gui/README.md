@@ -114,6 +114,8 @@ The downy mildew preset uses:
 --stds 0.1584 0.1574 0.1902
 --timestamp Nov26_02-59-03_2024
 --pretrained
+--up_threshold 0.8
+--down_threshold 0.2
 ```
 
 The downy mildew preset disables dual-head options because the current downy model is not treated as a powdery mildew-style infected/sporulation dual-head model.
