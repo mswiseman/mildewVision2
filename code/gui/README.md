@@ -2,8 +2,7 @@
 
 A desktop graphical user interface for running the `mildewVision2` Blackbird disease inference pipeline. The GUI provides dropdowns, file browsers, preset model options, batch execution, and command previews for powdery mildew and downy mildew image analysis.
 
-GUI made by Michele Wiseman, 2026.
-Repository: https://github.com/mswiseman/mildewVision2
+![gui screenshot](gui_screenshot.png)
 
 ---
 
