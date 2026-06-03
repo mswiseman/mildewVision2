@@ -24,15 +24,16 @@ from PySide6.QtWidgets import (
     QButtonGroup,
     QGroupBox,
     QMessageBox,
+    QScrollArea,
 )
 import shutil
 
 conda_exe = shutil.which("conda")
 
-DEFAULT_CORRELATION_SCRIPT = "../leaf_correlation_mw.py"
-DEFAULT_SALIENCY_PLOT_SCRIPT = "../plot_sal_map_leaf.py"
+DEFAULT_CORRELATION_SCRIPT = "C:/Users/blackbird_user/Desktop/mildewVision2/code/leaf_correlation_mw.py"
+DEFAULT_SALIENCY_PLOT_SCRIPT = "C:/Users/blackbird_user/Desktop/mildewVision2/code/plot_sal_map_leaf.py"
 DEFAULT_CONDA_ENV = "mildewVision"
-DEFAULT_CONDA_ENV_PYTHON = "C:/Users/Intel User/.conda/envs/mildewVision/python.exe"
+DEFAULT_CONDA_ENV_PYTHON = "C:/Users/blackbird_user/miniconda3/envs/mildewVision/python.exe"
 
 PIPELINE_PRESETS = {
     "powdery": {
@@ -251,6 +252,50 @@ PARAMETER_HELP = {
     ),
 }
 
+class CollapsibleBox(QWidget):
+    """
+    Simple click-to-reveal section for PySide6.
+    Starts collapsed by default.
+    """
+    def __init__(self, title="", parent=None, checked=False):
+        super().__init__(parent)
+
+        self.toggle_button = QPushButton()
+        self.toggle_button.setCheckable(True)
+        self.toggle_button.setChecked(checked)
+        self.toggle_button.setStyleSheet("QPushButton { text-align: left; font-weight: bold; }")
+        self.toggle_button.clicked.connect(self.on_toggled)
+
+        self.content_widget = QWidget()
+        self.content_layout = QVBoxLayout()
+        self.content_layout.setContentsMargins(18, 6, 6, 6)
+        self.content_widget.setLayout(self.content_layout)
+
+        main_layout = QVBoxLayout()
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.addWidget(self.toggle_button)
+        main_layout.addWidget(self.content_widget)
+        self.setLayout(main_layout)
+
+        self.title = title
+        self.on_toggled(checked)
+
+    def on_toggled(self, checked):
+        self.content_widget.setVisible(checked)
+        arrow = "▼" if checked else "▶"
+        self.toggle_button.setText(f"{arrow} {self.title}")
+
+    def setContentLayout(self, layout):
+        # Clear the existing placeholder layout
+        while self.content_layout.count():
+            item = self.content_layout.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.setParent(None)
+
+        wrapper = QWidget()
+        wrapper.setLayout(layout)
+        self.content_layout.addWidget(wrapper)
 
 class BatchRunner(QThread):
     log_signal = Signal(str)
@@ -382,7 +427,13 @@ class PowderyMildewGUI(QWidget):
 
         self.setWindowTitle("Blackbird Disease Inference GUI")
 
-        main_layout = QVBoxLayout()
+        outer_layout = QVBoxLayout(self)
+
+        scroll_area = QScrollArea()
+        scroll_area.setWidgetResizable(True)
+
+        scroll_content = QWidget()
+        main_layout = QVBoxLayout(scroll_content)
 
         # ------------------------------------------------------------
         # Header / attribution section
@@ -502,8 +553,8 @@ class PowderyMildewGUI(QWidget):
         path_layout = QGridLayout()
 
         self.model_path = QLineEdit()
-        self.dataset_path = QLineEdit("../../data")
-        self.log_path = QLineEdit("../../results/logs/inference_gui.log")
+        self.dataset_path = QLineEdit("C:/Users/blackbird_user/Desktop/mildewVision2/data")
+        self.log_path = QLineEdit("C:/Users/blackbird_user/Desktop/mildewVision2/results/logs/inference_gui.log")
 
         model_browse_button = QPushButton("Browse")
         dataset_browse_button = QPushButton("Browse")
@@ -541,7 +592,7 @@ class PowderyMildewGUI(QWidget):
         # ------------------------------------------------------------
         # Model settings section
         # ------------------------------------------------------------
-        model_group_box = QGroupBox("Model settings")
+        model_group_box = CollapsibleBox("Model settings", checked=False)
         model_layout = QGridLayout()
 
         self.model_type = QComboBox()
@@ -590,7 +641,10 @@ class PowderyMildewGUI(QWidget):
 
         #model_layout.addWidget(self.pretrained, 4, 0)
         model_layout.addWidget(self.dual_head, 3, 1)
-        self.dual_head.setToolTip("Use this for the powdery mildew model with two output heads: infected/hyphal signal and sporulation signal. \n Usually checked for powdery mildew and unchecked for downy mildew.")
+        self.dual_head.setToolTip(
+            "Use this for powdery mildew models with two output heads: infected/hyphal signal and sporulation signal.\n"
+            "This option is disabled for downy mildew because the current downy model is not a dual-head sporulation model."
+        )
         model_layout.addWidget(self.cuda, 3, 0)
 
         # model_layout.addWidget(QLabel("CUDA ID"), 5, 1)
@@ -606,7 +660,7 @@ class PowderyMildewGUI(QWidget):
         self.stds.setToolTip(
             "RGB normalization std dev. used during model training.\n Do not change unless using new model.")
 
-        model_group_box.setLayout(model_layout)
+        model_group_box.setContentLayout(model_layout)
         main_layout.addWidget(model_group_box)
 
         # ------------------------------------------------------------
@@ -618,9 +672,10 @@ class PowderyMildewGUI(QWidget):
         self.img_folder = QComboBox()
         self.img_folder.currentTextChanged.connect(self.on_image_folder_changed)
 
-        self.dpi = QSpinBox()
-        self.dpi.setRange(0, 100)
-        self.dpi.setValue(10)
+        #self.dpi = QSpinBox()
+        #self.dpi.setRange(0, 100)
+        #self.dpi.setValue(10)
+        self.dpi = QLineEdit("10")
         self.dpi.setToolTip(
         "Days post inoculation. This value plays a role in the powdery mildew model logic for determining sporulation \n"
         "calls, so make sure it's correct. If your image folders are named with the dpi at the end like 5-13-2026_5dpi, \n"
@@ -706,7 +761,7 @@ class PowderyMildewGUI(QWidget):
         # ------------------------------------------------------------
         # Threshold section
         # ------------------------------------------------------------
-        threshold_group_box = QGroupBox("Thresholds")
+        threshold_group_box = CollapsibleBox("Thresholds", checked=False)
         threshold_layout = QGridLayout()
 
         self.up_threshold = self.double_box(0.95, 0.0, 1.0)
@@ -761,13 +816,13 @@ class PowderyMildewGUI(QWidget):
         threshold_layout.addWidget(QLabel("Saliency percentile"), 7, 0)
         threshold_layout.addWidget(self.sal_thresh_p, 7, 1)
 
-        threshold_group_box.setLayout(threshold_layout)
+        threshold_group_box.setContentLayout(threshold_layout)
         main_layout.addWidget(threshold_group_box)
-
+        
         # ------------------------------------------------------------
-        # Saliency section
+        # Saliency section, collapsed by default
         # ------------------------------------------------------------
-        saliency_group_box = QGroupBox("Saliency options")
+        saliency_group_box = CollapsibleBox("Saliency options", checked=False)
         saliency_layout = QGridLayout()
 
         self.sal_gradcam = QCheckBox("Grad-CAM")
@@ -775,10 +830,16 @@ class PowderyMildewGUI(QWidget):
         self.sal_smoothgrad = QCheckBox("SmoothGrad")
         self.sal_deeplift = QCheckBox("DeepLift")
         self.store_both_sal_heads = QCheckBox("Store both saliency heads")
+
+        self.sal_gradcam.setToolTip("Enable Grad-CAM saliency maps.")
+        self.sal_gradient.setToolTip("Enable basic gradient saliency maps.")
+        self.sal_smoothgrad.setToolTip("Enable SmoothGrad saliency maps.")
+        self.sal_deeplift.setToolTip("Enable DeepLift saliency maps.")
+
         self.store_both_sal_heads.setToolTip(
             "For dual-head models, save saliency maps for both infected and sporulation heads when applicable.\n"
-            "Leave this unchecked for standard runs. Turn it on when you want to compare where the infected-head and \n"
-            " sporulation-head saliency maps overlap or differ."
+            "Leave this unchecked for standard runs. Turn it on when you want to compare where the infected-head and "
+            "sporulation-head saliency maps overlap or differ."
         )
 
         saliency_layout.addWidget(self.sal_gradcam, 0, 0)
@@ -787,7 +848,14 @@ class PowderyMildewGUI(QWidget):
         saliency_layout.addWidget(self.sal_deeplift, 1, 1)
         saliency_layout.addWidget(self.store_both_sal_heads, 2, 0, 1, 2)
 
-        saliency_group_box.setLayout(saliency_layout)
+        # Optional ? buttons
+        self.add_help_button(saliency_layout, 0, 2, "sal_gradcam")
+        self.add_help_button(saliency_layout, 0, 3, "sal_gradient")
+        self.add_help_button(saliency_layout, 1, 2, "sal_smoothgrad")
+        self.add_help_button(saliency_layout, 1, 3, "sal_deeplift")
+        self.add_help_button(saliency_layout, 2, 2, "store_both_sal_heads")
+
+        saliency_group_box.setContentLayout(saliency_layout)
         main_layout.addWidget(saliency_group_box)
 
         # ------------------------------------------------------------
@@ -823,7 +891,9 @@ class PowderyMildewGUI(QWidget):
         main_layout.addWidget(QLabel("Command preview / output"))
         main_layout.addWidget(self.output)
 
-        self.setLayout(main_layout)
+        scroll_area.setWidget(scroll_content)
+        outer_layout.addWidget(scroll_area)
+        self.setLayout(outer_layout)
 
         # Apply default powdery preset after all widgets exist
         self.apply_selected_preset()
@@ -1155,8 +1225,14 @@ class PowderyMildewGUI(QWidget):
             self.spor_th.setEnabled(False)
 
         if self.downy_radio.isChecked():
+            self.dual_head.setChecked(False)
+            self.dual_head.setEnabled(False)
+
+            self.store_both_sal_heads.setChecked(False)
             self.store_both_sal_heads.setEnabled(False)
         else:
+            self.dual_head.setEnabled(True)
+
             self.store_both_sal_heads.setEnabled(True)
 
         self.set_threshold_editing_enabled(self.allow_threshold_editing.isChecked())
